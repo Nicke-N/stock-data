@@ -6,19 +6,22 @@ export const DataProvider = ({children}) => {
     const [ stockList, setStockList ] = useState(null)
     const [ currentStock, setCurrentStock ] = useState(null)
     const [ authorized, setAuthorized ] = useState(false)
+    const [ modalData, setModalData ] = useState(null)
 
     return (
-        <DaraContext.Provider
+        <DataContext.Provider
         value={{
             stockList, 
             setStockList,
             currentStock, 
             setCurrentStock,
             authorized, 
-            setAuthorized
+            setAuthorized,
+            modalData, 
+            setModalData
         }}
         >
             {children}
-        </DaraContext.Provider>
+        </DataContext.Provider>
     )
 }

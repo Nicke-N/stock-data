@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { closeModal, showModal } from '../kit/Functions'
+import { DataContext } from '../context/DataContext'
+import './Modal.css'
 
 export default function Modal() {
     var modal, closeBtn, modalBtn
+
+    const { setModalData, modalData } = useContext(DataContext)
 
     useEffect(() => {
         modalBtn = document.getElementById('tradeHistory')
@@ -11,7 +15,7 @@ export default function Modal() {
 
         closeBtn = document.getElementsByClassName('closeBtn')[0]
         if (closeBtn)
-            closeBtn.addEventListener('click', () => { modal.style.display = 'none'; setRemove(false); setModalData(null) })
+            closeBtn.addEventListener('click', () => { modal.style.display = 'none'; setModalData(null) })
 
         modal = document.getElementById('simpleModal')
         if (modal)
@@ -33,7 +37,7 @@ export default function Modal() {
                     <div className="modal-header">
                         <span className="closeBtn"> x </span>
                         <h2 className="modal-title">
-                            
+                            {modalData.title}
                         </h2>
                     </div>
                     <div className="modal-body">
