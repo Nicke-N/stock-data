@@ -1,0 +1,13 @@
+.list-item {
+    box-shadow:10px 5px 5px rgb(5, 5, 70);
+    width: 10vw;
+    background-color: aliceblue;
+    text-align: center;
+    transition: all;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+.list-item:hover {
+    transform: scale(1.2);
+    background-color: rgb(231, 207, 175);
+}
