@@ -37,7 +37,7 @@ export default function Modal() {
                     <div className="modal-header">
                         <span className="closeBtn"> x </span>
                         <h2 className="modal-title">
-                            {modalData.title}
+                           
                         </h2>
                     </div>
                     <div className="modal-body">

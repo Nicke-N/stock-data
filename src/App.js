@@ -19,8 +19,8 @@ function App() {
       </button>
 
       <Switch>
-        <Route exact path='/List' component={ListPage} />
-        <Route exact path='/stock' component={StockPage} />
+        <Route exact path='/stocks' component={ListPage} />
+        <Route exact path='/stocks/:id' component={StockPage} />
         <Route exact path='/' component={LandingPage}/>
       </Switch>
     <Modal />
