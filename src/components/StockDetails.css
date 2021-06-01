@@ -1,0 +1,45 @@
+
+#detail-wrapper {
+    display: grid;
+    grid-template-areas:    'stockName  risk    industry'
+                            'dividend   reports   niche'
+                            'notes  notes   notes'
+                            'notes  notes   notes';
+    /* text-align: center; */
+}
+#reports {
+    grid-area: reports;
+}
+.detail-container {
+    display: grid;
+    grid-template-areas: 'prop value';
+    background-color: aliceblue;
+    border-radius: 1rem;
+    border: grey 1px solid;
+    text-align: center;
+}
+
+.detail-prop {
+    grid-area: prop;
+}
+.detail-value {
+    grid-area: value;
+}
+.stockName {
+    grid-area: stockName;
+}
+.industry {
+    grid-area: industry;
+}
+.niche {
+    grid-area: niche;
+}
+.dividend {
+    grid-area: dividend;
+}
+.risk {
+    grid-area: risk;
+}
+#note-container {
+    grid-area: notes
+}

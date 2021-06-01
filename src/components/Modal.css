@@ -16,8 +16,8 @@
   }
   
   .modal-content{
-    color: #FFE6D0;
-    background-color: rgb(197, 108, 67);
+    color: #e1dbd6;
+    background-color: rgb(142, 220, 116);
     width: calc(15vw + 10vh);
     height: calc(30vw + 30vh);
     box-shadow: 0 1vh 1.5vh 0 rgba(0,0,0,0.2),0 1vh 2vh 0 rgba(0,0,0,0.17);
@@ -26,8 +26,8 @@
   }
   
   .modal-header{
-    background: rgb(197, 108, 67);
-    color: #FFE6D0;
+    background: rgb(142, 220, 116);
+    color: #e1dbd6;
     border-radius: 1vw;
     height: 15%;
     display: grid;
