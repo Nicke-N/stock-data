@@ -11,8 +11,7 @@ export default function ChartRevenue(props) {
 
             data[props.data.title] = props.data.values
     
-            var colors = ['206,191,26', '54,152,38', '17,119,141', '236,124,98', '206,26,140', '26,77,206'];
-            var borderDash = [[0]]
+            var colors = ['#0CEB00']
             var chartData = {
                 labels: props.data.keys,
                 datasets: []
@@ -20,26 +19,24 @@ export default function ChartRevenue(props) {
             
             Object.keys(data).forEach(function(key) {
                 var color = colors.shift();
-                var dash = borderDash.shift();
                 chartData.datasets.push({
                     label: key,
                     lineTension: 0,
                     type: 'line',
-                    borderDash: dash,
-                    borderColor: "rgba(" + color + ",1)",
+                    borderColor: color,
                     borderWidth: 2,
-                    pointBackgroundColor: "rgba(" + color + ",1)",
-                    pointBorderColor: "#fff",
+                    pointBackgroundColor: color,
+                    pointBorderColor: color,
                     pointBorderWidth: 1,
                     pointRadius: 4,
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: "rgba(" + color + ",1)",
+                    pointHoverBackgroundColor: color,
+                    pointHoverBorderColor: color,
                     pointHoverBorderWidth: 1,
                     data: data[key]
                 });
             });
             // Chart.defaults.global.defaultFontColor = 'grey';
-            // Chart.defaults.global.defaultFontFamily = "Tahoma";
+            // Chart.defaults.global.defaultFontFamily = 'Tahoma';
             // Chart.defaults.global.defaultFontSize = 20 ;
             // Chart.defaults.global.defaultFontStyle = 'normal';
             
@@ -52,7 +49,7 @@ export default function ChartRevenue(props) {
                     maintainAspectRatio: true,
                     title: {
                         display: true,
-                        fontColor: "#444",
+                        fontColor: '#0CEB00',
                         fontFamily: 'Tahoma',
                         padding: 0
                     },
@@ -60,12 +57,12 @@ export default function ChartRevenue(props) {
                     legend: {
                         display: true,
                         labels: {
-                            fontColor: '0CEB00',
+                            fontColor: '#0CEB00',
                             usePointStyle: true
                         }
                     },
                     tooltips: {
-                        mode: "index",
+                        mode: 'index',
                         intersect: true,
                         position: 'nearest',
                         bodySpacing: 4
@@ -84,7 +81,7 @@ export default function ChartRevenue(props) {
     
     return (
         <div>
-            <canvas id="revenueChart"  width="500px" height="300px"></canvas>
+            <canvas id='revenueChart'  width='500px' height='300px'></canvas>
         </div>
     )
 }
