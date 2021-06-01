@@ -50,7 +50,6 @@ export default function ChartLongDebt(props) {
             
                     title: {
                         display: true,
-                        text: 'Trade history',
                         fontColor: "#444",
                         fontFamily: 'Tahoma',
                         padding: 0

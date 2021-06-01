@@ -52,7 +52,6 @@ export default function ChartRevenue(props) {
                     maintainAspectRatio: true,
                     title: {
                         display: true,
-                        text: 'Trade history',
                         fontColor: "#444",
                         fontFamily: 'Tahoma',
                         padding: 0
@@ -61,7 +60,7 @@ export default function ChartRevenue(props) {
                     legend: {
                         display: true,
                         labels: {
-                            fontColor: 'grey',
+                            fontColor: '0CEB00',
                             usePointStyle: true
                         }
                     },

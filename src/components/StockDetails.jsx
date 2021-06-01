@@ -4,15 +4,13 @@ import './StockDetails.css'
 
 export default function StockDetails() {
 
-    const { currentStock, quarters } = useContext(DataContext)
+    const { currentStock, quarter } = useContext(DataContext)
     const exceptions = [
         '__v',
         '_id',
         'notes'
     ]
-    useEffect(() => {
-        console.log(quarters)
-    }, [currentStock, quarters])
+    useEffect(() => {}, [currentStock, quarter])
 
     return (
         <div id='detail-wrapper'>
@@ -36,7 +34,7 @@ export default function StockDetails() {
                     Annuals: 
                 </span>
                 <span className='detail-value'>
-                    Quarters: {quarters ? quarters.length : null}
+                    Quarters: {quarter ? quarter.period.length : null}
                 </span>
             </div>
             <div id='note-container'>

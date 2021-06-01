@@ -47,9 +47,7 @@ export default function Reports() {
 
     }, [reportList])
 
-    useEffect(() => {
-        console.log('render')
-    }, [quarter])
+    useEffect(() => {}, [quarter])
 
     const fillData = () => {
         reportList.map((value, index) => {

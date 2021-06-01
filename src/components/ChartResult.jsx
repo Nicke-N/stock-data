@@ -51,7 +51,6 @@ export default function ChartResult(props) {
             
                     title: {
                         display: true,
-                        text: 'Trade history',
                         fontColor: "#444",
                         fontFamily: 'Tahoma',
                         padding: 0
