@@ -52,6 +52,7 @@ export default function ChartCapital(props) {
             
                     title: {
                         display: true,
+                        text: 'Trade history',
                         fontColor: "#444",
                         fontFamily: 'Tahoma',
                         padding: 0

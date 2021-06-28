@@ -43,3 +43,6 @@
 #note-container {
     grid-area: notes
 }
+.report-nav {
+    border-radius: 1rem;
+}

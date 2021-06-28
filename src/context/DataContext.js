@@ -16,6 +16,7 @@ export const DataProvider = ({children}) => {
     const [ searchValue, setSearchValue ] = useState('')
 
     const [ quarter, setQuarter ] = useState(null)
+    const [ annual, setAnnual ] = useState(null)
 
     return (
         <DataContext.Provider
@@ -35,7 +36,9 @@ export const DataProvider = ({children}) => {
             searchValue,
             setSearchValue,
             quarter, 
-            setQuarter
+            setQuarter,
+            annual,
+            setAnnual
         }}
         >
             {children}

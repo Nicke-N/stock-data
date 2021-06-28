@@ -8,9 +8,15 @@ export default function StockDetails() {
     const exceptions = [
         '__v',
         '_id',
-        'notes'
+        'notes',
+        'inventory',
+        'property',
+        'employees',
+        'stockCount'
     ]
     useEffect(() => {}, [currentStock, quarter])
+
+
 
     return (
         <div id='detail-wrapper'>
@@ -30,12 +36,12 @@ export default function StockDetails() {
                 })
             }
             <div id='reports' className='detail-container'>
-                <span className='detail-prop'>
+                <button className='detail-prop modal-ref report-nav'>
                     Annuals: 
-                </span>
-                <span className='detail-value'>
+                </button>
+                <button className='detail-value modal-ref report-nav'>
                     Quarters: {quarter ? quarter.period.length : null}
-                </span>
+                </button>
             </div>
             <div id='note-container'>
                 {currentStock && (currentStock.notes).map((note, index) => {

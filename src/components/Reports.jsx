@@ -16,7 +16,10 @@ export default function Reports() {
         '__v',
         '_id',
         'stockName',
-        'type'
+        'type',
+        'employees',
+        'property',
+        'inventory'
     ]
     var annuals = {
         revenue: [],
@@ -43,7 +46,11 @@ export default function Reports() {
     }
 
     useEffect(() => {
-        if (reportList) fillData()
+        if (reportList) { 
+            fillData()
+        } else {
+            
+        }
 
     }, [reportList])
 
