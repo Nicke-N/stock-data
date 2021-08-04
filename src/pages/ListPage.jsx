@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react'
-import DropDown from '../components/DropDown'
 import ListItem from '../components/ListItem'
 import { DataContext } from '../context/DataContext'
 import { getStocks } from '../kit/api/Stocks'

@@ -1,13 +1,14 @@
-export const getResults = async () => {
+export const getResults = async (stockName) => {
 
     const get = {
         method: 'GET',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'stockName': stockName ? stockName : null
         }
     }
 
-    return await fetch(`http://localhost:5000/results`, get)
+    return await fetch(`http://localhost:5000/reports`, get)
 }
 
 export const getResult = async (id) => {
@@ -19,7 +20,7 @@ export const getResult = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/results/${id}`, get)
+    return await fetch(`http://localhost:5000/reports/${id}`, get)
 }
 
 export const addResult = async (data) => {
@@ -32,7 +33,7 @@ export const addResult = async (data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/results/`, post)
+    return await fetch(`http://localhost:5000/reports/`, post)
 }
 
 export const editResult = async (id, data) => {
@@ -45,7 +46,7 @@ export const editResult = async (id, data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/results/${id}`, patch)
+    return await fetch(`http://localhost:5000/reports/${id}`, patch)
 }
 
 export const deleteResult = async (id) => {
@@ -57,5 +58,5 @@ export const deleteResult = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/results/${id}`, remove)
+    return await fetch(`http://localhost:5000/reports/${id}`, remove)
 }

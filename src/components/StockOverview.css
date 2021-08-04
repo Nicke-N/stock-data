@@ -1,0 +1,10 @@
+#stock-overview-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#stock-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
