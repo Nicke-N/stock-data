@@ -6,6 +6,5 @@
 
 #stock-details {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 100%;
-    grid-template-rows: ;
+    grid-template-columns: 1fr 1fr 1fr;
 }
