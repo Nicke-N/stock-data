@@ -8,9 +8,9 @@ import { DataProvider } from './context/DataContext'
 ReactDOM.render(
   <BrowserRouter>
     <DataProvider>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </DataProvider>
   </BrowserRouter>
   ,
