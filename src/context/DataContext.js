@@ -14,6 +14,7 @@ export const DataProvider = ({children}) => {
     const [ modalData, setModalData ] = useState(null)
 
     const [ searchTerm, setSearchTerm ] = useState('')
+    const [ diagramOption, setDiagramOption ] = useState(null)
 
     const [ quarter, setQuarter ] = useState(null)
     const [ annual, setAnnual ] = useState(null)
@@ -38,7 +39,9 @@ export const DataProvider = ({children}) => {
             quarter, 
             setQuarter,
             annual,
-            setAnnual
+            setAnnual,
+            diagramOption, 
+            setDiagramOption
         }}
         >
             {children}

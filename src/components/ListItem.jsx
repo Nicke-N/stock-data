@@ -4,7 +4,7 @@ import './ListItem.css'
 
 export default function ListItem(props) {
     return (
-        <Link to={`/stocks/${props.data._id}`}>
+        <Link to={`/overview/${props.data._id}`}>
             <div className='list-item'>
                 {props.data.stockName}
             </div>

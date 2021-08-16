@@ -6,9 +6,9 @@ import ChartShortDebt from './ChartShortDebt.jsx'
 import ChartLongDebt from './ChartLongDebt.jsx'
 import ChartCapital from './ChartCapital.jsx'
 import { DataContext } from '../context/DataContext'
-import './Reports.css'
+import './Diagrams.css'
 
-export default function Reports() {
+export default function Diagrams() {
 
     const { reportList, quarter, setQuarter } = useContext(DataContext)
    

@@ -1,16 +1,24 @@
 import React, { useEffect, useContext } from 'react'
 import ListItem from '../components/ListItem'
 import { DataContext } from '../context/DataContext'
+import { getStocks } from '../kit/api/Stocks'
 
 import './ListPage.css'
 
 export default function ListPage() {
 
-    const { stockList, searchTerm } = useContext(DataContext)
+    const { stockList, searchTerm, setStockList } = useContext(DataContext)
 
     useEffect(() => {
+        fetchAllStocks()
+    }, [])
 
-    }, [searchTerm])
+    const fetchAllStocks = async () => {
+
+        getStocks()
+        .then(res => res.json())
+        .then(data => setStockList(data))
+    }
 
     return (
         <div>
