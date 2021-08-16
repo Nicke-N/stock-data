@@ -2,11 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { getStock } from '../kit/api/Stocks'
 import { getResults, getResult } from '../kit/api/Results'
-import StockDetails from '../components/StockDetails'
-import './StockPage.css'
 
-export default function StockPage(props) {
-
+export default function OverviewPage(props) {
     const { currentStock, setCurrentStock, reportList, setReportList } = useContext(DataContext)
     const stockID = props.match.params.id
 
@@ -29,25 +26,16 @@ export default function StockPage(props) {
             })
 
     }
-
     return (
-        <div id='detail-page'>
-            <StockDetails />
-
-            {/* {reportList ?
-                Object.entries(reportList).map((report) => {
-                    return Object.entries(report[1]).map((element) => {
-                  
-                        return (
-                            <div key={element[0] + report[0]}>
-                                {element[0]} : {element[1]}
-                            </div>
-                        )
-                    })
-                })
-                : null
-            } */}
-           
+        <div id='overview-page'>
+            {currentStock ? 
+                <div >
+                    {currentStock.stockName}
+                </div>
+                :
+               'Loading...'
+            }
+            
         </div>
     )
 }

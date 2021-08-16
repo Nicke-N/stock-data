@@ -3,17 +3,18 @@ import React, { useState } from 'react'
 export const DataContext = React.createContext()
 
 export const DataProvider = ({children}) => {
-    // All stocks
+
     const [ stockList, setStockList ] = useState(null)
     const [ currentStock, setCurrentStock ] = useState(null)
-    // All reports for a specific stock
+
     const [ reportList, setReportList ] = useState(null)
     const [ currentReport, setCurrentReport ] = useState(null)
 
     const [ authorized, setAuthorized ] = useState(false)
     const [ modalData, setModalData ] = useState(null)
 
-    const [ searchValue, setSearchValue ] = useState('')
+    const [ searchTerm, setSearchTerm ] = useState('')
+    const [ diagramOption, setDiagramOption ] = useState(null)
 
     const [ quarter, setQuarter ] = useState(null)
     const [ annual, setAnnual ] = useState(null)
@@ -33,12 +34,14 @@ export const DataProvider = ({children}) => {
             setAuthorized,
             modalData, 
             setModalData,
-            searchValue,
-            setSearchValue,
+            searchTerm,
+            setSearchTerm,
             quarter, 
             setQuarter,
             annual,
-            setAnnual
+            setAnnual,
+            diagramOption, 
+            setDiagramOption
         }}
         >
             {children}

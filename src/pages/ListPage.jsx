@@ -6,15 +6,16 @@ import { getStocks } from '../kit/api/Stocks'
 import './ListPage.css'
 
 export default function ListPage() {
-    const { stockList, setStockList } = useContext(DataContext)
+
+    const { stockList, searchTerm, setStockList } = useContext(DataContext)
 
     useEffect(() => {
-        if (!stockList) fetchStockList()
-        console.log(stockList)
+        fetchAllStocks()
     }, [])
 
-    const fetchStockList = async () => {
-        await getStocks()
+    const fetchAllStocks = async () => {
+
+        getStocks()
         .then(res => res.json())
         .then(data => setStockList(data))
     }
@@ -22,8 +23,9 @@ export default function ListPage() {
     return (
         <div>
             <div id='stock-list'>
-            {stockList ?
-                Object.entries(stockList).map(element => <ListItem key={element[0]} data={element[1]}/> ) : null
+            { stockList ?
+                    Object.entries(stockList).map(element => searchTerm === '' ? <ListItem key={element[0]} data={element[1]}/> : (element[1].stockName.toLowerCase()).includes(searchTerm) ? <ListItem key={element[0]} data={element[1]}/> : null )
+                : null
             }
             </div>
          
