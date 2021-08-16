@@ -4,7 +4,7 @@ import './DropDownSearch.css'
 import { DataContext } from '../context/DataContext'
 export default function DropdownSearch() {
 
-    const { setSearchTerm, stockList, searchTerm } = useContext(DataContext)
+    const { setSearchTerm, stockList, searchTerm, setCurrentStock } = useContext(DataContext)
     const history = useHistory()
     const setValue = (e) => setSearchTerm(e.target.value.toLowerCase())
     const list = document.getElementById('stock-list')
@@ -12,10 +12,25 @@ export default function DropdownSearch() {
     useEffect(() => {
         setSearchTerm([])
     }, [])
-    
-    if (stockList)
-    stockList.map(element => searchTerm === (element.stockName).toLowerCase() ? history.push(`/overview/${element._id}`) : null)
 
+    // if (stockList)
+    // setTimeout(() => {
+    //     stockList.map(element => searchTerm === (element.stockName).toLowerCase() ? history.push(`/overview/${element._id}`) : null)
+    // }, 1000);
+    
+
+    if (stockList) {
+
+        stockList.map(element => {
+
+            if ( searchTerm === (element.stockName).toLowerCase() ) {
+                setCurrentStock(element)
+                return setTimeout(() => {
+                    history.push(`/overview/${element._id}`)
+                }, 1500)
+            }
+        })
+    }
 
 
     if (list && stockList) {
