@@ -60,7 +60,7 @@ export default function NavPanel() {
                     <DropdownSearch />
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/addstock">
                         Add stock
                     </a>
                 </li>
