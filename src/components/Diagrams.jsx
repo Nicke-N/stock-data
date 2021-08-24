@@ -10,8 +10,8 @@ import './Diagrams.css'
 
 export default function Diagrams() {
 
-    const { reportList, quarter, setQuarter } = useContext(DataContext)
-   
+    const { reportList, quarter, setQuarter, currentStock } = useContext(DataContext)
+    console.log(currentStock)
     const exceptions = [
         '__v',
         '_id',
@@ -48,13 +48,12 @@ export default function Diagrams() {
     useEffect(() => {
         if (reportList) { 
             fillData()
-        } else {
-            
-        }
+        } 
+        
 
     }, [reportList])
 
-    useEffect(() => {}, [quarter])
+    useEffect(() => {console.log(reportList);}, [quarter])
 
     const fillData = () => {
         reportList.map((value, index) => {

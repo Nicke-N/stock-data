@@ -1,4 +1,4 @@
-export const getResults = async (stockName) => {
+export const getReports = async (stockName) => {
 
     const get = {
         method: 'GET',
@@ -11,7 +11,7 @@ export const getResults = async (stockName) => {
     return await fetch(`http://localhost:5000/reports`, get)
 }
 
-export const getResult = async (id) => {
+export const getReport = async (id) => {
 
     const get = {
         method: 'GET',
@@ -23,7 +23,7 @@ export const getResult = async (id) => {
     return await fetch(`http://localhost:5000/reports/${id}`, get)
 }
 
-export const addResult = async (data) => {
+export const addReport = async (data) => {
     const post = {
         method: 'POST',
         headers: {
@@ -36,7 +36,7 @@ export const addResult = async (data) => {
     return await fetch(`http://localhost:5000/reports/`, post)
 }
 
-export const editResult = async (id, data) => {
+export const editReport = async (id, data) => {
     const patch = {
         method: 'PATCH',
         headers: {
@@ -49,7 +49,7 @@ export const editResult = async (id, data) => {
     return await fetch(`http://localhost:5000/reports/${id}`, patch)
 }
 
-export const deleteResult = async (id) => {
+export const deleteReport = async (id) => {
     const remove = {
         method: 'DELETE',
         headers: {

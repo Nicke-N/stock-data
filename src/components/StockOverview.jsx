@@ -8,8 +8,6 @@ export default function StockOverview() {
 
     useEffect(() => {}, [currentStock])
 
-
-
     return (
         <div id='stock-overview-page'>
             

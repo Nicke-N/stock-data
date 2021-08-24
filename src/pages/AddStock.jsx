@@ -6,7 +6,7 @@ import './CrudStyle.css'
 
 export default function AddStock() {
 
-    const { currentStock, setStockList } = useContext(DataContext)
+    const { setStockList } = useContext(DataContext)
     const history = useHistory()
 
     const industries = [
@@ -31,7 +31,6 @@ export default function AddStock() {
         'World wide web'
     ]
 
-    
     const stockName = document.getElementById('stockName')
     const industry = document.getElementById('industry')
     const dividend = document.getElementById('dividend')
@@ -40,7 +39,6 @@ export default function AddStock() {
     const fail = document.getElementById('add-stock-failure')
     const formName = document.getElementById('form-name')
     const form = document.getElementById('form')
-
 
     const submitForm = async (event) =>  {
         event.preventDefault()
@@ -84,10 +82,6 @@ export default function AddStock() {
         })
        
     }
-
-
-
-   
 
     return (
         <div className='crud-container'>
