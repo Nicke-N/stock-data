@@ -2,10 +2,37 @@ import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { getStock } from '../kit/api/Stocks'
 import { getReports, getReport } from '../kit/api/Reports'
+import { showModal } from '../kit/Functions'
+import Add from '../icons/plus.svg'
+import './Overview.css'
 
 export default function OverviewPage(props) {
-    const { currentStock, setCurrentStock, reportList, setReportList } = useContext(DataContext)
+    const { currentStock, setCurrentStock, reportList, setReportList, setModalData } = useContext(DataContext)
     const stockID = props.match.params.id
+
+    const addNote = document.getElementById('add-note')
+    const addRisk = document.getElementById('add-risk')
+
+    const notesModal = () => {
+        setModalData('edit notes')
+        showModal()
+    }
+
+    const risksModal = () => {
+        setModalData('edit risks')
+        showModal()
+    }
+
+    const addEventListeners = () => {
+
+        addNote.removeEventListener('click', notesModal)
+        addRisk.removeEventListener('click', risksModal)
+
+        addNote.addEventListener('click', notesModal)
+        addRisk.addEventListener('click', risksModal)
+    }
+
+    if (addNote) addEventListeners()
 
     useEffect(() => {
         fetchStock()
@@ -36,7 +63,11 @@ export default function OverviewPage(props) {
                     </div>
                     
                     <div className='overview-description'>
-                        industry: {currentStock.industry}
+                        Industry: {currentStock.industry}
+                    </div>
+
+                    <div className='overview-description'>
+                        Dividend: {currentStock.dividend}
                     </div>
 
                     <div className='overview-description' id='risk'>
@@ -45,6 +76,11 @@ export default function OverviewPage(props) {
                     </div>
 
                     <div id='risks-container'>
+                        <div className='small-container'>
+                            <h5>Risks</h5>
+                            <img src={Add} className='overview-icon' id='add-risk' alt="Icon failed to load" />
+                        </div>
+                        
                         {currentStock.risks.length > 0 ?
                             currentStock.map(element => <div className='stock-risk'>{element}</div>)
                             : null
@@ -52,6 +88,10 @@ export default function OverviewPage(props) {
                     </div>
 
                     <div id='notes-container'>
+                        <div className='small-container'>
+                            <h5>Notes</h5>
+                            <img src={Add} className='overview-icon' id='add-note' alt="Icon failed to load" />
+                        </div>
                         {currentStock.notes.length > 0 ?
                             currentStock.map(element => <div className='stock-note'>{element}</div>)
                             : null

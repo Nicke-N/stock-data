@@ -21,31 +21,7 @@ export default function NavPanel() {
     useEffect(() => {
         
         if ( currentStock) {
-           
-            // panel.textContent = ''
-            // const navigation = {
-            //     tabs: [
-            //         'Overview',
-            //         'Diagrams',
-            //         'Add report'
-                    
-            //     ],
-            //     content: [
-            //         `/overview/${currentStock._id}`,
-            //         `/diagrams/${currentStock._id}`,
-            //         `/report/${currentStock._id}`
-            //     ]
-            // }
-            // for(const index in navigation.tabs) {
-            //     let panelItem = document.createElement('li')
-            //     let link = document.createElement('a')
-            //     link.textContent = navigation.tabs[index]
-            //     link.setAttribute('href', navigation.content[index])
-            //     panelItem.appendChild(link)
-            //     panel.appendChild(panelItem)
-
-            // }
-            
+                       
             setOverview(`/overview/${currentStock._id}`)
             setDiagrams(`/diagrams/${currentStock._id}`)
             setAddReport(`/report/${currentStock._id}`)

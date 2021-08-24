@@ -8,6 +8,7 @@ import DiagramsPage from './pages/DiagramsPage'
 import OverviewPage from './pages/OverviewPage'
 import AddReport from './pages/AddReport'
 import AddStock from './pages/AddStock'
+import Modal from './components/Modal'
 function App() {
 
   const { modalData } = useContext(DataContext)
@@ -24,7 +25,7 @@ function App() {
         <Route exact path='/report/:id' component={AddReport} /> 
         <Route exact path='/addstock' component={AddStock} />
       </Switch>
-
+      <Modal data={modalData} />
     </div>
   );
 }
