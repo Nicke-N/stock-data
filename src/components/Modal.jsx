@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import './Modal.css'
 import { DataContext } from '../context/DataContext'
 import { closeModal, showModal } from '../kit/Functions'
+import EditContainer from './EditContainer'
 
 export default function Modal(props) {
 
@@ -40,30 +41,19 @@ export default function Modal(props) {
                         <span className="closeBtn"> x </span>
                         <h2 className="modal-title">
                             {props.data && props.data === 'edit notes' ?
-                                'Edit book details'
+                                'Edit notes'
                                 : props.data && props.data === 'edit risks' ?
-                                    'Edit user details'
+                                    'Edit risks'
                                     : null
                             }
                         </h2>
                     </div>
                     <div className="modal-body">
-                        {/* {remove && props.data.username ?
-                            <RemoveUser />
-                            : remove && props.data.title ?
-                                <RemoveBook />
-                                : props.data && props.data.title ?
-                                    <EditBook data={props.data} />
-                                    : props.data && props.data.email ?
-                                        <EditProfile />
-                                        : props.data && props.data === 'addNewBook' ?
-                                            <AddBook />
-                                            : props.data && props.data === 'login' ?
-                                                <Login />
-                                                : props.data && props.data === 'register' ?
-                                                    <Register />
-                                                    : null
-                        } */}
+                        {props.data && (props.data === 'edit notes' || props.data === 'edit risks' )?
+                            <EditContainer />
+                            : null
+
+                        }
 
                     </div>
                 </div>

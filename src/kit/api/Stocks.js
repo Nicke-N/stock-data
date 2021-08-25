@@ -26,8 +26,7 @@ export const addStock = async (data) => {
     const post = {
         method: 'POST',
         headers: {
-            'Content-type': 'application/json',
-            'token': sessionStorage.getItem('token')
+            'Content-type': 'application/json'
         },
         body: JSON.stringify(data)
     }
@@ -39,8 +38,7 @@ export const editStock = async (id, data) => {
     const patch = {
         method: 'PATCH',
         headers: {
-            'Content-type': 'application/json',
-            'token': sessionStorage.getItem('token')
+            'Content-type': 'application/json'
         },
         body: JSON.stringify(data)
     }
@@ -52,8 +50,7 @@ export const deleteStock = async (id) => {
     const remove = {
         method: 'DELETE',
         headers: {
-            'Content-type': 'application/json',
-            'token': sessionStorage.getItem('token')
+            'Content-type': 'application/json'
         }
     }
 

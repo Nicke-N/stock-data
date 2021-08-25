@@ -59,7 +59,7 @@ export default function OverviewPage(props) {
                 <div id='overview-container'>
 
                     <div className='overview-description'>
-                        {currentStock.stockName}
+                        <h2>{currentStock.stockName}</h2>
                     </div>
                     
                     <div className='overview-description'>
@@ -71,8 +71,7 @@ export default function OverviewPage(props) {
                     </div>
 
                     <div className='overview-description' id='risk'>
-                        <div className='overview-description'>Risk: </div>
-                        <div className={currentStock.risk}>{currentStock.risk}</div>
+                        <div className={currentStock.risk} >Risk: {currentStock.risk} </div>
                     </div>
 
                     <div id='risks-container'>
@@ -93,7 +92,7 @@ export default function OverviewPage(props) {
                             <img src={Add} className='overview-icon' id='add-note' alt="Icon failed to load" />
                         </div>
                         {currentStock.notes.length > 0 ?
-                            currentStock.map(element => <div className='stock-note'>{element}</div>)
+                            currentStock.notes.map(element => <div className='stock-note'>{element}</div>)
                             : null
                         }
                     </div>
