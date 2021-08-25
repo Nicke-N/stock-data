@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../context/DataContext'
 import { getStock } from '../kit/api/Stocks'
 import { getReports, getReport } from '../kit/api/Reports'
@@ -7,11 +7,16 @@ import Add from '../icons/plus.svg'
 import './Overview.css'
 
 export default function OverviewPage(props) {
+
     const { currentStock, setCurrentStock, reportList, setReportList, setModalData } = useContext(DataContext)
+    const [ quarter, setQuarter ] = useState(null)
+    const [ annual, setAnnual ] = useState(null)
+
     const stockID = props.match.params.id
 
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
+    var annuals = 0, quarters = 0
 
     const notesModal = () => {
         setModalData('notes')
@@ -32,13 +37,6 @@ export default function OverviewPage(props) {
         addRisk.addEventListener('click', risksModal)
     }
 
-    if (addNote) addEventListeners()
-
-    useEffect(() => {
-        fetchStock()
-    }, [])
-
-
     const fetchStock = async () => {
 
         await getStock(stockID)
@@ -50,11 +48,26 @@ export default function OverviewPage(props) {
 
                 getReports(stock)
                 .then(res => res.json())
-                .then(results => setReportList(results)) 
+                .then(data => {
+                    setReportList(data)
+                    data.map(element => element.type === 'annual' ? annuals++ : quarters++)
+
+                    setAnnual(annuals)
+                    setQuarter(quarters)
+                }) 
+                
             })
 
     }
-    
+    if (addNote) addEventListeners()
+
+    useEffect(() => {
+        fetchStock()
+    }, [])
+
+
+  
+
     return (
         <div id='overview-page'>
             {currentStock ?
@@ -72,9 +85,17 @@ export default function OverviewPage(props) {
                         Dividend: {currentStock.dividend}
                     </div>
 
+                    <div className='overview-description'>
+                        Annuals: {annual}
+                    </div>
+                    <div className='overview-description'>
+                        Quarters: {quarter}
+                    </div>
+
                     <div className='overview-description' id='risk'>
                         <div className={currentStock.risk} >Risk: {currentStock.risk} </div>
                     </div>
+
 
                     <div id='risks-container'>
                         <div className='small-container'>

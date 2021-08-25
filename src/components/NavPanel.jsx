@@ -4,35 +4,14 @@ import DropdownSearch from './DropdownSearch'
 import { DataContext } from '../context/DataContext'
 import { getStocks } from '../kit/api/Stocks'
 import { getReports } from '../kit/api/Reports'
-import { back } from '../kit/Functions'
+import { back, showModal } from '../kit/Functions'
+import AddStock from '../pages/AddStock'
 
 export default function NavPanel() {
 
-    const { stockList, setStockList, currentStock, setReportList } = useContext(DataContext)
+    const { stockList, setStockList, currentStock, setReportList, setModalData } = useContext(DataContext)
     const [ overview, setOverview ] = useState(null)
     const [ diagrams, setDiagrams ] = useState(null)
-    const [ addReport, setAddReport ] = useState(null)
-
-    useEffect(() => {
-        if (!stockList) fetchStockList()
-        console.log(stockList)
-    }, [])
-
-    useEffect(() => {
-        
-        if ( currentStock) {
-                       
-            setOverview(`/overview/${currentStock._id}`)
-            setDiagrams(`/diagrams/${currentStock._id}`)
-            setAddReport(`/report/${currentStock._id}`)
-
-
-            getReports(currentStock.stockName)
-            .then(res => res.json())
-            .then(data => setReportList(data))
-        }
-
-    }, [currentStock])
 
     const fetchStockList = async () => {
         await getStocks()
@@ -40,6 +19,54 @@ export default function NavPanel() {
         .then(data => setStockList(data))
     }
 
+    const addStockModal = () => {
+        console.log('stock')
+        setModalData('addStock')
+        showModal()
+    }
+
+    const addReportModal = () => {
+        console.log('report')
+        setModalData('addReport')
+        showModal()
+    }
+
+    useEffect(() => {
+        if (!stockList) fetchStockList()
+    }, [])
+
+    useEffect(() => {
+        
+        if (currentStock) {
+                       
+            setOverview(`/overview/${currentStock._id}`)
+            setDiagrams(`/diagrams/${currentStock._id}`)
+
+            getReports(currentStock.stockName)
+            .then(res => res.json())
+            .then(data => setReportList(data))
+            
+            const addStock = document.getElementById('add-stock')
+           
+
+            addStock.removeEventListener('click', addStockModal)
+            addStock.addEventListener('click', addStockModal)
+
+            setTimeout(() => {
+                const addReport = document.getElementById('add-report')
+                addReport.removeEventListener('click', addReportModal)
+                addReport.addEventListener('click', addReportModal)
+            }, 2000)
+
+                
+            
+            
+                
+        }
+
+    }, [currentStock])
+
+  
 
     return (
         <div id='nav-container'>
@@ -47,14 +74,19 @@ export default function NavPanel() {
                 <li className='nav-item'>
                     <DropdownSearch />
                 </li>
-                <li className='nav-item'>
-                    <Link to="/addstock">
-                        Add stock
-                    </Link>
+                <li className='nav-item' id='add-stock'>
+                   
+                    Add stock
+                   
                 </li>
                 
                 {overview ?
                 <>
+                    <li className='nav-item' id='add-report'>
+                        
+                        Add report
+                       
+                    </li>
                     <li className='nav-item'>
                         <Link to={overview}>
                             Overview
@@ -65,11 +97,7 @@ export default function NavPanel() {
                             Diagrams
                         </Link>
                     </li>
-                    <li className='nav-item'>
-                        <Link to={addReport}>
-                            Add report
-                        </Link>
-                    </li>
+                    
                 </>
                 : null
             }

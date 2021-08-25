@@ -11,6 +11,7 @@ html {
 a {
   text-decoration: none;
 }
+a:visited { text-decoration: none; color:green; }
 ul {
   list-style: none;
 }
@@ -19,6 +20,10 @@ li + .nav-item {
 	padding: 1rem 0;
 	border-bottom: 1px solid #ccc;
   list-style: none;
+  cursor: pointer;
+}
+.nav-item {
+  color:green;
 }
 textarea {
   resize: none;
