@@ -44,10 +44,10 @@ export default function NavPanel() {
     return (
         <div id='nav-container'>
             <ul id='nav-panel'>
-                <li>
+                <li className='nav-item'>
                     <DropdownSearch />
                 </li>
-                <li>
+                <li className='nav-item'>
                     <Link to="/addstock">
                         Add stock
                     </Link>
@@ -55,17 +55,17 @@ export default function NavPanel() {
                 
                 {overview ?
                 <>
-                    <li>
+                    <li className='nav-item'>
                         <Link to={overview}>
                             Overview
                         </Link>
                     </li>
-                    <li>
+                    <li className='nav-item'> 
                         <Link to={diagrams}>
                             Diagrams
                         </Link>
                     </li>
-                    <li>
+                    <li className='nav-item'>
                         <Link to={addReport}>
                             Add report
                         </Link>
@@ -76,7 +76,7 @@ export default function NavPanel() {
 
 
 
-                <li>
+                <li className='nav-item'>
                     <Link onClick={back}>
                         Back
                     </Link>

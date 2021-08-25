@@ -6,7 +6,7 @@ import EditContainer from './EditContainer'
 
 export default function Modal(props) {
 
-    const { setRemove, setModalData, remove } = useContext(DataContext)
+    const { setRemove, setModalData, remove, modalData } = useContext(DataContext)
     var modal, closeBtn, modalBtn
 
     useEffect(() => {
@@ -40,16 +40,16 @@ export default function Modal(props) {
                     <div className="modal-header">
                         <span className="closeBtn"> x </span>
                         <h2 className="modal-title">
-                            {props.data && props.data === 'edit notes' ?
+                            {modalData && modalData === 'notes' ?
                                 'Edit notes'
-                                : props.data && props.data === 'edit risks' ?
+                                : modalData && modalData === 'risks' ?
                                     'Edit risks'
                                     : null
                             }
                         </h2>
                     </div>
                     <div className="modal-body">
-                        {props.data && (props.data === 'edit notes' || props.data === 'edit risks' )?
+                        {modalData && (modalData === 'notes' || modalData === 'risks' )?
                             <EditContainer />
                             : null
 

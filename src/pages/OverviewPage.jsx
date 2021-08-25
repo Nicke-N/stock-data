@@ -14,12 +14,12 @@ export default function OverviewPage(props) {
     const addRisk = document.getElementById('add-risk')
 
     const notesModal = () => {
-        setModalData('edit notes')
+        setModalData('notes')
         showModal()
     }
 
     const risksModal = () => {
-        setModalData('edit risks')
+        setModalData('risks')
         showModal()
     }
 
@@ -38,6 +38,7 @@ export default function OverviewPage(props) {
         fetchStock()
     }, [])
 
+
     const fetchStock = async () => {
 
         await getStock(stockID)
@@ -53,6 +54,7 @@ export default function OverviewPage(props) {
             })
 
     }
+    
     return (
         <div id='overview-page'>
             {currentStock ?
@@ -79,11 +81,13 @@ export default function OverviewPage(props) {
                             <h5>Risks</h5>
                             <img src={Add} className='overview-icon' id='add-risk' alt="Icon failed to load" />
                         </div>
-                        
+                        <ul>
                         {currentStock.risks.length > 0 ?
-                            currentStock.map(element => <div className='stock-risk'>{element}</div>)
+                            currentStock.risks.map((element, index)=> <li key={index} className='stock-risk'>{element}</li>)
                             : null
                         }
+                        </ul>
+                        
                     </div>
 
                     <div id='notes-container'>
@@ -91,10 +95,12 @@ export default function OverviewPage(props) {
                             <h5>Notes</h5>
                             <img src={Add} className='overview-icon' id='add-note' alt="Icon failed to load" />
                         </div>
+                        <ul>
                         {currentStock.notes.length > 0 ?
-                            currentStock.notes.map(element => <div className='stock-note'>{element}</div>)
+                            currentStock.notes.map((element, index) => <li key={index} className='stock-note'>{element}</li>)
                             : null
                         }
+                        </ul>
                     </div>
                 </div>
                

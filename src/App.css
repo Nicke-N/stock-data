@@ -14,7 +14,7 @@ a {
 ul {
   list-style: none;
 }
-li {
+li + .nav-item {
 	margin: 0;
 	padding: 1rem 0;
 	border-bottom: 1px solid #ccc;

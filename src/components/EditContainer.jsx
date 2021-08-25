@@ -5,11 +5,8 @@ import { closeModal } from '../kit/Functions'
 
 export default function EditContainer() {
     
-    const { currentStock, setCurrentStock, setStockList, modalData } = useContext(DataContext)
-
+    const { currentStock, setCurrentStock, setStockList, modalData, setModalData } = useContext(DataContext)
     var entryContainer, newEntry
-    const addBtn = document.getElementById('add-to-list')
-    const saveBtn = document.getElementById('save-changes')
     
     const addToList = () => {
         if (entryContainer && newEntry.value !== '') {
@@ -29,8 +26,8 @@ export default function EditContainer() {
             list.push(entryContainer.children[li].textContent)
         }
 
-        if(modalData === 'edit notes') obj.notes = list
-        if(modalData === 'edit risks') obj.risks = list
+        if(modalData === 'notes') obj.notes = list
+        if(modalData === 'risks') obj.risks = list
 
         editStock(currentStock._id, obj)
         .then(res => res.text())
@@ -45,6 +42,7 @@ export default function EditContainer() {
                 .then(res => res.json())
                 .then(data => {
                     setStockList(data)
+                    setModalData(null)
                     entryContainer.textContent = ''
                     closeModal()
                 })
@@ -54,19 +52,30 @@ export default function EditContainer() {
         })
         
     }
-
+    // useEffect(() => {console.log('it')}, [currentStock])
     useEffect(() => {
+        console.log(modalData)
         entryContainer = document.getElementById('entry-container')
         newEntry = document.getElementById('new-entry')
-    }, [])
+        entryContainer.textContent = ''
+        newEntry.value = ''
+        
+        currentStock[modalData].map(element => {
+            const listItem = document.createElement('li')
+            listItem.textContent = element
+            entryContainer.appendChild(listItem)
+        })
+
+
+    }, [currentStock])
 
     return (
         <div className='edit-field'>
             <textarea name="note" id="new-entry" cols="30" rows="5" maxLength='300' ></textarea>
             <button id='add-to-list' onClick={addToList}>
-                {modalData === 'edit notes' ?
+                {modalData === 'notes' ?
                     'Add note to list'
-                    : modalData === 'edit risks' ?
+                    : modalData === 'risks' ?
                     'Add risk to list'
                     : null
                 }

@@ -25,7 +25,7 @@ function App() {
         <Route exact path='/report/:id' component={AddReport} /> 
         <Route exact path='/addstock' component={AddStock} />
       </Switch>
-      <Modal data={modalData} />
+      <Modal />
     </div>
   );
 }
