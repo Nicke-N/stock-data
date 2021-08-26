@@ -5,11 +5,10 @@ import { DataContext } from '../context/DataContext'
 import { getStocks } from '../kit/api/Stocks'
 import { getReports } from '../kit/api/Reports'
 import { back, showModal } from '../kit/Functions'
-import AddStock from '../pages/AddStock'
 
 export default function NavPanel() {
 
-    const { stockList, setStockList, currentStock, setReportList, setModalData } = useContext(DataContext)
+    const { stockList, setStockList, currentStock, setReportList, setModalData, modalData } = useContext(DataContext)
     const [ overview, setOverview ] = useState(null)
     const [ diagrams, setDiagrams ] = useState(null)
 
@@ -20,14 +19,14 @@ export default function NavPanel() {
     }
 
     const addStockModal = () => {
-        console.log('stock')
-        setModalData('addStock')
+
+        setModalData('add-stock')
         showModal()
     }
 
     const addReportModal = () => {
-        console.log('report')
-        setModalData('addReport')
+
+        setModalData('add-Report')
         showModal()
     }
 
@@ -56,12 +55,7 @@ export default function NavPanel() {
                 const addReport = document.getElementById('add-report')
                 addReport.removeEventListener('click', addReportModal)
                 addReport.addEventListener('click', addReportModal)
-            }, 2000)
-
-                
-            
-            
-                
+            }, 2000)                
         }
 
     }, [currentStock])

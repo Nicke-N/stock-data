@@ -6,8 +6,6 @@ import { DataContext } from './context/DataContext'
 import NavPanel from './components/NavPanel'
 import DiagramsPage from './pages/DiagramsPage'
 import OverviewPage from './pages/OverviewPage'
-import AddReport from './pages/AddReport'
-import AddStock from './pages/AddStock'
 import Modal from './components/Modal'
 function App() {
 
@@ -22,8 +20,6 @@ function App() {
         <Route exact path='/' component={ListPage} />
         <Route exact path='/overview/:id' component={OverviewPage} />
         <Route exact path='/diagrams/:id' component={DiagramsPage} />
-        <Route exact path='/report/:id' component={AddReport} /> 
-        <Route exact path='/addstock' component={AddStock} />
       </Switch>
       <Modal />
     </div>

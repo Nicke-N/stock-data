@@ -3,12 +3,14 @@ import './Modal.css'
 import { DataContext } from '../context/DataContext'
 import { closeModal, showModal } from '../kit/Functions'
 import EditContainer from './EditContainer'
+import AddStock from './AddStock'
+import AddReport from './AddReport'
 
 export default function Modal(props) {
 
     const { setRemove, setModalData, remove, modalData } = useContext(DataContext)
     var modal, closeBtn, modalBtn
-
+    
     useEffect(() => {
         modalBtn = document.getElementById('tradeHistory')
         if (modalBtn)
@@ -44,14 +46,22 @@ export default function Modal(props) {
                                 'Edit notes'
                                 : modalData && modalData === 'risks' ?
                                     'Edit risks'
-                                    : null
+                                    : modalData && modalData === 'add-stock' ?
+                                        'Add a new stock'
+                                        : modalData && modalData === 'add-report' ?
+                                            'Add a new report'
+                                            : null
                             }
                         </h2>
                     </div>
                     <div className="modal-body">
                         {modalData && (modalData === 'notes' || modalData === 'risks' )?
                             <EditContainer />
-                            : null
+                            : modalData && modalData === 'add-stock' ?
+                                <AddStock />
+                                : modalData && modalData === 'add-stock' ?
+                                    <AddReport />
+                                    : null
 
                         }
 

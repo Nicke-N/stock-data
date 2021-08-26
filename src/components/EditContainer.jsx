@@ -52,7 +52,7 @@ export default function EditContainer() {
         })
         
     }
-    // useEffect(() => {console.log('it')}, [currentStock])
+    
     useEffect(() => {
         console.log(modalData)
         entryContainer = document.getElementById('entry-container')
