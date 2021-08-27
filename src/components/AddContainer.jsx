@@ -121,7 +121,7 @@ export default function AddContainer() {
 
                     <>
                         <FormInput
-                            className='crud-pair'
+                            className='crud-pair stock'
                             label='Name'
                             maxLength='50'
                             id='stockName'
@@ -130,7 +130,7 @@ export default function AddContainer() {
                         />
 
                         <FormSelect
-                            className='crud-pair'
+                            className='crud-pair stock'
                             label='Industry'
                             id='industry'
                             options={industries}
@@ -138,7 +138,7 @@ export default function AddContainer() {
                         />
 
                         <FormInput
-                            className='crud-pair'
+                            className='crud-pair stock'
                             id='dividend'
                             label='Dividend'
                             maxLength='10'
@@ -146,21 +146,21 @@ export default function AddContainer() {
                         />
 
                         <FormSelect
-                            className='crud-pair'
+                            className='crud-pair stock'
                             label='Risk'
                             id='risk'
                             options={riskLevels}
                         />
 
                         <FormBtn
-                            className='form-btn'
+                            className='form-btn stock-btn'
                             text='Add stock'
                         />
                     </>
                     : modalData === 'add-report' ?
                         <>
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='stockName'
                                 label='Name'
                                 maxLength='50'
@@ -170,7 +170,7 @@ export default function AddContainer() {
                             />
 
                             <FormSelect
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='type'
                                 label='Type'
                                 onChange='type'
@@ -179,7 +179,7 @@ export default function AddContainer() {
 
                             {type === 'Quarter' ?
                                 <FormSelect
-                                    className='crud-pair'
+                                    className='crud-pair report'
                                     id='period'
                                     label='Period'
                                     options={periods}
@@ -189,7 +189,7 @@ export default function AddContainer() {
                             }
                             
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='revenue'
                                 label='Revenue'
                                 maxLength='20'
@@ -198,7 +198,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='costs'
                                 label='Costs'
                                 maxLength='20'
@@ -207,7 +207,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='result'
                                 label='Result'
                                 maxLength='20'
@@ -216,7 +216,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='short-debt'
                                 label='ShortDebt'
                                 maxLength='20'
@@ -224,7 +224,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='long-debt'
                                 label='LongDebt'
                                 maxLength='20'
@@ -232,7 +232,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='capital'
                                 label='Capital'
                                 maxLength='20'
@@ -240,7 +240,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='capital-adequacy'
                                 label='CapitalAdequacy'
                                 maxLength='2'
@@ -248,7 +248,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='stock-count'
                                 label='Stocks'
                                 maxLength='20'
@@ -256,7 +256,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='inventory'
                                 label='Inventory'
                                 maxLength='20'
@@ -264,7 +264,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='employees'
                                 label='Employees'
                                 maxLength='10'
@@ -272,7 +272,7 @@ export default function AddContainer() {
                             />
 
                             <FormInput
-                                className='crud-pair'
+                                className='crud-pair report'
                                 id='property'
                                 label='Property'
                                 maxLength='20'
@@ -280,7 +280,7 @@ export default function AddContainer() {
                             />
                             
                             <FormBtn
-                            className='form-btn'
+                            className='form-btn report'
                             text='Add report'
                             />
 
