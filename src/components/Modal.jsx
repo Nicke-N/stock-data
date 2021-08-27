@@ -10,7 +10,7 @@ export default function Modal(props) {
 
     const { setRemove, setModalData, remove, modalData } = useContext(DataContext)
     var modal, closeBtn, modalBtn
-    
+    console.log(modalData)
     useEffect(() => {
         modalBtn = document.getElementById('tradeHistory')
         if (modalBtn)
@@ -59,7 +59,7 @@ export default function Modal(props) {
                             <EditContainer />
                             : modalData && modalData === 'add-stock' ?
                                 <AddStock />
-                                : modalData && modalData === 'add-stock' ?
+                                : modalData && modalData === 'add-report' ?
                                     <AddReport />
                                     : null
 

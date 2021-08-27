@@ -3,6 +3,8 @@ import { addStock, getStocks } from '../kit/api/Stocks'
 import { DataContext } from '../context/DataContext'
 import './CrudStyle.css'
 import SuccessMsg from './SuccessMsg'
+import FormInput from './FormInput'
+import FormSelect from './FormSelect'
 
 export default function AddStock() {
 
@@ -59,44 +61,37 @@ export default function AddStock() {
         
     }
     useEffect(() => {
-        industry = document.getElementById('industry')
+        
         success = document.getElementById('add-stock-success')
         fail = document.getElementById('add-stock-failure')
-        if (industry) {
-
-            fail.style.display = 'none'
-            success.style.display = 'none'
-            industry.textContent = ''
-    
-            industries.map(element => {
-                let option = document.createElement('option')
-                option.setAttribute('value', element)
-                option.textContent = element
-    
-                industry.appendChild(option)
-            })  
-        }
+        
+        fail.style.display = 'none'
+        success.style.display = 'none'
     }, [])
     
     return (
         <div className='crud-container'>
-            <h2 className='crud-type'>
-                Add stock
-            </h2>
 
             <SuccessMsg />
             
             <form className='crud-content' id='form' onSubmit={submitForm}>
                 
-                <div id='form-name' className='crud-pair'>
-                    <label htmlFor='name'>Name</label>
-                    <input type='text' maxLength='50' name='name' id='stockName' required/>
-                </div>
-                
-                <div id='form-industry' className='crud-pair'>
-                    <label htmlFor='industry' >Industry</label>
-                    <select name='industry'  id='industry' required></select>
-                </div>
+                <FormInput
+                    className='crud-pair'
+                    label='Name'
+                    maxLength='50'
+                    id='stockName'
+                    type='text'
+                    required
+                />
+
+                <FormSelect
+                    className='crud-pair'
+                    label='Industry'
+                    id='industry'
+                    options={industries}
+                    required
+                />
                 
                 <div id='form-dividend' className='crud-pair'> 
                     <label htmlFor='dividend'  >Dividend</label>

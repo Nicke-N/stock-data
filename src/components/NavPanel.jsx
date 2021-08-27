@@ -26,7 +26,7 @@ export default function NavPanel() {
 
     const addReportModal = () => {
 
-        setModalData('add-Report')
+        setModalData('add-report')
         showModal()
     }
 

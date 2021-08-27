@@ -6,8 +6,21 @@ import SuccessMsg from './SuccessMsg'
 export default function AddReport() {
 
     const { currentStock, setReportList } = useContext(DataContext)
-    const [ type, setType ] = useState(null)
+    const [ type, setType ] = useState('Annual')
+    const [ years, setYears ] = useState(null)
+    
     var stockType, success, fail
+    const currDate = new Date(),
+    year = currDate.getFullYear(),
+    month = currDate.getMonth(),
+    periods = [
+        'jan - mar',
+        'apr - jun',
+        'jul - sep',
+        'oct - dec'
+    ]
+    var yearsArray = []
+    
 
     const submitForm = async (event) =>  {
         event.preventDefault()
@@ -35,25 +48,33 @@ export default function AddReport() {
         }, 3000);
         
     }
-    const setStockType = () => {
-        
-    }
+    const setStockType = event => setType(event.target.value)
     useEffect(() => {
+
         stockType = document.getElementById('type')
         success = document.getElementById('add-stock-success')
         fail = document.getElementById('add-stock-failure')
+
         if (stockType) {
 
             fail.style.display = 'none'
             success.style.display = 'none'
         }
+
+        for (let i = 2005; i <= year; i++) {
+            yearsArray.push(i)
+        }
+        setYears(yearsArray)
+
     }, [])
+
+    useEffect(() => {
+        console.log(type)
+        console.log(month + ' ' + year)
+    }, [type])
 
     return (
         <div className='crud-container'>
-            <h2 className='crud-type'>
-                Add report
-            </h2>
 
             <SuccessMsg />
 
@@ -74,17 +95,30 @@ export default function AddReport() {
                 
                 <div id='form-period' className='crud-pair'> 
                     <label htmlFor='period'>period</label>
-                    <input type='number' maxLength='5' name='period' id='period'/>
+                    <div className='period-year'>
+                        <label htmlFor="year">Year</label>
+                        <select name="year" id="year">
+                            {years ?
+                                years.map(element => <option key={element} value={element}>{element}</option>)
+                                : null
+                            }
+                            
+                        </select>
+                    </div>
+                    {type === 'quarter' ?
+                        <div className='period-month'>
+                            <label htmlFor="months">Period</label>
+                            <select name="months" id="months">
+                                {periods.map(element => <option key={element} value={element}>{element}</option>)}
+                            </select>
+                        </div>
+                        : null
+                    }
                 </div>
                 
-                <div id='form-risk' className='crud-pair'>
-                <   label htmlFor='risk'  >Risk level</label>
-                    <select name='risk' id='risk'>
-                        <option value='high'>High</option>
-                        <option value='medium'>Medium</option>
-                        <option value='low'>Low</option>
-                        <option value='unknown'>Unknown</option>
-                    </select>
+                <div id='form-revenue' className='crud-pair'>
+                    <label htmlFor='revenue'>Stock</label>
+                    <input type='number' maxLength='20' name='name' id='revenue' />
                 </div>
                 
                 <button id='form-btn'> Add stock </button>
