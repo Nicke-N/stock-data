@@ -20,6 +20,7 @@ export default function FormInput(props) {
                 maxLength={props.maxLength}
                 name={props.label} 
                 id={props.id}
+                value={props.value}
                 readOnly
                 />
                 : 

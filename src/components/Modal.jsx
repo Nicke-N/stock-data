@@ -3,8 +3,7 @@ import './Modal.css'
 import { DataContext } from '../context/DataContext'
 import { closeModal, showModal } from '../kit/Functions'
 import EditContainer from './EditContainer'
-import AddStock from './AddStock'
-import AddReport from './AddReport'
+import AddContainer from './AddContainer'
 
 export default function Modal(props) {
 
@@ -57,11 +56,9 @@ export default function Modal(props) {
                     <div className="modal-body">
                         {modalData && (modalData === 'notes' || modalData === 'risks' )?
                             <EditContainer />
-                            : modalData && modalData === 'add-stock' ?
-                                <AddStock />
-                                : modalData && modalData === 'add-report' ?
-                                    <AddReport />
-                                    : null
+                            : modalData && (modalData === 'add-stock' || modalData === 'add-report' ) ?
+                                <AddContainer />
+                                : null
 
                         }
 
