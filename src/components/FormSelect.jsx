@@ -4,22 +4,20 @@ export default function FormSelect(props) {
 
     var select 
 
-
     useEffect(() => {
         select = document.getElementById(props.id)
 
         if (select) {
 
-            
             select.textContent = ''
     
             props.options.map(element => {
                 let option = document.createElement('option')
                 option.setAttribute('value', element)
                 option.textContent = element
-    
+               
                 select.appendChild(option)
-            })  
+            })
         }
     }, [])
 

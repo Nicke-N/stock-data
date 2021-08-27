@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function SuccessMsg() {
+
+    var success, fail
+
+    useEffect(() => {
+        
+        success = document.getElementById('add-stock-success')
+        fail = document.getElementById('add-stock-failure')
+        
+        fail.style.display = 'none'
+        success.style.display = 'none'
+    }, [])
+
     return (
         <div className='outcome'>
             <div id='add-stock-success'>

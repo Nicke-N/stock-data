@@ -92,7 +92,7 @@ export default function OverviewPage(props) {
                         Quarters: {quarter}
                     </div>
 
-                    <div className='overview-description' id='risk'>
+                    <div className='overview-description' id='risk-level'>
                         <div className={currentStock.risk} >Risk: {currentStock.risk} </div>
                     </div>
 

@@ -1,14 +1,17 @@
 import React, { useContext, useEffect } from 'react'
 import { addStock, getStocks } from '../kit/api/Stocks'
 import { DataContext } from '../context/DataContext'
+import { closeModal } from '../kit/Functions/'
 import './CrudStyle.css'
 import SuccessMsg from './SuccessMsg'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
+import FormBtn from './FormBtn'
 
 export default function AddStock() {
 
     const { setStockList } = useContext(DataContext)
+    var fail, success
 
     const industries = [
         'Aerospace',
@@ -27,16 +30,21 @@ export default function AddStock() {
         'Music',
         'News media',
         'Pharamceutical',
+        'Property management',
         'Telecommunication',
         'Transport',
         'World wide web'
+    ], riskLevels = [
+        'High',
+        'Medium',
+        'Low',
+        'Unknown'
     ]
-
-    var industry, success, fail
 
     const submitForm = async (event) =>  {
         event.preventDefault()
-        console.log('submit')
+        success = document.getElementById('add-stock-success')
+        fail = document.getElementById('add-stock-failure')
         const details = {
             stockName: event.target[0].value, 
             industry: event.target[1].value,
@@ -57,17 +65,11 @@ export default function AddStock() {
             getStocks()
             .then(res => res.json())
             .then(data => setStockList(data))
+            closeModal()
         }, 3000);
         
     }
-    useEffect(() => {
-        
-        success = document.getElementById('add-stock-success')
-        fail = document.getElementById('add-stock-failure')
-        
-        fail.style.display = 'none'
-        success.style.display = 'none'
-    }, [])
+   
     
     return (
         <div className='crud-container'>
@@ -92,23 +94,26 @@ export default function AddStock() {
                     options={industries}
                     required
                 />
-                
-                <div id='form-dividend' className='crud-pair'> 
-                    <label htmlFor='dividend'  >Dividend</label>
-                    <input type='number' maxLength='5' name='dividend' id='dividend'/>
-                </div>
-                
-                <div id='form-risk' className='crud-pair'>
-                <   label htmlFor='risk'  >Risk level</label>
-                    <select name='risk' id='risk'>
-                        <option value='high'>High</option>
-                        <option value='medium'>Medium</option>
-                        <option value='low'>Low</option>
-                        <option value='unknown'>Unknown</option>
-                    </select>
-                </div>
-                
-                <button id='form-btn'> Add stock </button>
+
+                <FormInput
+                    className='crud-pair'
+                    id='dividend'
+                    label='Dividend'
+                    maxLength='10'
+                    type='tele'
+                />
+
+                <FormSelect
+                    className='crud-pair'
+                    label='Risk'
+                    id='risk'
+                    options={riskLevels}
+                />
+
+                <FormBtn
+                    id='form-btn'
+                    text='Add stock'
+                />
             </form>
         </div>
     )
