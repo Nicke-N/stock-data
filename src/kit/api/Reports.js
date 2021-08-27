@@ -1,10 +1,10 @@
 export const getReports = async (stockName) => {
-
+   
     const get = {
         method: 'GET',
         headers: {
             'Content-type': 'application/json',
-            'stockName': stockName ? stockName : null
+            'stockname': stockName ? stockName : null
         }
     }
 

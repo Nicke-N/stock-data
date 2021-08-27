@@ -16,8 +16,7 @@ export default function OverviewPage(props) {
 
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
-    var annuals = 0, quarters = 0
-
+    
     const notesModal = () => {
         setModalData('notes')
         showModal()
@@ -44,30 +43,35 @@ export default function OverviewPage(props) {
             .then(data => {
 
                 setCurrentStock(data)
-                const stock = data.stockName
-
-                getReports(stock)
-                .then(res => res.json())
-                .then(data => {
-                    setReportList(data)
-                    data.map(element => element.type === 'annual' ? annuals++ : quarters++)
-
-                    setAnnual(annuals)
-                    setQuarter(quarters)
-                }) 
-                
+                setReports(data.stockName)
             })
 
     }
+
+    const setReports = (stockName) => {
+       
+        getReports(stockName)
+        .then(res => res.json())
+        .then(data => {
+           
+            var annuals = 0, quarters = 0
+            setReportList(data)
+            data.map(element => element.type === 'annual' ? annuals++ : quarters++)
+
+            setAnnual(annuals)
+            setQuarter(quarters)
+        }) 
+    }
+
     if (addNote) addEventListeners()
 
     useEffect(() => {
         fetchStock()
     }, [])
 
-
-  
-
+    useEffect(() => {
+        if (currentStock) setReports(currentStock.stockName)
+    }, [currentStock])
     return (
         <div id='overview-page'>
             {currentStock ?

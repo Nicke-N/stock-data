@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { addStock, getStocks } from '../kit/api/Stocks'
 import { DataContext } from '../context/DataContext'
-import { closeModal } from '../kit/Functions/'
+import { closeModal } from '../kit/Functions'
 import './CrudStyle.css'
 import SuccessMsg from './SuccessMsg'
 import FormInput from './FormInput'
