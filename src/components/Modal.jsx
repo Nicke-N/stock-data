@@ -40,7 +40,7 @@ export default function Modal(props) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <span className="closeBtn"> x </span>
-                        <h2 className="modal-title">
+                        <h5 className="modal-title">
                             {modalData && modalData === 'notes' ?
                                 'Edit notes'
                                 : modalData && modalData === 'risks' ?
@@ -51,7 +51,7 @@ export default function Modal(props) {
                                             'Add a new report'
                                             : null
                             }
-                        </h2>
+                        </h5>
                     </div>
                     <div className="modal-body">
                         {modalData && (modalData === 'notes' || modalData === 'risks' )?

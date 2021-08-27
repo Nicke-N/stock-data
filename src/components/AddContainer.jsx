@@ -11,20 +11,24 @@ import FormBtn from './FormBtn'
 
 export default function AddContainer() {
 
-    const { setStockList, modalData, currentStock, setReportList } = useContext(DataContext)
-    const [type, setType] = useState('Annual')
+    const { setStockList, modalData, currentStock, setReportList, type } = useContext(DataContext)
+
     const [years, setYears] = useState(null)
 
     var stockType, success, fail
     const currDate = new Date(),
         year = currDate.getFullYear(),
-        month = currDate.getMonth(),
         periods = [
             'jan - mar',
             'apr - jun',
             'jul - sep',
             'oct - dec'
+        ],
+        typeOptions = [
+            'Annual',
+            'Quarter'
         ]
+
     var yearsArray = []
     var fail, success
 
@@ -84,7 +88,7 @@ export default function AddContainer() {
         }, 3000);
 
     }
-    const setStockType = event => setType(event.target.value)
+
 
     useEffect(() => {
 
@@ -105,6 +109,7 @@ export default function AddContainer() {
 
     }, [])
 
+    useEffect(() => { console.log(type) }, [type])
     return (
         <div className='crud-container'>
 
@@ -148,7 +153,7 @@ export default function AddContainer() {
                         />
 
                         <FormBtn
-                            id='form-btn'
+                            className='form-btn'
                             text='Add stock'
                         />
                     </>
@@ -163,49 +168,122 @@ export default function AddContainer() {
                                 value={currentStock.stockName}
                                 readOnly
                             />
-                            
+
                             <FormSelect
                                 className='crud-pair'
                                 id='type'
                                 label='Type'
-                                onChange={setStockType}
+                                onChange='type'
+                                options={typeOptions}
                             />
 
-                            <div id='form-type' className='crud-pair'>
-                                <label htmlFor='type' >Type</label>
-                                <select name='type' id='type' onChange={setStockType} required>
-                                    <option value="annual">Annual</option>
-                                    <option value="quarter">Quarter</option>
-                                </select>
-                            </div>
+                            {type === 'Quarter' ?
+                                <FormSelect
+                                    className='crud-pair'
+                                    id='period'
+                                    label='Period'
+                                    options={periods}
+                                />
+                                :
+                                null
+                            }
+                            
+                            <FormInput
+                                className='crud-pair'
+                                id='revenue'
+                                label='Revenue'
+                                maxLength='20'
+                                type='number'
+                                required
+                            />
 
-                            <div id='form-period' className='crud-pair'>
-                                <label htmlFor='period'>period</label>
-                                <div className='period-year'>
-                                    <label htmlFor="year">Year</label>
-                                    <select name="year" id="year">
-                                        {years ?
-                                            years.map(element => <option key={element} value={element}>{element}</option>)
-                                            : null
-                                        }
+                            <FormInput
+                                className='crud-pair'
+                                id='costs'
+                                label='Costs'
+                                maxLength='20'
+                                type='number'
+                                required
+                            />
 
-                                    </select>
-                                </div>
-                                {type === 'quarter' ?
-                                    <div className='period-month'>
-                                        <label htmlFor="months">Period</label>
-                                        <select name="months" id="months">
-                                            {periods.map(element => <option key={element} value={element}>{element}</option>)}
-                                        </select>
-                                    </div>
-                                    : null
-                                }
-                            </div>
+                            <FormInput
+                                className='crud-pair'
+                                id='result'
+                                label='Result'
+                                maxLength='20'
+                                type='number'
+                                required
+                            />
 
-                            <div id='form-revenue' className='crud-pair'>
-                                <label htmlFor='revenue'>Stock</label>
-                                <input type='number' maxLength='20' name='name' id='revenue' />
-                            </div>
+                            <FormInput
+                                className='crud-pair'
+                                id='short-debt'
+                                label='ShortDebt'
+                                maxLength='20'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='long-debt'
+                                label='LongDebt'
+                                maxLength='20'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='capital'
+                                label='Capital'
+                                maxLength='20'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='capital-adequacy'
+                                label='CapitalAdequacy'
+                                maxLength='2'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='stock-count'
+                                label='Stocks'
+                                maxLength='20'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='inventory'
+                                label='Inventory'
+                                maxLength='20'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='employees'
+                                label='Employees'
+                                maxLength='10'
+                                type='number'
+                            />
+
+                            <FormInput
+                                className='crud-pair'
+                                id='property'
+                                label='Property'
+                                maxLength='20'
+                                type='number'
+                            />
+                            
+                            <FormBtn
+                            className='form-btn'
+                            text='Add report'
+                            />
+
                         </>
                         : null
                 }

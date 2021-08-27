@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { DataContext } from '../context/DataContext'
 
 export default function FormSelect(props) {
 
-    var select 
+    const { type, setType } = useContext(DataContext)
+    var select
+
+    const setStockType = event => setType(event.target.value)
 
     useEffect(() => {
         select = document.getElementById(props.id)
@@ -26,8 +30,9 @@ export default function FormSelect(props) {
             <label htmlFor={props.label} >{props.label}</label>
             {props.required ? 
                 <select name={props.label}  id={props.id} required></select>
-                : 
-                <select name={props.label}  id={props.id}></select>
+                : props.onChange === 'type' ?
+                <select name={props.label}  id={props.id} onChange={setStockType}></select>
+                    : <select name={props.label}  id={props.id}></select>
             }
         </div>
     )
