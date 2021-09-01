@@ -1,14 +1,7 @@
-import React, { useContext, useEffect } from 'react'
-import { DataContext } from '../context/DataContext'
+import React from 'react'
 
 export default function List(props) {
 
-    const {setOverview, setCurrentStock} = useContext(DataContext)
-
-    // useEffect(() => {
-    //     setCurrentStock(null)
-    //     setOverview(null)
-    // }, [])
 
     return (
 

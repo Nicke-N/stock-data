@@ -7,10 +7,11 @@ import './ListPage.css'
 
 export default function ListPage() {
 
-    const { stockList, searchTerm, setStockList } = useContext(DataContext)
+    const { stockList, searchTerm, setStockList, setOverview } = useContext(DataContext)
 
     useEffect(() => {
         fetchAllStocks()
+        setOverview(null)
     }, [])
 
     const fetchAllStocks = async () => {
