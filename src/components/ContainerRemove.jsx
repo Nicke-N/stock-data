@@ -7,7 +7,7 @@ import { closeModal } from '../kit/Functions'
 import CheckMark from '../icons/checkmark.svg'
 import Remove from '../icons/remove.svg'
 
-export default function RemoveContainer(props) {
+export default function ContainerRemove(props) {
 
     const { setModalData, currentStock, setOverview } = useContext(DataContext)
     const history = useHistory()

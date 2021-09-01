@@ -3,7 +3,7 @@ import { DataContext } from '../context/DataContext'
 import { editStock, getStock, getStocks } from '../kit/api/Stocks'
 import { closeModal } from '../kit/Functions'
 
-export default function EditContainer() {
+export default function ContainerEdit() {
 
     const { currentStock, setCurrentStock, setStockList, modalData, setModalData } = useContext(DataContext)
     var entryContainer, newEntry

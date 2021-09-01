@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import Chart from 'chart.js/auto'
+import ChartJs from 'chart.js/auto'
 import './Chart.css'
 
-export default function ChartLongDebt(props) {
+export default function Chart(props) {
     useEffect(() => {
-     
-            ctx = document.getElementById('longDebtChart').getContext('2d');
+       
+            ctx = document.getElementById(props.id).getContext('2d');
             var data = {}
             data[props.data.title] = props.data.values
     
@@ -15,6 +15,7 @@ export default function ChartLongDebt(props) {
                 labels: props.data.keys,
                 datasets: []
             }
+            
             
             Object.keys(data).forEach(function(key) {
                 var color = colors.shift();
@@ -36,12 +37,8 @@ export default function ChartLongDebt(props) {
                     data: data[key]
                 });
             });
-            // Chart.defaults.global.defaultFontColor = 'grey';
-            // Chart.defaults.global.defaultFontFamily = "Tahoma";
-            // Chart.defaults.global.defaultFontSize = 20 ;
-            // Chart.defaults.global.defaultFontStyle = 'normal';
-            
-            var longDebtChart = new Chart(ctx, {
+        
+            var capitalChart = new ChartJs(ctx, {
                 type: 'line',
                 data: chartData,
                 defaultFontSize: 11,
@@ -72,17 +69,15 @@ export default function ChartLongDebt(props) {
                     }
                 }
             });
-        
+      
         
     }, [])
-    var ctx = document.getElementById('longDebtChart')
-   
     
+    var ctx = document.getElementById(props.id)
    
-    
     return (
         <div>
-            <canvas id="longDebtChart" width="500px" height="300px"></canvas>
+            <canvas id={props.id}width="500px" height="300px"></canvas>
         </div>
     )
 }

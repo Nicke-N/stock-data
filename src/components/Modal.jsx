@@ -2,11 +2,11 @@ import React, { useEffect, useContext } from 'react'
 import './Modal.css'
 import { DataContext } from '../context/DataContext'
 import { closeModal, showModal } from '../kit/Functions'
-import EditContainer from './EditContainer'
-import AddContainer from './AddContainer'
-import RemoveContainer from './RemoveContainer'
+import ContainerAdd from './ContainerAdd'
+import ContainerRemove from './ContainerRemove'
+import ContainerEdit from './ContainerEdit'
 
-export default function Modal(props) {
+export default function Modal() {
 
     const { setRemove, setModalData, remove, modalData } = useContext(DataContext)
     var modal, closeBtn, modalBtn
@@ -61,13 +61,13 @@ export default function Modal(props) {
                     </div>
                     <div className="modal-body">
                         {modalData && (modalData === 'notes' || modalData === 'risks') ?
-                            <EditContainer />
+                            <ContainerEdit />
                             : modalData && (modalData === 'add-stock' || modalData === 'add-report') ?
-                                <AddContainer />
+                                <ContainerAdd />
                                 : modalData && modalData === 'remove-stock' ?
-                                    <RemoveContainer type='stock' />
+                                    <ContainerRemove type='stock' />
                                     : modalData && modalData === 'remove-report' ?
-                                        <RemoveContainer type='report' />
+                                        <ContainerRemove type='report' />
                                         : null
 
                         }

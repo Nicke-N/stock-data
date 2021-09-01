@@ -9,7 +9,7 @@ import FormInput from './FormInput'
 import FormSelect from './FormSelect'
 import FormBtn from './FormBtn'
 
-export default function AddContainer() {
+export default function ContainerAdd() {
 
     const { setStockList, modalData, currentStock, setReportList, type } = useContext(DataContext)
 
