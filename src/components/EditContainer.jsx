@@ -25,25 +25,29 @@ export default function EditContainer() {
 
     const removeFromList = (event) => {
         const target = event.target
+        console.log(event.target)
         entryContainer = document.getElementById('entry-container')
         const parent = Array.from(entryContainer.children)
         var newArray = parent.filter(element => element !== target)
 
         entryContainer.textContent = ''
         newArray.map(element => entryContainer.appendChild(element))
+        console.log(newArray)
     }
 
     const saveChanges = () => {
 
         var obj = currentStock,
             list = []
+        entryContainer = document.getElementById('entry-container')
 
+            console.log(entryContainer.children)
         for (let li = 0; li < entryContainer.children.length; li++) {
             list.push(entryContainer.children[li].textContent)
         }
 
         obj[modalData] = list
-
+        console.log(list)
         editStock(currentStock._id, obj)
         .then(res => res.text())
         .then(data => {
@@ -60,6 +64,7 @@ export default function EditContainer() {
                     setModalData(null)
                     entryContainer.textContent = ''
                     closeModal()
+                    
                 })
                 
 

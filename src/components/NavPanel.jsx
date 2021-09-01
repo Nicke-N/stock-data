@@ -60,8 +60,6 @@ export default function NavPanel() {
 
     }, [currentStock])
 
-  
-
     return (
         <div id='nav-container'>
             <ul id='nav-panel'>
