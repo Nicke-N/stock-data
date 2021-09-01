@@ -31,13 +31,10 @@ export default function DiagramsPage(props) {
                 </select>
             </div>
             <div>
-                {diagramOption === 'annual' ? 
+                {diagramOption === 'quarter' ? 
+                    <Diagrams />
+                    :
                     'Annual reports'
-                    :
-                    diagramOption === 'quarter' ?
-                    <Diagrams />
-                    :
-                    <Diagrams />
                 }
                
             </div>

@@ -12,8 +12,6 @@
     grid-gap: 10%;
 }
 
-
-
 #overview-page > div {
     background-color: rgb(132, 213, 186, 0.2);
     border: 1px solid darkblue;    
@@ -63,3 +61,6 @@
     border-radius: 0.5rem;
 }
 
+#remove-stock {
+    cursor: pointer;
+}

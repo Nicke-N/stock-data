@@ -31,9 +31,17 @@ li + .nav-item {
 textarea {
   resize: none;
 }
-/* form {
+.choice-icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+#choices {
   display: flex;
-  flex-direction: column;
-  
-} */
-
+  flex-direction: row;
+  justify-content: center;
+}
+#remove-container {
+  position: relative;
+  top: 40%;
+}

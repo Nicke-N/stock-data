@@ -64,6 +64,11 @@ export default function OverviewPage(props) {
             })
     }
 
+    const removeStock = () => {
+        setModalData('remove-stock')
+        showModal()
+    }
+
     if (addNote) addEventListeners()
 
     useEffect(() => {
@@ -101,6 +106,10 @@ export default function OverviewPage(props) {
 
                     <div className='overview-description' id='risk-level'>
                         <div className={currentStock.risk} >Risk: {currentStock.risk} </div>
+                    </div>
+
+                    <div id='remove-stock' onClick={removeStock}>
+                        X
                     </div>
                 </div>
 

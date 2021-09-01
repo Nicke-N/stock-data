@@ -4,6 +4,7 @@ import { DataContext } from '../context/DataContext'
 import { closeModal, showModal } from '../kit/Functions'
 import EditContainer from './EditContainer'
 import AddContainer from './AddContainer'
+import RemoveContainer from './RemoveContainer'
 
 export default function Modal(props) {
 
@@ -49,23 +50,30 @@ export default function Modal(props) {
                                         'Add a new stock'
                                         : modalData && modalData === 'add-report' ?
                                             'Add a new report'
-                                            : modalData && modalData === 'remove-note'
-
+                                            : modalData && modalData === 'remove-stock' ?
+                                                'Remove stock'
+                                                : modalData && modalData === 'remove-report' ?
+                                                    'Remove report'
+                                                    : null
                             }
                         </h3>
                         <span className="closeBtn"> x </span>
                     </div>
                     <div className="modal-body">
-                        {modalData && (modalData === 'notes' || modalData === 'risks' )?
+                        {modalData && (modalData === 'notes' || modalData === 'risks') ?
                             <EditContainer />
-                            : modalData && (modalData === 'add-stock' || modalData === 'add-report' ) ?
+                            : modalData && (modalData === 'add-stock' || modalData === 'add-report') ?
                                 <AddContainer />
-                                : null
+                                : modalData && modalData === 'remove-stock' ?
+                                    <RemoveContainer type='stock' />
+                                    : modalData && modalData === 'remove-report' ?
+                                        <RemoveContainer type='report' />
+                                        : null
 
                         }
 
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     )
