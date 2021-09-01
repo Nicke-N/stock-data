@@ -73,7 +73,7 @@ export default function OverviewPage(props) {
     useEffect(() => {
         if (currentStock) setReports(currentStock.stockName)
     }, [currentStock])
-    
+
     return (
 
         currentStock ?
@@ -81,7 +81,7 @@ export default function OverviewPage(props) {
                 <div id='overview-container'>
 
                     <div className='overview-description'>
-                        <h2>{currentStock.stockName}</h2>
+                        <h1>{currentStock.stockName}</h1>
                     </div>
 
                     <div className='overview-description'>

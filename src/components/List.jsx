@@ -5,7 +5,7 @@ export default function List(props) {
 
         <div id={props.containerId}>
             <div className={props.containerClassName}>
-                <h5>{props.title}</h5>
+                <h2>{props.title}</h2>
                 <img src={props.src} className={props.imgClassName} id={props.imgId} alt={props.alt} />
             </div>
             <div className={props.ulClassName}> 

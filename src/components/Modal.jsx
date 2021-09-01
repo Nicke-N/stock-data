@@ -50,7 +50,7 @@ export default function Modal(props) {
                                         : modalData && modalData === 'add-report' ?
                                             'Add a new report'
                                             : modalData && modalData === 'remove-note'
-                                                 
+
                             }
                         </h3>
                         <span className="closeBtn"> x </span>
@@ -65,7 +65,7 @@ export default function Modal(props) {
                         }
 
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     )
