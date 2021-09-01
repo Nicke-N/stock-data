@@ -9,25 +9,40 @@ export default function EditContainer() {
     var entryContainer, newEntry
     
     const addToList = () => {
+        entryContainer = document.getElementById('entry-container')
+        newEntry = document.getElementById('new-entry')
+
         if (entryContainer && newEntry.value !== '') {
             var listItem = document.createElement('li')
             listItem.textContent = newEntry.value
+            listItem.addEventListener('click', removeFromList)
             entryContainer.appendChild(listItem)
+            
             newEntry.value = ''
         }
         
+    }
+
+    const removeFromList = (event) => {
+        const target = event.target
+        entryContainer = document.getElementById('entry-container')
+        const parent = Array.from(entryContainer.children)
+        var newArray = parent.filter(element => element !== target)
+
+        entryContainer.textContent = ''
+        newArray.map(element => entryContainer.appendChild(element))
     }
 
     const saveChanges = () => {
 
         var obj = currentStock,
             list = []
+
         for (let li = 0; li < entryContainer.children.length; li++) {
             list.push(entryContainer.children[li].textContent)
         }
 
-        if(modalData === 'notes') obj.notes = list
-        if(modalData === 'risks') obj.risks = list
+        obj[modalData] = list
 
         editStock(currentStock._id, obj)
         .then(res => res.text())
@@ -52,22 +67,6 @@ export default function EditContainer() {
         })
         
     }
-    
-    useEffect(() => {
-        console.log(modalData)
-        entryContainer = document.getElementById('entry-container')
-        newEntry = document.getElementById('new-entry')
-        entryContainer.textContent = ''
-        newEntry.value = ''
-        
-        currentStock[modalData].map(element => {
-            const listItem = document.createElement('li')
-            listItem.textContent = element
-            entryContainer.appendChild(listItem)
-        })
-
-
-    }, [currentStock])
 
     return (
         <div className='edit-field'>
@@ -82,7 +81,10 @@ export default function EditContainer() {
             </button>
 
             <ul id='entry-container'>
-
+                {currentStock ? 
+                    currentStock[modalData].map((element, index) => <li key={index} onClick={removeFromList} >{element}</li>)
+                    : null
+                }
             </ul>
             <button id='save-changes' onClick={saveChanges}>
                 Save changes

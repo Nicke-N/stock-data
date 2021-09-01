@@ -1,6 +1,29 @@
+#overview-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+#overview-page > div {
+    background-color: rgb(132, 213, 186, 0.2);
+    border: 1px solid darkblue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-gap: 1rem;
+}
+
+.list-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-gap: 0.5rem;
+}
+
+
 .overview-icon {
-    height: 2rem;
-    width: 2rem;
+    height: 1.5rem;
+    width: 1.5rem;
     cursor: pointer;
 }
 

@@ -39,8 +39,8 @@ export default function Modal(props) {
             <div id="simpleModal" className="modal-overlay">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <span className="closeBtn"> x </span>
-                        <h4 className="modal-title">
+                        <span></span>
+                        <h3 className="modal-title">
                             {modalData && modalData === 'notes' ?
                                 'Edit notes'
                                 : modalData && modalData === 'risks' ?
@@ -49,9 +49,11 @@ export default function Modal(props) {
                                         'Add a new stock'
                                         : modalData && modalData === 'add-report' ?
                                             'Add a new report'
-                                            : null
+                                            : modalData && modalData === 'remove-note'
+                                                 
                             }
-                        </h4>
+                        </h3>
+                        <span className="closeBtn"> x </span>
                     </div>
                     <div className="modal-body">
                         {modalData && (modalData === 'notes' || modalData === 'risks' )?

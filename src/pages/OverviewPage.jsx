@@ -5,18 +5,19 @@ import { getReports, getReport } from '../kit/api/Reports'
 import { showModal } from '../kit/Functions'
 import Add from '../icons/plus.svg'
 import './Overview.css'
+import List from '../components/List'
 
 export default function OverviewPage(props) {
 
     const { currentStock, setCurrentStock, reportList, setReportList, setModalData } = useContext(DataContext)
-    const [ quarter, setQuarter ] = useState(null)
-    const [ annual, setAnnual ] = useState(null)
+    const [quarter, setQuarter] = useState(null)
+    const [annual, setAnnual] = useState(null)
 
     const stockID = props.match.params.id
 
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
-    
+
     const notesModal = () => {
         setModalData('notes')
         showModal()
@@ -49,18 +50,18 @@ export default function OverviewPage(props) {
     }
 
     const setReports = (stockName) => {
-       
-        getReports(stockName)
-        .then(res => res.json())
-        .then(data => {
-           
-            var annuals = 0, quarters = 0
-            setReportList(data)
-            data.map(element => element.type === 'annual' ? annuals++ : quarters++)
 
-            setAnnual(annuals)
-            setQuarter(quarters)
-        }) 
+        getReports(stockName)
+            .then(res => res.json())
+            .then(data => {
+
+                var annuals = 0, quarters = 0
+                setReportList(data)
+                data.map(element => element.type === 'annual' ? annuals++ : quarters++)
+
+                setAnnual(annuals)
+                setQuarter(quarters)
+            })
     }
 
     if (addNote) addEventListeners()
@@ -72,21 +73,23 @@ export default function OverviewPage(props) {
     useEffect(() => {
         if (currentStock) setReports(currentStock.stockName)
     }, [currentStock])
+    
     return (
-        <div id='overview-page'>
-            {currentStock ?
+
+        currentStock ?
+            <div id='overview-page'>
                 <div id='overview-container'>
 
                     <div className='overview-description'>
                         <h2>{currentStock.stockName}</h2>
                     </div>
-                    
+
                     <div className='overview-description'>
                         Industry: {currentStock.industry}
                     </div>
 
                     <div className='overview-description'>
-                        Dividend: {currentStock.dividend}
+                        Dividend: {currentStock.dividend}%
                     </div>
 
                     <div className='overview-description'>
@@ -99,40 +102,37 @@ export default function OverviewPage(props) {
                     <div className='overview-description' id='risk-level'>
                         <div className={currentStock.risk} >Risk: {currentStock.risk} </div>
                     </div>
-
-
-                    <div id='risks-container'>
-                        <div className='small-container'>
-                            <h5>Risks</h5>
-                            <img src={Add} className='overview-icon' id='add-risk' alt="Icon failed to load" />
-                        </div>
-                        <ul>
-                        {currentStock.risks.length > 0 ?
-                            currentStock.risks.map((element, index)=> <li key={index} className='stock-risk'>{element}</li>)
-                            : null
-                        }
-                        </ul>
-                        
-                    </div>
-
-                    <div id='notes-container'>
-                        <div className='small-container'>
-                            <h5>Notes</h5>
-                            <img src={Add} className='overview-icon' id='add-note' alt="Icon failed to load" />
-                        </div>
-                        <ul>
-                        {currentStock.notes.length > 0 ?
-                            currentStock.notes.map((element, index) => <li key={index} className='stock-note'>{element}</li>)
-                            : null
-                        }
-                        </ul>
-                    </div>
                 </div>
-               
-                :
-               'Loading...'
-            }
-            
-        </div>
+
+                <List 
+                    containerId='risks-container'
+                    containerClassName='small-container'
+                    title='Risks'
+                    src={Add}
+                    imgId='add-risk'
+                    imgClassName='overview-icon'
+                    alt='Icon failed to load'
+                    data={currentStock.risks}
+                    ulClassName='list-container'
+                    liClassName='stock-risk'
+                    modalData='remove-risk'
+                />
+
+                <List
+                    containerId='notes-container'
+                    containerClassName='small-container'
+                    title='Notes'
+                    src={Add}
+                    imgId={'add-note'}
+                    imgClassName='overview-icon'
+                    alt='Icon failed to load'
+                    data={currentStock.notes}
+                    ulClassName='list-container'
+                    liClassName='stock-note'
+                    modalData='remove-note'
+                />
+            </div>
+            :
+            'Loading...'
     )
 }

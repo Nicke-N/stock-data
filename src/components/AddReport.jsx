@@ -21,57 +21,8 @@ export default function AddReport() {
     ]
     var yearsArray = []
     
+    
 
-    const submitForm = async (event) =>  {
-        event.preventDefault()
-        console.log('submit')
-        const details = {
-            stockName: event.target[0].value, 
-            type: event.target[1].value,
-            period: event.target[2].value,
-            risk: event.target[3].value
-        }
-
-        addReport(details)
-        .then(res => res.text())
-        .then(data =>{
-            if (data === 'Report was added!') {
-                success.style.display = 'block'
-            } else {
-                fail.style.display = 'block'
-            }
-        })
-        setTimeout(() => {
-            getReports()
-            .then(res => res.json())
-            .then(data => setReportList(data))
-        }, 3000);
-        
-    }
-    const setStockType = event => setType(event.target.value)
-    useEffect(() => {
-
-        stockType = document.getElementById('type')
-        success = document.getElementById('add-stock-success')
-        fail = document.getElementById('add-stock-failure')
-
-        if (stockType) {
-
-            fail.style.display = 'none'
-            success.style.display = 'none'
-        }
-
-        for (let i = 2005; i <= year; i++) {
-            yearsArray.push(i)
-        }
-        setYears(yearsArray)
-
-    }, [])
-
-    useEffect(() => {
-        console.log(type)
-        console.log(month + ' ' + year)
-    }, [type])
 
     return (
         <div className='crud-container'>

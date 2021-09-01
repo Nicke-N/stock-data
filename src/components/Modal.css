@@ -19,8 +19,7 @@
     color: #FFE6D0;
     background-color: rgb(127, 220, 84);
     width: calc(15vw + 10vh);
-    height: calc(30vw + 30vh);
-    
+    height: calc(99.9vh);
     z-index: 10000;
   }
   
@@ -30,9 +29,7 @@
     border-radius: 1vw;
     height: 5%;
     display: grid;
-    grid-template-areas:  'empty empty empty empty empty close'
-                          'empty1 title title title title  empty2'
-                          'empty3 empty3 empty3 empty3 empty3 empty3';
+    grid-template-columns: 1fr 8fr 1fr;
     z-index: 10000;
                             
   }
@@ -41,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 85%;
+    height: 100%;
     z-index: 10000;
   }
   
@@ -56,18 +53,18 @@
   
   .closeBtn{
     font-size: calc(1.5vw + 2vh);
-    color: #b7b7b7;
+    /* color: #b7b7b7;
     float: right;
-    grid-area: close;
-    text-align:center;
+    grid-area: close; */
+    /* text-align:center; */
     
   }
   .modal-title {
-    grid-area: title;
+    /* grid-area: title; */
 
     text-align: center;
-    position: relative;
-    bottom: 4vh;
+    /* position: relative;
+    bottom: 4vh; */
 
   }
   
@@ -75,5 +72,9 @@
     color: #b7b7b7;
     text-decoration: none;
     cursor:  pointer;
+  }
+
+  #entry-container > li {
+    cursor: pointer;
   }
   
