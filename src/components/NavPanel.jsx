@@ -8,8 +8,8 @@ import { back, showModal } from '../kit/Functions'
 
 export default function NavPanel() {
 
-    const { stockList, setStockList, currentStock, setReportList, setModalData, modalData } = useContext(DataContext)
-    const [ overview, setOverview ] = useState(null)
+    const { stockList, setStockList, currentStock, setReportList, setModalData, modalData, overview, setOverview } = useContext(DataContext)
+    
     const [ diagrams, setDiagrams ] = useState(null)
 
     const fetchStockList = async () => {
@@ -32,6 +32,10 @@ export default function NavPanel() {
 
     useEffect(() => {
         if (!stockList) fetchStockList()
+
+        const addStock = document.getElementById('add-stock')
+        addStock.removeEventListener('click', addStockModal)
+        addStock.addEventListener('click', addStockModal)
     }, [])
 
     useEffect(() => {
@@ -45,12 +49,6 @@ export default function NavPanel() {
             .then(res => res.json())
             .then(data => setReportList(data))
             
-            const addStock = document.getElementById('add-stock')
-           
-
-            addStock.removeEventListener('click', addStockModal)
-            addStock.addEventListener('click', addStockModal)
-
             setTimeout(() => {
                 const addReport = document.getElementById('add-report')
                 addReport.removeEventListener('click', addReportModal)
@@ -93,9 +91,6 @@ export default function NavPanel() {
                 </>
                 : null
             }
-
-
-
                 <li className='nav-item'>
                     <Link onClick={back}>
                         Back

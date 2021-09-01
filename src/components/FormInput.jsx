@@ -12,6 +12,7 @@ export default function FormInput(props) {
                 maxLength={props.maxLength}
                 name={props.label} 
                 id={props.id}
+                value={props.value}
                 required
                 />
                 : props.readOnly ?
@@ -29,6 +30,7 @@ export default function FormInput(props) {
                 maxLength={props.maxLength}
                 name={props.label} 
                 id={props.id}
+                value={props.value}
                 />
             }
             

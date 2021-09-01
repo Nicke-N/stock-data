@@ -27,38 +27,38 @@ export default function AddContainer() {
         typeOptions = [
             'Annual',
             'Quarter'
+        ],
+        industries = [
+            'Aerospace',
+            'Agriculture',
+            'Construction',
+            'Education',
+            'Electronics',
+            'Energy',
+            'Entertainment',
+            'Finances',
+            'Food',
+            'Healthcare',
+            'Hospitality',
+            'IT',
+            'Manufacturing',
+            'Mining',
+            'Music',
+            'News media',
+            'Pharamceutical',
+            'Property management',
+            'Telecommunication',
+            'Transport',
+            'World wide web'
+        ], riskLevels = [
+            'High',
+            'Medium',
+            'Low',
+            'Unknown'
         ]
 
     var yearsArray = []
     var fail, success
-
-    const industries = [
-        'Aerospace',
-        'Agriculture',
-        'Construction',
-        'Education',
-        'Electronics',
-        'Energy',
-        'Entertainment',
-        'Food',
-        'Healthcare',
-        'Hospitality',
-        'IT',
-        'Manufacturing',
-        'Mining',
-        'Music',
-        'News media',
-        'Pharamceutical',
-        'Property management',
-        'Telecommunication',
-        'Transport',
-        'World wide web'
-    ], riskLevels = [
-        'High',
-        'Medium',
-        'Low',
-        'Unknown'
-    ]
 
     const submitForm = async (event) => {
         event.preventDefault()
