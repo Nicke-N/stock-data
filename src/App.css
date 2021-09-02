@@ -45,3 +45,10 @@ textarea {
   position: relative;
   top: 40%;
 }
+
+.a-report {
+  cursor: pointer;
+}
+.a-report:hover {
+  color: rgb(29, 197, 29);
+}

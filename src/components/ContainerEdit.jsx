@@ -2,10 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { editStock, getStock, getStocks } from '../kit/api/Stocks'
 import { closeModal } from '../kit/Functions'
+import Report from './Report'
+import Stock from './Stock'
 
-export default function ContainerEdit() {
+export default function ContainerEdit(props) {
 
-    const { currentStock, setCurrentStock, setStockList, modalData, setModalData } = useContext(DataContext)
+    const { currentStock, setCurrentStock, setStockList, modalData, setModalData, currentReport, setCurrentReport } = useContext(DataContext)
     var entryContainer, newEntry
 
     const addToList = () => {
@@ -38,61 +40,84 @@ export default function ContainerEdit() {
 
     const saveChanges = () => {
 
-        var obj = currentStock,
-            list = []
-        entryContainer = document.getElementById('entry-container')
-        const inputs = Array.from(entryContainer.children)
+        if (modalData === 'notes' || modalData === 'risks') {
+            var obj = currentStock,
+                list = []
+            entryContainer = document.getElementById('entry-container')
+            const inputs = Array.from(entryContainer.children)
 
-        inputs.map(element => list.push(element.textContent))
+            inputs.map(element => list.push(element.textContent))
 
-        obj[modalData] = list
+            obj[modalData] = list
 
-        editStock(currentStock._id, obj)
-            .then(res => res.text())
-            .then(data => {
+            editStock(currentStock._id, obj)
+                .then(res => res.text())
+                .then(data => {
 
-                if (data === 'Stock was updated!') {
-                    getStock(currentStock._id)
-                        .then(res => res.json())
-                        .then(data => setCurrentStock(data))
+                    if (data === 'Stock was updated!') {
+                        getStock(currentStock._id)
+                            .then(res => res.json())
+                            .then(data => setCurrentStock(data))
 
-                    getStocks()
-                        .then(res => res.json())
-                        .then(data => {
-                            setStockList(data)
-                            setModalData(null)
-                            entryContainer.textContent = ''
-                            closeModal()
+                        getStocks()
+                            .then(res => res.json())
+                            .then(data => {
+                                setStockList(data)
+                                setModalData(null)
+                                entryContainer.textContent = ''
+                                closeModal()
 
-                        })
+                            })
 
 
-                }
-            })
+                    }
+                })
+
+        } else {
+
+        }
+
 
     }
 
     return (
         <div className='edit-field'>
-            <textarea name="note" id="new-entry" cols="30" rows="5" maxLength='300' ></textarea>
-            <button id='add-to-list' onClick={addToList}>
-                {modalData === 'notes' ?
-                    'Add note to list'
-                    : modalData === 'risks' ?
-                        'Add risk to list'
-                        : null
-                }
-            </button>
 
-            <ul id='entry-container'>
-                {currentStock ?
-                    currentStock[modalData].map((element, index) => <li key={index} onClick={removeFromList} >{element}</li>)
-                    : null
-                }
-            </ul>
-            <button id='save-changes' onClick={saveChanges}>
-                Save changes
-            </button>
+            {modalData === 'notes' || modalData === 'risks' ?
+                <>
+                    <textarea name="note" id="new-entry" cols="30" rows="5" maxLength='300' ></textarea>
+                    <button id='add-to-list' onClick={addToList}>
+                        {modalData === 'notes' ?
+                            'Add note to list'
+                            : modalData === 'risks' ?
+                                'Add risk to list'
+                                : null
+                        }
+                    </button>
+
+                    <ul id='entry-container'>
+                        {currentStock ?
+                            currentStock[modalData].map((element, index) => <li key={index} onClick={removeFromList} >{element}</li>)
+                            : null
+                        }
+                    </ul>
+                    <button id='save-changes' onClick={saveChanges}>
+                        Save changes
+                    </button>
+                </>
+                : modalData === 'edit-report' ?
+
+                <Report type='edit'/>
+
+                : modalData === 'edit-stock' ?
+
+                <Stock type='edit'/>
+
+                : null
+
+            }
+
+
         </div>
     )
 }

@@ -54,13 +54,13 @@ export default function Diagrams() {
                     if (!exceptions.includes(element[0])) annuals[element[0]].push(element[1])
 
                 } else {
-                    console.log(element)
                     if (!exceptions.includes(element[0])) quarters[element[0]].push(element[1])
                 }
             })
         })
        
         setQuarter(quarters)
+        setAnnual(annuals)
     }
 
     return (
@@ -105,7 +105,7 @@ export default function Diagrams() {
                 </div>
                 <div>
                     {quarter.capitalAdequacy.length > 0 ?
-                        <Chart data={{ title: 'Capital Adequacy', values: quarter.capitalAdequacy, keys: quarter.period }} id='capital-adequacy-chart' />
+                        <Chart data={{ title: 'Capital Adequacy (%)', values: quarter.capitalAdequacy, keys: quarter.period }} id='capital-adequacy-chart' />
                         : <div> hehe </div>
                     }
                 </div>
@@ -174,7 +174,7 @@ export default function Diagrams() {
                     </div>
                     <div>
                         {annual.capitalAdequacy.length > 0 ?
-                            <Chart data={{ title: 'Capital Adequacy', values: annual.capitalAdequacy, keys: annual.period }} id='capital-adequacy-chart' />
+                            <Chart data={{ title: 'Capital Adequacy (%)', values: annual.capitalAdequacy, keys: annual.period }} id='capital-adequacy-chart' />
                             : <div> hehe </div>
                         }
                     </div>

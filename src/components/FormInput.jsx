@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function FormInput(props) {
+
+    const [ input, setInput ] = useState(props.value ? props.value : '')
+
+    const change = (e) => setInput(e.target.value)
+
     return (
         <div  className={props.className}>
             <label htmlFor={props.label}>
@@ -12,7 +17,8 @@ export default function FormInput(props) {
                 maxLength={props.maxLength}
                 name={props.label} 
                 id={props.id}
-                value={props.value}
+                value={input}
+                onChange={change}
                 required
                 />
                 : props.readOnly ?
@@ -21,7 +27,8 @@ export default function FormInput(props) {
                 maxLength={props.maxLength}
                 name={props.label} 
                 id={props.id}
-                value={props.value}
+                value={input}
+                onChange={change}
                 readOnly
                 />
                 : 
@@ -30,7 +37,8 @@ export default function FormInput(props) {
                 maxLength={props.maxLength}
                 name={props.label} 
                 id={props.id}
-                value={props.value}
+                value={input}
+                onChange={change}   
                 />
             }
             

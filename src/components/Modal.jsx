@@ -54,7 +54,9 @@ export default function Modal() {
                                                 'Remove stock'
                                                 : modalData && modalData === 'remove-report' ?
                                                     'Remove report'
-                                                    : null
+                                                    : modalData && modalData === 'edit-report' ?
+                                                        'Edit report'
+                                                        : null
                             }
                         </h3>
                         <span className="closeBtn"> x </span>
@@ -68,8 +70,11 @@ export default function Modal() {
                                     <ContainerRemove type='stock' />
                                     : modalData && modalData === 'remove-report' ?
                                         <ContainerRemove type='report' />
-                                        : null
-
+                                        : modalData && modalData === 'edit-report' ? 
+                                            <ContainerEdit />
+                                            : modalData && modalData === 'edit-stock' ?
+                                                <ContainerEdit />
+                                                : null
                         }
 
                     </div>

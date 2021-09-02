@@ -22,6 +22,14 @@ export default function FormSelect(props) {
                
                 select.appendChild(option)
             })
+            setTimeout(() => {
+                if (props.value) {
+                    document.getElementById(props.id).selectedIndex = 2
+                }
+            }, 2000);
+              
+           
+            
         }
     }, [])
 
@@ -32,7 +40,7 @@ export default function FormSelect(props) {
                 <select name={props.label}  id={props.id} required></select>
                 : props.onChange === 'type' ?
                 <select name={props.label}  id={props.id} onChange={setStockType}></select>
-                    : <select name={props.label}  id={props.id}></select>
+                    : <select name={props.label} id={props.id}></select>
             }
         </div>
     )

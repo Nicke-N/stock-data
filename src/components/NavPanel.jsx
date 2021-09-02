@@ -11,6 +11,7 @@ export default function NavPanel() {
     const { stockList, setStockList, currentStock, setReportList, setModalData, modalData, overview, setOverview } = useContext(DataContext)
     
     const [ diagrams, setDiagrams ] = useState(null)
+    const [ reports, setReports] = useState(null)
 
     const fetchStockList = async () => {
         await getStocks()
@@ -44,6 +45,7 @@ export default function NavPanel() {
                        
             setOverview(`/overview/${currentStock._id}`)
             setDiagrams(`/diagrams/${currentStock._id}`)
+            setReports(`/reports/${currentStock.stockName}`)
 
             getReports(currentStock.stockName)
             .then(res => res.json())
@@ -87,7 +89,11 @@ export default function NavPanel() {
                             Diagrams
                         </Link>
                     </li>
-                    
+                    <li className='nav-item'> 
+                        <Link to={reports}>
+                            Reports
+                        </Link>
+                    </li>
                 </>
                 : null
             }

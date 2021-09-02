@@ -9,7 +9,7 @@ import Remove from '../icons/remove.svg'
 
 export default function ContainerRemove(props) {
 
-    const { setModalData, currentStock, setOverview } = useContext(DataContext)
+    const { setModalData, currentStock, setOverview, setCurrentStock } = useContext(DataContext)
     const history = useHistory()
     const removeItem = () => {
 
@@ -20,6 +20,7 @@ export default function ContainerRemove(props) {
             .then(data => {
                 setModalData(null)
                 setOverview(null)
+                setCurrentStock(null)
                 history.push('/')
                 closeModal()
             })
