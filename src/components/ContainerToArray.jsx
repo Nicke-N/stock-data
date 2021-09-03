@@ -37,20 +37,23 @@ export default function ContainerToArray() {
                             entryContainer.textContent = ''
 
                             setTimeout(() => {
-                                setSuccess(true)
+                                setSuccess('success')
                             }, 1000)
 
                             setTimeout(() => {
                                 
                                 setStockList(data)
-                                closeModal()
-                                // unDrawSuccess()
+                                // closeModal()
                             }, 2000)
 
 
                         })
 
 
+                } else {
+                    setModalData(null)
+                    .then(setSuccess('failure'))
+                    .then(closeModal())
                 }
             })
 

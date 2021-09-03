@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import './Modal.css'
 import { DataContext } from '../context/DataContext'
-import { closeModal, showModal } from '../kit/Functions'
+import { closeModal, showModal, unDrawSuccess, unDrawFailure } from '../kit/Functions'
 import ContainerAdd from './ContainerAdd'
 import ContainerRemove from './ContainerRemove'
 import ContainerEdit from './ContainerEdit'
@@ -39,6 +39,7 @@ export default function Modal() {
             canvas.style.display = 'block'
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d')
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.beginPath();
 
                 ctx.lineWidth = 3;
@@ -47,9 +48,9 @@ export default function Modal() {
 
                 //draw tick
                 ctx.beginPath();
-                ctx.moveTo(50, 75);
-                ctx.lineTo(80, 120);
-                ctx.lineTo(165, 70);
+                ctx.moveTo(canvas.width*0.05, canvas.height * 0.4);
+                ctx.lineTo(canvas.width * 0.3, canvas.height * 0.6);
+                ctx.lineTo(canvas.width * 0.95, canvas.height * 0.2);
                 ctx.lineWidth = 15;
                 ctx.strokeStyle = '#fff';
                 ctx.stroke();
@@ -57,18 +58,42 @@ export default function Modal() {
         }
     }
 
+    const drawFailure = () => {
+        var canvas = document.getElementById("canvas-failure")
+        if (canvas) {
+            canvas.style.display = 'block'
+            var ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 15;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width * 0.05, canvas.height * 0.2);
+            ctx.lineTo(canvas.width * 0.95, canvas.height * 0.7);
+            ctx.stroke();
+            ctx.lineWidth = 15;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width * 0.95, canvas.height * 0.2);
+            ctx.lineTo(canvas.width * 0.05, canvas.height * 0.7);
+            ctx.stroke();
+        }
+
+    }
+
     useEffect(() => {
-        document.getElementById('canvas-success').style.display = 'none'
-        document.getElementById('canvas-failure').style.display = 'none'
+        unDrawFailure()
+        unDrawSuccess()
+        setSuccess(null)
     }, [modalData])
 
     useEffect(() => {
-        
+
     }, [])
 
     useEffect(() => {
-        if (success) {
+        if (success === 'success') {
             drawSuccess()
+        } else if (success === 'failure') {
+            drawFailure()
         }
     }, [success])
 
@@ -107,14 +132,14 @@ export default function Modal() {
                                     <ContainerRemove type='stock' />
                                     : modalData && modalData === 'remove-report' ?
                                         <ContainerRemove type='report' />
-                                        : modalData && modalData === 'edit-report' ? 
+                                        : modalData && modalData === 'edit-report' ?
                                             <ContainerEdit />
                                             : modalData && modalData === 'edit-stock' ?
                                                 <ContainerEdit />
                                                 : null
                         }
-                         <canvas id="canvas-success" width="200" height="200"></canvas>
-                         <canvas id="canvas-failure" width="200" height="200"></canvas>
+                        <canvas id="canvas-success" width="200" height="250"></canvas>
+                        <canvas id="canvas-failure" width="200" height="250"></canvas>
                     </div>
                 </div>
             </div>
