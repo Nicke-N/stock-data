@@ -9,11 +9,14 @@ export const DataProvider = ({children}) => {
 
     const [ reportList, setReportList ] = useState(null)
     const [ currentReport, setCurrentReport ] = useState(null)
+    const [ quartersCount, setQuartersCount ] = useState(null)
+    const [ annualsCount, setAnnualsCount ] = useState(null)
 
     const [ searchTerm, setSearchTerm ] = useState('')
     const [ diagramOption, setDiagramOption ] = useState(null)
     const [ type, setType ] = useState('Annual')
     const [ overview, setOverview ] = useState(null)
+
 
     const [ quarter, setQuarter ] = useState(null)
     const [ annual, setAnnual ] = useState(null)
@@ -47,7 +50,12 @@ export const DataProvider = ({children}) => {
             type, 
             setType,
             overview,
-            setOverview
+            setOverview,
+            quartersCount, 
+            setQuartersCount,
+            annualsCount, 
+            setAnnualsCount
+
         }}
         >
             {children}

@@ -46,7 +46,6 @@ export default function Modal() {
                 ctx.strokeStyle = '#fff';
                 ctx.stroke();
 
-                //draw tick
                 ctx.beginPath();
                 ctx.moveTo(canvas.width*0.05, canvas.height * 0.4);
                 ctx.lineTo(canvas.width * 0.3, canvas.height * 0.6);

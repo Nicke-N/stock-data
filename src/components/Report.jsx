@@ -25,7 +25,6 @@ export default function Report(props) {
 
     useEffect(() => {
 
-        stockType = document.getElementById('type')
         success = document.getElementById('add-stock-success')
         fail = document.getElementById('add-stock-failure')
 
@@ -64,15 +63,30 @@ export default function Report(props) {
                     options={typeOptions}
                 />
 
-                {type === 'Quarter' ?
-                    <FormSelect
-                        className='crud-pair report'
-                        id='period'
-                        label='Period'
-                        options={periods}
-                    />
-                    :
-                    null
+                {
+                    type === 'Annual' ?
+                        <FormSelect
+                            className='crud-pair report'
+                            id='period'
+                            label='Period'
+                            options={years}
+                        />
+                        :
+                        <>
+                            <FormSelect
+                                className='crud-pair report'
+                                id='months'
+                                label='Period'
+                                options={periods}
+                            />
+
+                            <FormSelect
+                                className='crud-pair report'
+                                id='year'
+                                label='Year'
+                                options={years}
+                            />
+                        </>
                 }
 
                 <FormInput
@@ -104,7 +118,7 @@ export default function Report(props) {
 
                 <FormInput
                     className='crud-pair report'
-                    id='short-debt'
+                    id='shortTermDebt'
                     label='ShortDebt'
                     maxLength='20'
                     type='number'
@@ -112,7 +126,7 @@ export default function Report(props) {
 
                 <FormInput
                     className='crud-pair report'
-                    id='long-debt'
+                    id='longTermDebt'
                     label='LongDebt'
                     maxLength='20'
                     type='number'
@@ -128,7 +142,7 @@ export default function Report(props) {
 
                 <FormInput
                     className='crud-pair report'
-                    id='capital-adequacy'
+                    id='capitalAdequacy'
                     label='CapitalAdequacy'
                     maxLength='2'
                     type='number'
@@ -136,7 +150,7 @@ export default function Report(props) {
 
                 <FormInput
                     className='crud-pair report'
-                    id='stock-count'
+                    id='stockCount'
                     label='Stocks'
                     maxLength='20'
                     type='number'
@@ -194,15 +208,29 @@ export default function Report(props) {
                     />
 
                     {
-                        type === 'Quarter' ?
+                        type === 'Annual' ?
                             <FormSelect
                                 className='crud-pair report'
                                 id='period'
                                 label='Period'
-                                options={periods}
+                                options={years}
                             />
                             :
-                            null
+                            <>
+                                <FormSelect
+                                    className='crud-pair report'
+                                    id='months'
+                                    label='Period'
+                                    options={periods}
+                                />
+
+                                <FormSelect
+                                    className='crud-pair report'
+                                    id='year'
+                                    label='Year'
+                                    options={years}
+                                />
+                            </>
                     }
 
                     <FormInput
@@ -237,7 +265,7 @@ export default function Report(props) {
 
                     <FormInput
                         className='crud-pair report'
-                        id='short-debt'
+                        id='shortTermDebt'
                         label='ShortDebt'
                         maxLength='20'
                         type='number'
@@ -246,7 +274,7 @@ export default function Report(props) {
 
                     <FormInput
                         className='crud-pair report'
-                        id='long-debt'
+                        id='longTermDebt'
                         label='LongDebt'
                         maxLength='20'
                         type='number'
@@ -264,7 +292,7 @@ export default function Report(props) {
 
                     <FormInput
                         className='crud-pair report'
-                        id='capital-adequacy'
+                        id='capitalAdequacy'
                         label='CapitalAdequacy'
                         maxLength='2'
                         type='number'
@@ -273,7 +301,7 @@ export default function Report(props) {
 
                     <FormInput
                         className='crud-pair report'
-                        id='stock-count'
+                        id='stockCount'
                         label='Stocks'
                         maxLength='20'
                         type='number'

@@ -9,10 +9,8 @@ import List from '../components/List'
 
 export default function OverviewPage(props) {
 
-    const { currentStock, setCurrentStock, reportList, setReportList, setModalData } = useContext(DataContext)
-    const [quarter, setQuarter] = useState(null)
-    const [annual, setAnnual] = useState(null)
-
+    const { currentStock, setCurrentStock, reportList, setReportList, setModalData, quartersCount, setQuartersCount, annualsCount, setAnnualsCount} = useContext(DataContext)
+    
     const stockID = props.match.params.id
 
     const addNote = document.getElementById('add-note')
@@ -59,10 +57,10 @@ export default function OverviewPage(props) {
 
                 var annuals = 0, quarters = 0
                 setReportList(data)
-                data.map(element => element.type === 'annual' ? annuals++ : quarters++)
+                data.map(element => (element.type).toLowerCase() === 'annual' ? annuals++ : quarters++)
 
-                setAnnual(annuals)
-                setQuarter(quarters)
+                setAnnualsCount(annuals)
+                setQuartersCount(quarters)
             })
     }
 
@@ -100,10 +98,10 @@ export default function OverviewPage(props) {
                     </div>
 
                     <div className='overview-description'>
-                        Annuals: {annual}
+                        Annuals: {annualsCount}
                     </div>
                     <div className='overview-description'>
-                        Quarters: {quarter}
+                        Quarters: {quartersCount}
                     </div>
 
                     <div className='overview-description' id='risk-level'>

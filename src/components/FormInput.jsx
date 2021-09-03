@@ -15,7 +15,7 @@ export default function FormInput(props) {
                 <input 
                 type={props.type} 
                 maxLength={props.maxLength}
-                name={props.label} 
+                name={props.id} 
                 id={props.id}
                 value={input}
                 onChange={change}
@@ -25,7 +25,7 @@ export default function FormInput(props) {
                 <input 
                 type={props.type} 
                 maxLength={props.maxLength}
-                name={props.label} 
+                name={props.id} 
                 id={props.id}
                 value={input}
                 onChange={change}
@@ -35,7 +35,7 @@ export default function FormInput(props) {
                 <input 
                 type={props.type} 
                 maxLength={props.maxLength}
-                name={props.label} 
+                name={props.id} 
                 id={props.id}
                 value={input}
                 onChange={change}   

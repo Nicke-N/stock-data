@@ -13,15 +13,13 @@ import Stock from './Stock'
 
 export default function ContainerAdd() {
 
-    const { setStockList, modalData, currentStock, setReportList, type } = useContext(DataContext)
+    const { setStockList, modalData, currentStock, setReportList, type, setModalData, setSuccess, setAnnualsCount, setQuartersCount } = useContext(DataContext)
 
     var fail, success
 
     const submitForm = async (event) => {
 
         event.preventDefault()
-        success = document.getElementById('add-stock-success')
-        fail = document.getElementById('add-stock-failure')
 
         if (modalData === 'add-stock') {
             
@@ -35,10 +33,11 @@ export default function ContainerAdd() {
             addStock(details)
                 .then(res => res.text())
                 .then(data => {
+                    setModalData(null)
                     if (data === 'Stock was added!') {
-                        success.style.display = 'block'
+                        setSuccess('success')
                     } else {
-                        fail.style.display = 'block'
+                        setSuccess('failure')
                     }
                 })
             setTimeout(() => {
@@ -47,23 +46,45 @@ export default function ContainerAdd() {
                     .then(data => setStockList(data))
                 closeModal()
             }, 3000);
-        } else if ('add-report') {
+        } else if (modalData === 'add-report') {
 
+            var details = {}
+            const values = Array.from(event.target)
+
+            values.map((element, index )=> type === 'Quarter' && element.name === 'year' ? details['period'] = `${values[index-1].value} ${values[index].value}` : element.name !== 'months' && element.value !== '' ? details[element.name] = element.value : null)
             
-
+            addReport(details)
+            .then(res => res.text())
+            .then(data => {
+                if (data === 'Report was added!') {
+                    setSuccess('success')
+                } else {
+                    setSuccess('failure')
+                }
+            })
+            setTimeout(() => {
+                getReports(currentStock.stockName)
+                .then(res => res.json())
+                .then(data => {
+    
+                    var annuals = 0, quarters = 0
+                    setReportList(data)
+                    data.map(element => (element.type).toLowerCase() === 'annual' ? annuals++ : quarters++)
+    
+                    setAnnualsCount(annuals)
+                    setQuartersCount(quarters)
+                    closeModal()
+                })
+            }, 3000);
         }
 
 
     }
 
-
-
-
     useEffect(() => { console.log(type) }, [type])
+
     return (
         <div className='crud-container'>
-
-            <SuccessMsg />
 
             <form className='crud-content' id='form' onSubmit={submitForm}>
 
