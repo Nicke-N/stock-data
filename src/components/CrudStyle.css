@@ -43,3 +43,11 @@ form input {
     text-align: center;
 }
 
+#canvas-success {
+    transition: all;
+    transition-duration: 2s;
+
+    /* position: absolute;
+    top: 50%; */
+    display: none;
+}

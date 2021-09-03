@@ -8,7 +8,7 @@ import ContainerEdit from './ContainerEdit'
 
 export default function Modal() {
 
-    const { setRemove, setModalData, remove, modalData } = useContext(DataContext)
+    const { setSuccess, setModalData, success, modalData } = useContext(DataContext)
     var modal, closeBtn, modalBtn
     console.log(modalData)
 
@@ -25,16 +25,52 @@ export default function Modal() {
 
     }, [])
 
-    useEffect(() => {}, [modalData])
-
     const outsideClick = (e) => {
 
         if (e.target === modal) {
-            setRemove(false)
             setModalData(null)
             closeModal()
         }
     }
+
+    const drawSuccess = () => {
+        var canvas = document.getElementById('canvas-success');
+        if (canvas) {
+            canvas.style.display = 'block'
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d')
+                ctx.beginPath();
+
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+
+                //draw tick
+                ctx.beginPath();
+                ctx.moveTo(50, 75);
+                ctx.lineTo(80, 120);
+                ctx.lineTo(165, 70);
+                ctx.lineWidth = 15;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+            }
+        }
+    }
+
+    useEffect(() => {
+        document.getElementById('canvas-success').style.display = 'none'
+        document.getElementById('canvas-failure').style.display = 'none'
+    }, [modalData])
+
+    useEffect(() => {
+        
+    }, [])
+
+    useEffect(() => {
+        if (success) {
+            drawSuccess()
+        }
+    }, [success])
 
     return (
         <div>
@@ -77,7 +113,8 @@ export default function Modal() {
                                                 <ContainerEdit />
                                                 : null
                         }
-
+                         <canvas id="canvas-success" width="200" height="200"></canvas>
+                         <canvas id="canvas-failure" width="200" height="200"></canvas>
                     </div>
                 </div>
             </div>

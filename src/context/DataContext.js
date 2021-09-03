@@ -18,8 +18,8 @@ export const DataProvider = ({children}) => {
     const [ quarter, setQuarter ] = useState(null)
     const [ annual, setAnnual ] = useState(null)
 
-    const [ remove, setRemove ] = useState(null)
-    const [ modalData, setModalData ] = useState(null) 
+    const [ success, setSuccess ] = useState(null)
+    const [ modalData, setModalData ] = useState(null)
 
     return (
         <DataContext.Provider
@@ -42,8 +42,8 @@ export const DataProvider = ({children}) => {
             setAnnual,
             diagramOption, 
             setDiagramOption,
-            remove, 
-            setRemove,
+            success, 
+            setSuccess,
             type, 
             setType,
             overview,

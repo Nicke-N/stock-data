@@ -20,13 +20,13 @@ export default function OverviewPage(props) {
 
     const notesModal = () => {
         setModalData('notes')
-        console.log('click note')
+        
         showModal()
     }
 
     const risksModal = () => {
         setModalData('risks')
-        console.log('click risk')
+       
         showModal()
     }
 

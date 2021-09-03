@@ -35,8 +35,11 @@ export default function NavPanel() {
         if (!stockList) fetchStockList()
 
         const addStock = document.getElementById('add-stock')
-        addStock.removeEventListener('click', addStockModal)
-        addStock.addEventListener('click', addStockModal)
+        if (addStock) {
+            addStock.removeEventListener('click', addStockModal)
+            addStock.addEventListener('click', addStockModal)
+        }
+        
     }, [])
 
     useEffect(() => {
@@ -53,8 +56,11 @@ export default function NavPanel() {
             
             setTimeout(() => {
                 const addReport = document.getElementById('add-report')
-                addReport.removeEventListener('click', addReportModal)
-                addReport.addEventListener('click', addReportModal)
+                if (addReport) {
+                    addReport.removeEventListener('click', addReportModal)
+                    addReport.addEventListener('click', addReportModal)
+                }
+                
             }, 2000)                
         }
 
