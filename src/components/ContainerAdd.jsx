@@ -18,36 +18,46 @@ export default function ContainerAdd() {
     var fail, success
 
     const submitForm = async (event) => {
+
         event.preventDefault()
         success = document.getElementById('add-stock-success')
         fail = document.getElementById('add-stock-failure')
-        const details = {
-            stockName: event.target[0].value,
-            industry: event.target[1].value,
-            dividend: event.target[2].value,
-            risk: event.target[3].value
+
+        if (modalData === 'add-stock') {
+            
+            const details = {
+                stockName: event.target[0].value,
+                industry: event.target[1].value,
+                dividend: event.target[2].value,
+                risk: event.target[3].value
+            }
+
+            addStock(details)
+                .then(res => res.text())
+                .then(data => {
+                    if (data === 'Stock was added!') {
+                        success.style.display = 'block'
+                    } else {
+                        fail.style.display = 'block'
+                    }
+                })
+            setTimeout(() => {
+                getStocks()
+                    .then(res => res.json())
+                    .then(data => setStockList(data))
+                closeModal()
+            }, 3000);
+        } else if ('add-report') {
+
+            
+
         }
 
-        addStock(details)
-            .then(res => res.text())
-            .then(data => {
-                if (data === 'Stock was added!') {
-                    success.style.display = 'block'
-                } else {
-                    fail.style.display = 'block'
-                }
-            })
-        setTimeout(() => {
-            getStocks()
-                .then(res => res.json())
-                .then(data => setStockList(data))
-            closeModal()
-        }, 3000);
 
     }
 
 
-    
+
 
     useEffect(() => { console.log(type) }, [type])
     return (

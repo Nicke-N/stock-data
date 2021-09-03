@@ -191,7 +191,6 @@ export default function Report(props) {
                         label='Type'
                         onChange='type'
                         options={typeOptions}
-                        value={currentReport.type}
                     />
 
                     {
@@ -212,6 +211,7 @@ export default function Report(props) {
                         label='Revenue'
                         maxLength='20'
                         type='number'
+                        value={currentReport.revenue}
                         required
                     />
 
@@ -221,6 +221,7 @@ export default function Report(props) {
                         label='Costs'
                         maxLength='20'
                         type='number'
+                        value={currentReport.costs}
                         required
                     />
 
@@ -230,6 +231,7 @@ export default function Report(props) {
                         label='Result'
                         maxLength='20'
                         type='number'
+                        value={currentReport.result}
                         required
                     />
 
@@ -239,6 +241,7 @@ export default function Report(props) {
                         label='ShortDebt'
                         maxLength='20'
                         type='number'
+                        value={currentReport.shortTermDebt}
                     />
 
                     <FormInput
@@ -247,6 +250,7 @@ export default function Report(props) {
                         label='LongDebt'
                         maxLength='20'
                         type='number'
+                        value={currentReport.longTermDebt}
                     />
 
                     <FormInput
@@ -255,6 +259,7 @@ export default function Report(props) {
                         label='Capital'
                         maxLength='20'
                         type='number'
+                        value={currentReport.capital}
                     />
 
                     <FormInput
@@ -263,6 +268,7 @@ export default function Report(props) {
                         label='CapitalAdequacy'
                         maxLength='2'
                         type='number'
+                        value={currentReport.capitalAdequacy}
                     />
 
                     <FormInput
@@ -271,6 +277,7 @@ export default function Report(props) {
                         label='Stocks'
                         maxLength='20'
                         type='number'
+                        value={currentReport.stockCount}
                     />
 
                     <FormInput
@@ -279,6 +286,7 @@ export default function Report(props) {
                         label='Inventory'
                         maxLength='20'
                         type='number'
+                        value={currentReport.inventory}
                     />
 
                     <FormInput
@@ -287,6 +295,7 @@ export default function Report(props) {
                         label='Employees'
                         maxLength='10'
                         type='number'
+                        value={currentReport.employees}
                     />
 
                     <FormInput
@@ -295,11 +304,12 @@ export default function Report(props) {
                         label='Property'
                         maxLength='20'
                         type='number'
+                        value={currentReport.property}
                     />
 
                     <FormBtn
                         className='form-btn report'
-                        text='Add report'
+                        text='Edit report'
                     />
 
                 </>

@@ -22,14 +22,7 @@ export default function FormSelect(props) {
                
                 select.appendChild(option)
             })
-            setTimeout(() => {
-                if (props.value) {
-                    document.getElementById(props.id).selectedIndex = 2
-                }
-            }, 2000);
-              
-           
-            
+
         }
     }, [])
 

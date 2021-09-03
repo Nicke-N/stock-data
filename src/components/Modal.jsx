@@ -10,11 +10,10 @@ export default function Modal() {
 
     const { setRemove, setModalData, remove, modalData } = useContext(DataContext)
     var modal, closeBtn, modalBtn
+    console.log(modalData)
 
     useEffect(() => {
-        modalBtn = document.getElementById('tradeHistory')
-        if (modalBtn)
-            modalBtn.addEventListener('click', showModal);
+
 
         closeBtn = document.getElementsByClassName('closeBtn')[0]
         if (closeBtn)
@@ -25,6 +24,8 @@ export default function Modal() {
         if (modal) window.addEventListener('click', outsideClick)
 
     }, [])
+
+    useEffect(() => {}, [modalData])
 
     const outsideClick = (e) => {
 
