@@ -2,18 +2,15 @@ import React, { useEffect, useContext } from 'react'
 import Diagrams from '../components/Diagrams'
 import { DataContext } from '../context/DataContext'
 
-export default function DiagramsPage(props) {
+export default function DiagramsPage() {
 
-    const stockID = props.match.params.id
     const { diagramOption, setDiagramOption } = useContext(DataContext)
 
     useEffect(() => {
         addEventListener()
     }, [])
 
-    useEffect(() => {
-        console.log(diagramOption)
-    }, [diagramOption])
+    useEffect(() => {}, [diagramOption])
 
     const addEventListener = () => {
         document.getElementById('report-type').removeEventListener('mouseleave', setOptionValue)
@@ -31,14 +28,8 @@ export default function DiagramsPage(props) {
                 </select>
             </div>
             <div>
-                {diagramOption === 'annual' ? 
-                    'Annual reports'
-                    :
-                    diagramOption === 'quarter' ?
-                    <Diagrams />
-                    :
-                    <Diagrams />
-                }
+
+                <Diagrams />
                
             </div>
         </div>

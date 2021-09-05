@@ -1,17 +1,17 @@
-export const getResults = async (stockName) => {
-
+export const getReports = async (stockName) => {
+   
     const get = {
         method: 'GET',
         headers: {
             'Content-type': 'application/json',
-            'stockName': stockName ? stockName : null
+            'stockname': stockName ? stockName : null
         }
     }
 
-    return await fetch(`http://localhost:5000/reports`, get)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports`, get)
 }
 
-export const getResult = async (id) => {
+export const getReport = async (id) => {
 
     const get = {
         method: 'GET',
@@ -20,10 +20,10 @@ export const getResult = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/reports/${id}`, get)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/${id}`, get)
 }
 
-export const addResult = async (data) => {
+export const addReport = async (data) => {
     const post = {
         method: 'POST',
         headers: {
@@ -33,10 +33,10 @@ export const addResult = async (data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/reports/`, post)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/`, post)
 }
 
-export const editResult = async (id, data) => {
+export const editReport = async (id, data) => {
     const patch = {
         method: 'PATCH',
         headers: {
@@ -46,10 +46,10 @@ export const editResult = async (id, data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/reports/${id}`, patch)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/${id}`, patch)
 }
 
-export const deleteResult = async (id) => {
+export const deleteReport = async (id) => {
     const remove = {
         method: 'DELETE',
         headers: {
@@ -58,5 +58,5 @@ export const deleteResult = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/reports/${id}`, remove)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/${id}`, remove)
 }

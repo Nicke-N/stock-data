@@ -9,15 +9,20 @@ export const DataProvider = ({children}) => {
 
     const [ reportList, setReportList ] = useState(null)
     const [ currentReport, setCurrentReport ] = useState(null)
-
-    const [ authorized, setAuthorized ] = useState(false)
-    const [ modalData, setModalData ] = useState(null)
+    const [ quartersCount, setQuartersCount ] = useState(null)
+    const [ annualsCount, setAnnualsCount ] = useState(null)
 
     const [ searchTerm, setSearchTerm ] = useState('')
     const [ diagramOption, setDiagramOption ] = useState(null)
+    const [ type, setType ] = useState('Annual')
+    const [ overview, setOverview ] = useState(null)
+
 
     const [ quarter, setQuarter ] = useState(null)
     const [ annual, setAnnual ] = useState(null)
+
+    const [ success, setSuccess ] = useState(null)
+    const [ modalData, setModalData ] = useState(null)
 
     return (
         <DataContext.Provider
@@ -30,8 +35,6 @@ export const DataProvider = ({children}) => {
             setReportList,
             currentReport, 
             setCurrentReport,
-            authorized, 
-            setAuthorized,
             modalData, 
             setModalData,
             searchTerm,
@@ -41,7 +44,18 @@ export const DataProvider = ({children}) => {
             annual,
             setAnnual,
             diagramOption, 
-            setDiagramOption
+            setDiagramOption,
+            success, 
+            setSuccess,
+            type, 
+            setType,
+            overview,
+            setOverview,
+            quartersCount, 
+            setQuartersCount,
+            annualsCount, 
+            setAnnualsCount
+
         }}
         >
             {children}

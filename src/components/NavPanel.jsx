@@ -1,50 +1,17 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import DropdownSearch from './DropdownSearch'
 import { DataContext } from '../context/DataContext'
 import { getStocks } from '../kit/api/Stocks'
+import { getReports } from '../kit/api/Reports'
+import { back, showModal } from '../kit/Functions'
 
 export default function NavPanel() {
 
-    const { stockList, setStockList, currentStock } = useContext(DataContext)
-    const panel = document.getElementById('nav-panel')
-    useEffect(() => {
-        if (!stockList) fetchStockList()
-        console.log(stockList)
-    }, [])
-
-    useEffect(() => {
-        console.log(currentStock)
-        if (panel && currentStock) {
-            // const overview = document.createElement('li')
-            // const addAnnual = document.createElement('li')
-            // const addQuarter = document.createElement('li')
-            // const diagrams = document.createElemtnt('li')
-            const navigation = {
-                tabs: [
-                    'Overview',
-                    'Diagrams',
-                    'Add report'
-                    
-                ],
-                content: [
-                    `/overview/${currentStock._id}`,
-                    `/diagrams/${currentStock._id}`,
-                    `/report/${currentStock._id}`
-                ]
-            }
-            for(const index in navigation.tabs) {
-                let panelItem = document.createElement('li')
-                let link = document.createElement('a')
-                link.textContent = navigation.tabs[index]
-                link.setAttribute('href', navigation.content[index])
-                panelItem.appendChild(link)
-                panel.appendChild(panelItem)
-
-            }
-        }
-
-    }, [currentStock])
+    const { stockList, setStockList, currentStock, setReportList, setModalData, modalData, overview, setOverview } = useContext(DataContext)
+    
+    const [ diagrams, setDiagrams ] = useState(null)
+    const [ reports, setReports] = useState(null)
 
     const fetchStockList = async () => {
         await getStocks()
@@ -52,20 +19,99 @@ export default function NavPanel() {
         .then(data => setStockList(data))
     }
 
+    const addStockModal = () => {
+
+        setModalData('add-stock')
+        showModal()
+    }
+
+    const addReportModal = () => {
+
+        setModalData('add-report')
+        showModal()
+    }
+
+    useEffect(() => {
+        if (!stockList) fetchStockList()
+
+        const addStock = document.getElementById('add-stock')
+        if (addStock) {
+            addStock.removeEventListener('click', addStockModal)
+            addStock.addEventListener('click', addStockModal)
+        }
+        
+    }, [])
+
+    useEffect(() => {
+        
+        if (currentStock) {
+                       
+            setOverview(`/overview/${currentStock._id}`)
+            setDiagrams(`/diagrams/${currentStock._id}`)
+            setReports(`/reports/${currentStock.stockName}`)
+
+            getReports(currentStock.stockName)
+            .then(res => res.json())
+            .then(data => setReportList(data))
+            
+            setTimeout(() => {
+                const addReport = document.getElementById('add-report')
+                if (addReport) {
+                    addReport.removeEventListener('click', addReportModal)
+                    addReport.addEventListener('click', addReportModal)
+                }
+                
+            }, 2000)                
+        }
+
+    }, [currentStock])
 
     return (
         <div id='nav-container'>
             <ul id='nav-panel'>
-                <li>
+                <li className='nav-item'>
                     <DropdownSearch />
                 </li>
-                <li>
-                    <a href="/addstock">
-                        Add stock
-                    </a>
+                <li className='nav-item' id='add-stock'>
+                   
+                    Add stock
+                   
                 </li>
-
+                
+                {overview ?
+                <>
+                    <li className='nav-item' id='add-report'>
+                        
+                        Add report
+                       
+                    </li>
+                    <li className='nav-item'>
+                        <Link to={overview}>
+                            Overview
+                        </Link>
+                    </li>
+                    <li className='nav-item'> 
+                        <Link to={diagrams}>
+                            Diagrams
+                        </Link>
+                    </li>
+                    <li className='nav-item'> 
+                        <Link to={reports}>
+                            Reports
+                        </Link>
+                    </li>
+                </>
+                : null
+            }
+                <li className='nav-item'>
+                    <Link onClick={back}>
+                        Back
+                    </Link>
+                </li>
             </ul>
+           
+            
+            
         </div>
     )
 }

@@ -20,7 +20,7 @@ export default function DropdownSearch() {
     
 
     if (stockList) {
-        console.log(stockList)
+        
         stockList.map(element => {
 
             if ( searchTerm === (element.stockName).toLowerCase() ) {

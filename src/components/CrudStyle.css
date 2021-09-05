@@ -42,3 +42,12 @@ form input {
     background-color: rgba(245, 0, 0, 0.5);
     text-align: center;
 }
+
+#canvas-success {
+    transition: all;
+    transition-duration: 2s;
+
+    /* position: absolute;
+    top: 50%; */
+    display: none;
+}

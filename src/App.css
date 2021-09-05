@@ -11,19 +11,44 @@ html {
 a {
   text-decoration: none;
 }
+a:visited { 
+  text-decoration: none; 
+  color:green; 
+}
 ul {
   list-style: none;
 }
-li {
+li + .nav-item {
 	margin: 0;
 	padding: 1rem 0;
 	border-bottom: 1px solid #ccc;
   list-style: none;
+  cursor: pointer;
+}
+.nav-item {
+  color:green;
+}
+textarea {
+  resize: none;
+}
+.choice-icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+#choices {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#remove-container {
+  position: relative;
+  top: 40%;
 }
 
-/* form {
-  display: flex;
-  flex-direction: column;
-  
-} */
-
+.a-report {
+  cursor: pointer;
+}
+.a-report:hover {
+  color: rgb(29, 197, 29);
+}
