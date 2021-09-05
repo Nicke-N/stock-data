@@ -7,7 +7,7 @@ export const getStocks = async () => {
         }
     }
 
-    return await fetch(`http://localhost:5000/stocks`, get)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/stocks`, get)
 }
 
 export const getStock = async (id) => {
@@ -19,7 +19,7 @@ export const getStock = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/stocks/${id}`, get)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/stocks/${id}`, get)
 }
 
 export const addStock = async (data) => {
@@ -31,7 +31,7 @@ export const addStock = async (data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/stocks/`, post)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/stocks/`, post)
 }
 
 export const editStock = async (id, data) => {
@@ -43,7 +43,7 @@ export const editStock = async (id, data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/stocks/${id}`, patch)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/stocks/${id}`, patch)
 }
 
 export const deleteStock = async (id) => {
@@ -54,5 +54,5 @@ export const deleteStock = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/stocks/${id}`, remove)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/stocks/${id}`, remove)
 }

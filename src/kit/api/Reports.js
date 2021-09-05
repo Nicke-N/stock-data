@@ -8,7 +8,7 @@ export const getReports = async (stockName) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/reports`, get)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports`, get)
 }
 
 export const getReport = async (id) => {
@@ -20,7 +20,7 @@ export const getReport = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/reports/${id}`, get)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/${id}`, get)
 }
 
 export const addReport = async (data) => {
@@ -33,7 +33,7 @@ export const addReport = async (data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/reports/`, post)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/`, post)
 }
 
 export const editReport = async (id, data) => {
@@ -46,7 +46,7 @@ export const editReport = async (id, data) => {
         body: JSON.stringify(data)
     }
 
-    return await fetch(`http://localhost:5000/reports/${id}`, patch)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/${id}`, patch)
 }
 
 export const deleteReport = async (id) => {
@@ -58,5 +58,5 @@ export const deleteReport = async (id) => {
         }
     }
 
-    return await fetch(`http://localhost:5000/reports/${id}`, remove)
+    return await fetch(`https://nameless-brook-58186.herokuapp.com/reports/${id}`, remove)
 }
