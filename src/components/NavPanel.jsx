@@ -108,6 +108,12 @@ export default function NavPanel() {
                         Back
                     </Link>
                 </li>
+                <li>
+                    <strong>Known bugs when:</strong>
+                </li>
+                <li>
+                    Removing last list item
+                </li>
             </ul>
            
             

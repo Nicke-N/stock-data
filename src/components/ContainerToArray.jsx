@@ -19,7 +19,7 @@ export default function ContainerToArray() {
         inputs.map(element => list.push(element.textContent))
 
         obj[modalData] = list
-        console.log('hey')
+
         editStock(currentStock._id, obj)
             .then(res => res.text())
             .then(data => {
