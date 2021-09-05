@@ -23,7 +23,10 @@ export default function Diagrams() {
         capital: [],
         stockSpecificData: [],
         stockCount: [],
-        capitalAdequacy: []
+        capitalAdequacy: [],
+        employees: [],
+        inventory: [],
+        property: []
     }, quarters = {
         revenue: [],
         result: [],
@@ -49,8 +52,10 @@ export default function Diagrams() {
     const fillData = () => {
         reportList.map(value => {
             Object.entries(value).map((element) => {
-
-                if (value.type === 'annual') {
+                
+                if ((value.type).toLowerCase() === 'annual') {
+                    console.log(value)
+                console.log(element)
                     if (!exceptions.includes(element[0])) annuals[element[0]].push(element[1])
 
                 } else {
@@ -61,6 +66,8 @@ export default function Diagrams() {
        
         setQuarter(quarters)
         setAnnual(annuals)
+
+        console.log(annual)
     }
 
     return (

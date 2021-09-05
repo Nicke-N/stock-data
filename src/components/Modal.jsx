@@ -9,11 +9,9 @@ import ContainerEdit from './ContainerEdit'
 export default function Modal() {
 
     const { setSuccess, setModalData, success, modalData } = useContext(DataContext)
-    var modal, closeBtn, modalBtn
-    console.log(modalData)
+    var modal, closeBtn
 
     useEffect(() => {
-
 
         closeBtn = document.getElementsByClassName('closeBtn')[0]
         if (closeBtn)
