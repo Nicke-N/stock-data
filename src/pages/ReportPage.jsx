@@ -24,11 +24,11 @@ export default function ReportPage(props) {
         <div id='report-list-page'>
             <div id='annuals-container'>
                 <h3>Annual reports</h3>
-                {reportList && reportList.length > 0 ? reportList.map(element => element.type === 'annual' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>{element.period}</div> : null) : null}
+                {reportList && reportList.length > 0 ? reportList.map(element =>( element.type.toLowerCase()) === 'annual' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>{element.period}</div> : null) : null}
             </div>
             <div id='quarter-container'>
                 <h3>Quarter reports</h3>
-            {reportList && reportList.length > 0 ? reportList.map(element => element.type === 'quarter' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>{element.period}</div> : null) : null}
+            {reportList && reportList.length > 0 ? reportList.map(element =>( element.type.toLowerCase()) === 'quarter' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>{element.period}</div> : null) : null}
             </div>
         </div>
     )
