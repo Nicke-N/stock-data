@@ -109,7 +109,7 @@ export default function NavPanel() {
                     </Link>
                 </li>
                 <li>
-                    <strong>Known bugs when:</strong>
+                    <strong>Known probs when:</strong>
                 </li>
                 <li>
                     Removing last list item
