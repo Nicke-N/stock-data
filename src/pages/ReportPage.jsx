@@ -1,12 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
-import { getReport } from '../kit/api/Reports'
+import { getReport, getReports } from '../kit/api/Reports'
 import { showModal } from '../kit/Functions'
+import { getStock } from '../kit/api/Stocks'
 
 export default function ReportPage() {
     
-    const { setCurrentReport, reportList, setModalData } = useContext(DataContext)
-
+    const { setCurrentReport, reportList, setReportList, setModalData, currentStock, setCurrentStock,  } = useContext(DataContext)
+    const stock = {
+        name: localStorage.getItem('stockName'),
+        id: localStorage.getItem('id')
+    }
     const setReport = (event) => {
         
         const id = event.target.id
@@ -19,6 +23,30 @@ export default function ReportPage() {
             showModal()
         })
     }
+
+    const fetchStock = async () => {
+
+        await getStock(stock.id)
+            .then(res => res.json())
+            .then(data => {
+
+                setCurrentStock(data)
+                
+            })
+
+    }
+
+    const setReports = (stockName) => {
+
+        getReports(stockName)
+            .then(res => res.json())
+            .then(data => setReportList(data))        
+    }
+
+    useEffect(() => {
+      if (!currentStock) fetchStock()
+      if (!reportList) setReports(stock.name)
+    }, [])
    
     return (
         <div id='report-list-page'>

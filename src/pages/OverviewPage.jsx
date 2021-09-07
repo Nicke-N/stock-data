@@ -10,21 +10,19 @@ import List from '../components/List'
 export default function OverviewPage(props) {
 
     const { currentStock, setCurrentStock, setReportList, setModalData, quartersCount, setQuartersCount, annualsCount, setAnnualsCount } = useContext(DataContext)
-    
-    const stockID = props.match.params.id
+
+    const stockID = props.match.params.id ? props.match.params.id : currentStock._id
 
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
 
     const notesModal = () => {
         setModalData('notes')
-        
         showModal()
     }
 
     const risksModal = () => {
         setModalData('risks')
-       
         showModal()
     }
 
@@ -45,6 +43,8 @@ export default function OverviewPage(props) {
 
                 setCurrentStock(data)
                 setReports(data.stockName)
+                localStorage.setItem('stockName', data.stockName)
+                localStorage.setItem('id', data._id)
             })
 
     }

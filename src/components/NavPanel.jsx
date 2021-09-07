@@ -120,7 +120,7 @@ export default function NavPanel() {
                     <strong>Known probs when:</strong>
                 </li>
                 <li>
-                   <strike> Removing last list item </strike>
+                   Changing type of charts
                 </li>
             </ul>
            

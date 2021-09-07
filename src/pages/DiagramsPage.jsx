@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import Diagrams from '../components/Diagrams'
 import { DataContext } from '../context/DataContext'
+import FormSelect from '../components/FormSelect'
 
 export default function DiagramsPage() {
 
@@ -22,7 +23,7 @@ export default function DiagramsPage() {
     return (
         <div>
             <div>
-                <select name="type" id="report-type">
+                <select name="type" id="report-type" onChange={setOptionValue}>
                     <option value="annual">Annuals</option>
                     <option value="quarter">Quarters</option>
                 </select>
