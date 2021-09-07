@@ -112,7 +112,7 @@ export default function NavPanel() {
                     <strong>Known probs when:</strong>
                 </li>
                 <li>
-                    Removing last list item
+                   <strike> Removing last list item </strike>
                 </li>
             </ul>
            

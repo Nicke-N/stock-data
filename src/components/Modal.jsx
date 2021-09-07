@@ -14,8 +14,8 @@ export default function Modal() {
     useEffect(() => {
 
         closeBtn = document.getElementsByClassName('closeBtn')[0]
-        if (closeBtn)
-            closeBtn.addEventListener('click', () => { modal.style.display = 'none' })
+        
+        if (closeBtn) closeBtn.addEventListener('click', () => { modal.style.display = 'none' })
 
         modal = document.getElementById('simpleModal')
 
@@ -32,6 +32,7 @@ export default function Modal() {
     useEffect(() => {}, [])
 
     useEffect(() => {
+        
         if (success === 'success') {
             drawSuccess()
         } else if (success === 'failure') {
@@ -50,6 +51,7 @@ export default function Modal() {
     const drawSuccess = () => {
         var canvas = document.getElementById('canvas-success');
         if (canvas) {
+            console.log('draw success')
             canvas.style.display = 'block'
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d')
@@ -91,8 +93,6 @@ export default function Modal() {
         }
 
     }
-
- 
 
     return (
         <div>

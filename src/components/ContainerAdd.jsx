@@ -21,7 +21,7 @@ export default function ContainerAdd() {
 
         event.preventDefault()
 
-        if (modalData === 'add-stock') {
+        if (modalData === 'add-stock' || modalData === 'edit-stock') {
             
             const details = {
                 stockName: event.target[0].value,
@@ -46,7 +46,7 @@ export default function ContainerAdd() {
                     .then(data => setStockList(data))
                 closeModal()
             }, 3000);
-        } else if (modalData === 'add-report') {
+        } else if (modalData === 'add-report' || modalData === 'edit-report') {
 
             var details = {}
             const values = Array.from(event.target)

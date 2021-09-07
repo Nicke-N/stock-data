@@ -4,16 +4,13 @@ import './index.css'
 import App from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { DataProvider } from './context/DataContext'
-import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <BrowserRouter>
     <DataProvider>
-      {/* <Provider>  */}
           {/* <React.StrictMode> */}
         <App />
       {/* </React.StrictMode> */}
-      {/* </Provider>  */}
     </DataProvider>
   </BrowserRouter>
   ,
