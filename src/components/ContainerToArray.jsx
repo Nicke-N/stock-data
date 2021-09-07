@@ -15,40 +15,24 @@ export default function ContainerToArray() {
             list = []
         entryContainer = document.getElementById('entry-container')
         const inputs = Array.from(entryContainer.children)
-
-        inputs.map(element => list.push(element.textContent))
+        console.log(inputs)
+        inputs.map(element => element ? list.push(element.textContent) : null)
 
         obj[modalData] = list
 
         editStock(currentStock._id, obj)
             .then(res => res.text())
             .then(data => {
-
+                setModalData(null)
+                entryContainer.textContent = ''
+                console.log(data)
                 if (data === 'Stock was updated!') {
-                    getStock(currentStock._id)
-                        .then(res => res.json())
-                        .then(data => setCurrentStock(data))
+                    
+                    setSuccess('success')
 
-                    getStocks()
-                        .then(res => res.json())
-                        .then(data => {
-                           
-                            setModalData(null)
-                            entryContainer.textContent = ''
-
-                            setTimeout(() => {
-                                setSuccess('success')
-                            }, 1000)
-
-                            setTimeout(() => {
-                                
-                                setStockList(data)
-                                // closeModal()
-                            }, 2000)
-
-
-                        })
-
+                    setTimeout(() => {
+                        closeModal()
+                    }, 2500)
 
                 } else {
                     setModalData(null)
@@ -56,6 +40,19 @@ export default function ContainerToArray() {
                     .then(closeModal())
                 }
             })
+            setTimeout(() => {
+                getStock(currentStock._id)
+                .then(res => res.json())
+                .then(data => setCurrentStock(data))
+            }, 3000);
+            
+            setTimeout(() => {
+                getStocks()
+                .then(res => res.json())
+                .then(data => setStockList(data))
+            }, 4000);
+
+            
 
     }
 
