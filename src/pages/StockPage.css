@@ -1,5 +1,0 @@
-#detail-page {
-    display: grid;
-    grid-template-rows: 1fr 5r;
-    grid-template-columns: repeat(1fr);
-}

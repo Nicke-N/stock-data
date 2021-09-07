@@ -1,10 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import './Modal.css'
 import { DataContext } from '../context/DataContext'
-import { closeModal, showModal, unDrawSuccess, unDrawFailure } from '../kit/Functions'
-import ContainerAdd from './ContainerAdd'
-import ContainerRemove from './ContainerRemove'
-import ContainerEdit from './ContainerEdit'
+import { closeModal  } from '../kit/Functions'
+import Form from './Form'
 
 export default function Modal() {
 
@@ -14,8 +12,8 @@ export default function Modal() {
     useEffect(() => {
 
         closeBtn = document.getElementsByClassName('closeBtn')[0]
-        if (closeBtn)
-            closeBtn.addEventListener('click', () => { modal.style.display = 'none' })
+
+        if (closeBtn) closeBtn.addEventListener('click', () => { modal.style.display = 'none' })
 
         modal = document.getElementById('simpleModal')
 
@@ -29,9 +27,10 @@ export default function Modal() {
         setSuccess(null)
     }, [modalData])
 
-    useEffect(() => {}, [])
+    useEffect(() => { }, [])
 
     useEffect(() => {
+
         if (success === 'success') {
             drawSuccess()
         } else if (success === 'failure') {
@@ -50,6 +49,7 @@ export default function Modal() {
     const drawSuccess = () => {
         var canvas = document.getElementById('canvas-success');
         if (canvas) {
+            console.log('draw success')
             canvas.style.display = 'block'
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d')
@@ -61,7 +61,7 @@ export default function Modal() {
                 ctx.stroke();
 
                 ctx.beginPath();
-                ctx.moveTo(canvas.width*0.05, canvas.height * 0.4);
+                ctx.moveTo(canvas.width * 0.05, canvas.height * 0.4);
                 ctx.lineTo(canvas.width * 0.3, canvas.height * 0.6);
                 ctx.lineTo(canvas.width * 0.95, canvas.height * 0.2);
                 ctx.lineWidth = 15;
@@ -92,7 +92,8 @@ export default function Modal() {
 
     }
 
- 
+    const unDrawSuccess = () => document.getElementById('canvas-success').style.display = 'none'
+    const unDrawFailure = () => document.getElementById('canvas-failure').style.display = 'none'
 
     return (
         <div>
@@ -121,19 +122,9 @@ export default function Modal() {
                         <span className="closeBtn"> x </span>
                     </div>
                     <div className="modal-body">
-                        {modalData && (modalData === 'notes' || modalData === 'risks') ?
-                            <ContainerEdit />
-                            : modalData && (modalData === 'add-stock' || modalData === 'add-report') ?
-                                <ContainerAdd />
-                                : modalData && modalData === 'remove-stock' ?
-                                    <ContainerRemove type='stock' />
-                                    : modalData && modalData === 'remove-report' ?
-                                        <ContainerRemove type='report' />
-                                        : modalData && modalData === 'edit-report' ?
-                                            <ContainerEdit />
-                                            : modalData && modalData === 'edit-stock' ?
-                                                <ContainerEdit />
-                                                : null
+                        {modalData ?
+                            <Form />
+                            : null
                         }
                         <canvas id="canvas-success" width="200" height="250"></canvas>
                         <canvas id="canvas-failure" width="200" height="250"></canvas>

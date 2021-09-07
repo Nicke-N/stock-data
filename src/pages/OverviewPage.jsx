@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { getStock } from '../kit/api/Stocks'
-import { getReports, getReport } from '../kit/api/Reports'
+import { getReports } from '../kit/api/Reports'
 import { showModal } from '../kit/Functions'
 import Add from '../icons/plus.svg'
 import './Overview.css'
@@ -9,22 +9,20 @@ import List from '../components/List'
 
 export default function OverviewPage(props) {
 
-    const { currentStock, setCurrentStock, reportList, setReportList, setModalData, quartersCount, setQuartersCount, annualsCount, setAnnualsCount} = useContext(DataContext)
-    
-    const stockID = props.match.params.id
+    const { currentStock, setCurrentStock, setReportList, setModalData, quartersCount, setQuartersCount, annualsCount, setAnnualsCount } = useContext(DataContext)
+
+    const stockID = props.match.params.id ? props.match.params.id : currentStock._id
 
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
 
     const notesModal = () => {
         setModalData('notes')
-        
         showModal()
     }
 
     const risksModal = () => {
         setModalData('risks')
-       
         showModal()
     }
 
@@ -45,6 +43,8 @@ export default function OverviewPage(props) {
 
                 setCurrentStock(data)
                 setReports(data.stockName)
+                localStorage.setItem('stockName', data.stockName)
+                localStorage.setItem('id', data._id)
             })
 
     }

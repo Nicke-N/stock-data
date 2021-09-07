@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { editStock, getStock, getStocks } from '../kit/api/Stocks'
-import { closeModal, unDrawSuccess } from '../kit/Functions'
+import { closeModal } from '../kit/Functions'
 import './CrudStyle.css'
 
 export default function ContainerToArray() {
@@ -15,7 +15,7 @@ export default function ContainerToArray() {
             list = []
         entryContainer = document.getElementById('entry-container')
         const inputs = Array.from(entryContainer.children)
-        console.log(inputs)
+        
         inputs.map(element => element ? list.push(element.textContent) : null)
 
         obj[modalData] = list
@@ -25,19 +25,14 @@ export default function ContainerToArray() {
             .then(data => {
                 setModalData(null)
                 entryContainer.textContent = ''
-                console.log(data)
                 if (data === 'Stock was updated!') {
                     
                     setSuccess('success')
-
-                    setTimeout(() => {
-                        closeModal()
-                    }, 2500)
+                    closeModal()
 
                 } else {
-                    setModalData(null)
-                    .then(setSuccess('failure'))
-                    .then(closeModal())
+                    setSuccess('failure')
+                    closeModal()
                 }
             })
             setTimeout(() => {

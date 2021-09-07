@@ -1,21 +1,18 @@
 import './App.css'
-import React, { useContext } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import ListPage from './pages/ListPage'
-import { DataContext } from './context/DataContext'
 import NavPanel from './components/NavPanel'
 import DiagramsPage from './pages/DiagramsPage'
 import OverviewPage from './pages/OverviewPage'
 import  ReportPage from './pages/ReportPage'
 import Modal from './components/Modal'
+
 function App() {
 
-  const { modalData } = useContext(DataContext)
   
   return (
     <div className="App">
-
-
       <NavPanel />
       <Switch>
         <Route exact path='/' component={ListPage} />

@@ -3,9 +3,13 @@ import ChartJs from 'chart.js/auto'
 import './Chart.css'
 
 export default function Chart(props) {
+
+    var ctx 
+
     useEffect(() => {
-       
-            ctx = document.getElementById(props.id).getContext('2d');
+           
+            ctx = document.getElementById(props.id).getContext('2d')
+            
             var data = {}
             data[props.data.title] = props.data.values
     
@@ -37,7 +41,7 @@ export default function Chart(props) {
                     data: data[key]
                 });
             });
-        
+    
             var capitalChart = new ChartJs(ctx, {
                 type: 'line',
                 data: chartData,
@@ -72,8 +76,6 @@ export default function Chart(props) {
       
         
     }, [])
-    
-    var ctx = document.getElementById(props.id)
    
     return (
         <div>
