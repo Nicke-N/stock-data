@@ -23,6 +23,22 @@ export default function Modal() {
 
     }, [])
 
+    useEffect(() => {
+        unDrawFailure()
+        unDrawSuccess()
+        setSuccess(null)
+    }, [modalData])
+
+    useEffect(() => {}, [])
+
+    useEffect(() => {
+        if (success === 'success') {
+            drawSuccess()
+        } else if (success === 'failure') {
+            drawFailure()
+        }
+    }, [success])
+
     const outsideClick = (e) => {
 
         if (e.target === modal) {
@@ -76,23 +92,7 @@ export default function Modal() {
 
     }
 
-    useEffect(() => {
-        unDrawFailure()
-        unDrawSuccess()
-        setSuccess(null)
-    }, [modalData])
-
-    useEffect(() => {
-
-    }, [])
-
-    useEffect(() => {
-        if (success === 'success') {
-            drawSuccess()
-        } else if (success === 'failure') {
-            drawFailure()
-        }
-    }, [success])
+ 
 
     return (
         <div>
