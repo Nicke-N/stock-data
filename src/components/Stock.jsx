@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import FormBtn from './FormBtn'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
-import { DataContext } from '../context/DataContext'
 
 export default function Stock(props) {
-
-    const { setStockList, modalData, currentStock, setReportList, type } = useContext(DataContext)
 
     const industries = [
         'Aerospace',

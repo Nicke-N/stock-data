@@ -8,7 +8,15 @@ import { back, showModal } from '../kit/Functions'
 
 export default function NavPanel() {
 
-    const { stockList, setStockList, currentStock, setReportList, setModalData, modalData, overview, setOverview } = useContext(DataContext)
+    const { 
+        stockList, 
+        setStockList, 
+        currentStock, 
+        setReportList, 
+        setModalData, 
+        overview, 
+        setOverview
+    } = useContext(DataContext)
     
     const [ diagrams, setDiagrams ] = useState(null)
     const [ reports, setReports] = useState(null)

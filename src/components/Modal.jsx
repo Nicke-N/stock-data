@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import './Modal.css'
 import { DataContext } from '../context/DataContext'
-import { closeModal, showModal, unDrawSuccess, unDrawFailure } from '../kit/Functions'
+import { closeModal  } from '../kit/Functions'
 import Form from './Form'
 
 export default function Modal() {
@@ -91,6 +91,9 @@ export default function Modal() {
         }
 
     }
+
+    const unDrawSuccess = () => document.getElementById('canvas-success').style.display = 'none'
+    const unDrawFailure = () => document.getElementById('canvas-failure').style.display = 'none'
 
     return (
         <div>

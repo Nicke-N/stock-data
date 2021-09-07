@@ -7,9 +7,20 @@ import { addReport, editReport, getReports } from '../kit/api/Reports'
 import { addStock, editStock, getStocks } from '../kit/api/Stocks'
 import { closeModal } from '../kit/Functions'
 
-export default function Form(props) {
+export default function Form() {
 
-    const { modalData, setSuccess, setModalData, setStockList, currentStock, type, setReportList, setAnnualsCount, setQuartersCount, currentReport } = useContext(DataContext)
+    const { 
+        modalData, 
+        setSuccess, 
+        setModalData, 
+        setStockList, 
+        currentStock, 
+        type, 
+        setReportList, 
+        setAnnualsCount, 
+        setQuartersCount, 
+        currentReport 
+    } = useContext(DataContext)
 
     const submitForm = async (event) => {
 
@@ -40,7 +51,7 @@ export default function Form(props) {
                     .then(res => res.text())
                     .then(data => {
                         setModalData(null)
-                        if (data === 'Stock was added!') {
+                        if (data === 'Stock was updated!') {
                             setSuccess('success')
                         } else {
                             setSuccess('failure')
@@ -76,8 +87,7 @@ export default function Form(props) {
                     .then(res => res.text())
                     .then(data => {
                         setModalData(null)
-                        if (data === 'Report was added!') {
-                            console.log('added')
+                        if (data === 'Report was updated!') {
                             setSuccess('success')
                         } else {
                             setSuccess('failure')

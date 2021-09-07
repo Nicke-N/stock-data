@@ -3,7 +3,7 @@ import { DataContext } from '../context/DataContext'
 import { getReport } from '../kit/api/Reports'
 import { showModal } from '../kit/Functions'
 
-export default function ReportPage(props) {
+export default function ReportPage() {
     
     const { setCurrentReport, reportList, setModalData } = useContext(DataContext)
 

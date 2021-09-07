@@ -6,7 +6,7 @@ import { DataContext } from '../context/DataContext'
 
 export default function Report(props) {
 
-    const { setStockList, modalData, currentStock, setReportList, currentReport, type } = useContext(DataContext)
+    const { currentStock, currentReport, type } = useContext(DataContext)
     const [years, setYears] = useState(null)
 
     var success, fail, yearsArray = []
@@ -40,6 +40,8 @@ export default function Report(props) {
         setYears(yearsArray)
 
     }, [])
+
+    useEffect(() => {}, [type])
 
 
     return (

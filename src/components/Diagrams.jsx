@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Chart from './Chart.jsx'
 import { DataContext } from '../context/DataContext'
 import './Diagrams.css'
 
 export default function Diagrams() {
 
-    const { reportList, annual, setAnnual, quarter, setQuarter, currentStock, diagramOption } = useContext(DataContext)
+    const { reportList, annual, setAnnual, quarter, setQuarter, diagramOption } = useContext(DataContext)
 
     const exceptions = [
         '__v',
