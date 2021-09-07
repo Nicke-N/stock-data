@@ -9,7 +9,7 @@ export default function Report(props) {
     const { setStockList, modalData, currentStock, setReportList, currentReport, type } = useContext(DataContext)
     const [years, setYears] = useState(null)
 
-    var stockType, success, fail, yearsArray = []
+    var success, fail, yearsArray = []
     const currDate = new Date(),
         year = currDate.getFullYear(),
         periods = [
