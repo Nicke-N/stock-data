@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { getStock, getStocks } from '../kit/api/Stocks'
+import { getReports } from '../kit/api/Reports'
 
 export const DataContext = React.createContext()
 
@@ -22,6 +24,33 @@ export const DataProvider = ({children}) => {
 
     const [ success, setSuccess ] = useState(null)
     const [ modalData, setModalData ] = useState(null)
+
+    const stock = {
+        name: localStorage.getItem('stockName'),
+        id: localStorage.getItem('id')
+    }
+
+    const fetchStock = async (id) => {
+
+        await getStock(id)
+            .then(res => res.json())
+            .then(data => setCurrentStock(data))
+
+    }
+
+    const setReports = (stockName) => {
+
+        getReports(stockName)
+            .then(res => res.json())
+            .then(data => setReportList(data))        
+    }
+
+
+    useEffect(() => {
+        if (stock.id) fetchStock(stock.id)
+        if (stock.name) setReports(stock.name)
+    }, [])
+
 
     return (
         <DataContext.Provider

@@ -69,11 +69,11 @@ export default function Diagrams() {
         <div id='report-container'>
             {diagramOption === 'annual' && annual ?
 
-                Object.entries(annual).map(element => <Chart key={element[0]} data={{ title: element[0], values: element[1], keys: annual.period }} id={diagramOption + '-' + element[0] + '-chart'} />)
+                Object.entries(annual).map(element => element[0] !== 'period' ? <Chart key={element[0]} data={{ title: element[0], values: element[1], keys: annual.period }} id={diagramOption + '-' + element[0] + '-chart'} /> : null)
 
                 : diagramOption === 'quarter' && quarter ?
 
-                    Object.entries(quarter).map(element => <Chart key={element[0]} data={{ title: element[0], values: element[1], keys: quarter.period }} id={diagramOption + '-' + element[0] + '-chart'} />)
+                    Object.entries(quarter).map(element => element[0] !== 'period' ? <Chart key={element[0]} data={{ title: element[0], values: element[1], keys: quarter.period }} id={diagramOption + '-' + element[0] + '-chart'} /> : null)
 
                     : null}
         </div>
