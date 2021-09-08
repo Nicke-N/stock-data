@@ -6,7 +6,6 @@ import './Diagrams.css'
 export default function Diagrams() {
 
     const { reportList, annual, setAnnual, quarter, setQuarter, diagramOption } = useContext(DataContext)
-
     const exceptions = [
         '__v',
         '_id',
@@ -47,8 +46,6 @@ export default function Diagrams() {
         if (reportList) fillData()
     }, [reportList])
 
-    useEffect(() => {}, [diagramOption])
-
     const fillData = () => {
         reportList.map(value => {
             Object.entries(value).map((element) => {
@@ -70,14 +67,16 @@ export default function Diagrams() {
 
     return (
         <div id='report-container'>
-            {diagramOption === 'quarter' && quarter ?
+            {diagramOption === 'annual' && annual ?
 
-                Object.entries(quarter).map(element => <Chart data={{ title: element[0], values: element[1], keys: quarter.period }} id={'quarter-' + element[0] + '-chart'} />)
+                Object.entries(annual).map(element => <Chart key={element[0]} data={{ title: element[0], values: element[1], keys: annual.period }} id={diagramOption + '-' + element[0] + '-chart'} />)
 
-                : diagramOption === 'annual' && annual ?
-                    Object.entries(annual).map(element => <Chart data={{ title: element[0], values: element[1], keys: annual.period }} id={'annual-' + element[0] + '-chart'} />)
-                    : null
-            }
+                : diagramOption === 'quarter' && quarter ?
+
+                    Object.entries(quarter).map(element => <Chart key={element[0]} data={{ title: element[0], values: element[1], keys: quarter.period }} id={diagramOption + '-' + element[0] + '-chart'} />)
+
+                    : null}
         </div>
-            )
+
+    )
 }
