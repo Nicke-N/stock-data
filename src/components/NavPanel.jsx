@@ -119,9 +119,7 @@ export default function NavPanel() {
                 <li>
                     <strong>Known probs when:</strong>
                 </li>
-                <li>
-                   Changing type of charts
-                </li>
+                
             </ul>
            
             
