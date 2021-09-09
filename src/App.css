@@ -13,7 +13,8 @@ a {
 }
 a:visited { 
   text-decoration: none; 
-  color:green; 
+  color:green;
+  
 }
 ul {
   list-style: none;
