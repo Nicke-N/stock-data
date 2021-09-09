@@ -42,9 +42,6 @@ export default function Report(props) {
 
     }, [])
 
-    useEffect(() => {}, [type])
-
-
     return (
         props.type === 'add' ?
             <>

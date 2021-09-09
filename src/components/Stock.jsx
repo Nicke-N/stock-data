@@ -2,6 +2,8 @@ import React from 'react'
 import FormBtn from './FormBtn'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
+import './Form.css'
+import FormSelectCustom from './FormSelectCustom'
 
 export default function Stock(props) {
 
@@ -62,12 +64,14 @@ export default function Stock(props) {
                 type='tele'
             />
 
-            <FormSelect
+            {/* <FormSelect
                 className='crud-pair stock'
                 label='Risk'
                 id='risk'
                 options={riskLevels}
-            />
+            /> */}
+
+            <FormSelectCustom />
 
             <FormBtn
                 className='form-btn stock-btn'

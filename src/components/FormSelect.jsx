@@ -3,7 +3,7 @@ import { DataContext } from '../context/DataContext'
 
 export default function FormSelect(props) {
 
-    const { setType } = useContext(DataContext)
+    const { setType, type } = useContext(DataContext)
     var select
 
     const setStockType = event => setType(event.target.value)
