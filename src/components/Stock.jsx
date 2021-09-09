@@ -71,7 +71,11 @@ export default function Stock(props) {
                 options={riskLevels}
             /> */}
 
-            <FormSelectCustom />
+            <FormSelectCustom 
+                name='Risk'
+                options={riskLevels}
+                label='Risk'
+            />
 
             <FormBtn
                 className='form-btn stock-btn'
