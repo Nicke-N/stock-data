@@ -7,7 +7,7 @@ export default function FormSelect(props) {
     var select
 
     const setStockType = event => setType(event.target.value)
-
+  
     const setOptions = () => {
         select = document.getElementById(props.id)
 

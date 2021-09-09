@@ -113,7 +113,8 @@ export default function OverviewPage(props) {
                     </div>
                 </div>
 
-                <List 
+                <List
+                    wrapperClassName='list-wrapper' 
                     containerId='risks-container'
                     containerClassName='small-container'
                     title='Risks'
@@ -128,6 +129,7 @@ export default function OverviewPage(props) {
                 />
 
                 <List
+                    wrapperClassName='list-wrapper'
                     containerId='notes-container'
                     containerClassName='small-container'
                     title='Notes'

@@ -17,14 +17,13 @@
   
   .modal-content{
     color: #FFE6D0;
-    background-color: rgb(127, 220, 84);
+    background-color: rgb(127, 220, 84, 0.8);
     width: calc(15vw + 10vh);
     height: calc(99.9vh);
     z-index: 10000;
   }
   
   .modal-header{
-    background: rgb(127, 220, 84);
     color: #FFE6D0;
     border-radius: 1vw;
     height: 5%;
@@ -37,7 +36,7 @@
   .modal-body{
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     height: 100%;
     z-index: 10000;
   }

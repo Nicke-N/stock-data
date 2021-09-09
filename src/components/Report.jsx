@@ -3,6 +3,7 @@ import FormBtn from './FormBtn'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
 import { DataContext } from '../context/DataContext'
+import './Form.css'
 
 export default function Report(props) {
 
@@ -13,10 +14,10 @@ export default function Report(props) {
     const currDate = new Date(),
         year = currDate.getFullYear(),
         periods = [
-            'jan - mar',
-            'apr - jun',
-            'jul - sep',
-            'oct - dec'
+            'Jan - Mar',
+            'Apr - Jun',
+            'Jul - Sep',
+            'Oct - Dec'
         ],
         typeOptions = [
             'Annual',
