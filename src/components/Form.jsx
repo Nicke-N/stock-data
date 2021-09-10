@@ -19,7 +19,7 @@ export default function Form() {
         setReportList, 
         setAnnualsCount, 
         setQuartersCount, 
-        currentReport 
+        currentReport
     } = useContext(DataContext)
 
     const submitForm = async (event) => {
@@ -28,15 +28,18 @@ export default function Form() {
 
         if (modalData === 'add-stock' || modalData === 'edit-stock') {
 
+            const stockName = document.getElementById('stockName').value
+            const dividend = document.getElementById('dividend').value
+            const industry = document.querySelector(`input[name=Industry]:checked`).title
+            const risk = document.querySelector(`input[name=Risk]:checked`).title
+            
             const details = {
-                stockName: event.target[0].value,
-                industry: event.target.children[1].value,
-                dividend: event.target[2].value,
-                risk: event.target[3].value
+                stockName: stockName,
+                industry: industry,
+                dividend:dividend,
+                risk: risk
             }
-
-            console.log(event.target.children[1])
-
+            console.log(details)
             // if (modalData === 'add-stock') {
             //     addStock(details)
             //         .then(res => res.text())
