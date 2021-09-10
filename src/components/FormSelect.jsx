@@ -5,8 +5,6 @@ export default function FormSelect(props) {
 
     const { setType, type } = useContext(DataContext)
     var select
-
-    const setStockType = event => setType(event.target.value)
   
     const setOptions = () => {
         select = document.getElementById(props.id)
