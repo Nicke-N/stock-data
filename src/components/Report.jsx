@@ -76,10 +76,10 @@ export default function Report(props) {
                         :
                         <>
                             <FormSelectCustom
-                                label='Period'
-                                detailId='period-detail'
-                                summaryId='period-summary'
-                                listId='period'
+                                label='Month'
+                                detailId='month-detail'
+                                summaryId='month-summary'
+                                listId='month'
                                 options={periods}
                             />
 
@@ -225,10 +225,10 @@ export default function Report(props) {
                             :
                             <>
                                 <FormSelectCustom
-                                    label='Period'
-                                    detailId='period-detail'
-                                    summaryId='period-summary'
-                                    listId='period'
+                                    label='Month'
+                                    detailId='month-detail'
+                                    summaryId='month-summary'
+                                    listId='month'
                                     options={periods}
                                 />
 

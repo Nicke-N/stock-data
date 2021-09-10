@@ -49,7 +49,6 @@ export default function Modal() {
     const drawSuccess = () => {
         var canvas = document.getElementById('canvas-success');
         if (canvas) {
-            console.log('draw success')
             canvas.style.display = 'block'
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d')

@@ -5,7 +5,7 @@ import Stock from './Stock'
 import ContainerToArray from './ContainerToArray'
 import { addReport, editReport, getReports } from '../kit/api/Reports'
 import { addStock, editStock, getStocks } from '../kit/api/Stocks'
-import { closeModal } from '../kit/Functions'
+import { closeModal, DOMvalue } from '../kit/Functions'
 
 export default function Form() {
 
@@ -15,7 +15,6 @@ export default function Form() {
         setModalData, 
         setStockList, 
         currentStock, 
-        type, 
         setReportList, 
         setAnnualsCount, 
         setQuartersCount, 
@@ -72,11 +71,38 @@ export default function Form() {
             }, 3000);
         } else if (modalData === 'add-report' || modalData === 'edit-report') {
 
-            var details = {}
-            const values = Array.from(event.target)
+            const stockName = document.getElementById('stockName').value
+            const type = document.querySelector(`input[name=Type]:checked`).title
+            const period = type === 'Annual' ? document.querySelector(`input[name=Year]:checked`).title : `${document.querySelector(`input[name=Month]:checked`).title} ${document.querySelector(`input[name=Year]:checked`).title}` 
+            const revenue = document.getElementById('revenue').value
+            const costs = document.getElementById('costs').value
+            const result = DOMvalue('result')
+            const shortDebt = DOMvalue('shortTermDebt')
+            const longDebt = DOMvalue('longTermDebt')
+            const capital = DOMvalue('capital')
+            const capitalAdequacy = DOMvalue('capitalAdequacy')
+            const stockCount = DOMvalue('stockCount')
+            const inventory = DOMvalue('inventory')
+            const employees = DOMvalue('employees')
+            const property = DOMvalue('property')
+            
 
-            values.map((element, index) => type === 'Quarter' && element.name === 'year' ? details['period'] = `${values[index - 1].value} ${values[index].value}` : element.name !== 'months' && element.value !== '' ? details[element.name] = element.value : null)
-            details.type = type
+            const details = {
+                stockName: stockName,
+                type: type,
+                period: period,
+                revenue: revenue,
+                costs: costs,
+                result: result,
+                shortTermDebt: shortDebt,
+                longTermDebt: longDebt,
+                capital: capital,
+                capitalAdequacy: capitalAdequacy,
+                stockCount: stockCount,
+                inventory: inventory,
+                employees: employees,
+                property: property
+            }
 
             if (modalData === 'add-report') {
                 addReport(details)
