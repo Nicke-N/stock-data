@@ -15,8 +15,8 @@ export const DataProvider = ({children}) => {
     const [ annualsCount, setAnnualsCount ] = useState(null)
 
     const [ searchTerm, setSearchTerm ] = useState('')
-    const [ diagramOption, setDiagramOption ] = useState('annual')
-    const [ type, setType ] = useState('Annual')
+   
+    
     const [ overview, setOverview ] = useState(null)
 
     const [ quarter, setQuarter ] = useState(null)
@@ -24,6 +24,17 @@ export const DataProvider = ({children}) => {
 
     const [ success, setSuccess ] = useState(null)
     const [ modalData, setModalData ] = useState(null)
+
+    const [ chosenIndustry, setChosenIndustry ] = useState(null)
+    const [ chosenRiskLevel, setChosenRiskLevel ] = useState(null)
+    const [ chosenMonth, setChosenMonth ] = useState(null)
+    const [ chosenYear, setChosenYear ] = useState(null)
+
+    const [ type, setType ] = useState('Annual')
+    const [ diagramOption, setDiagramOption ] = useState('annual')
+
+
+
 
     const stock = {
         name: localStorage.getItem('stockName'),
@@ -82,8 +93,15 @@ export const DataProvider = ({children}) => {
             quartersCount, 
             setQuartersCount,
             annualsCount, 
-            setAnnualsCount
-
+            setAnnualsCount,
+            chosenIndustry, 
+            setChosenIndustry,
+            chosenRiskLevel, 
+            setChosenRiskLevel,
+            chosenMonth, 
+            setChosenMonth,
+            chosenYear, 
+            setChosenYear
         }}
         >
             {children}

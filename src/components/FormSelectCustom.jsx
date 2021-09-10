@@ -15,15 +15,14 @@ export default function FormSelectCustom(props) {
     }
 
     const populate = () => {
-       const container = document.getElementById(props.summaryId)
+        const container = document.getElementById(props.summaryId)
         const list = document.getElementById(props.listId)
-        console.log(props.summaryId)
-        console.log(container)
+
         if (container && container.children.length === 1) {
             props.options.map(element => {
                 const input = document.createElement('input')
                 input.setAttribute('type', 'radio')
-                input.setAttribute('name', props.name)
+                input.setAttribute('name', props.label)
                 input.setAttribute('title', element)
                 input.id = element
     
@@ -53,7 +52,7 @@ export default function FormSelectCustom(props) {
 
                 <details className="custom-select">
                     <summary className="radios" id={props.summaryId}>
-                        <input type="radio" name={props.name} id="default" title={props.label} checked />
+                        <input type="radio" name={props.label} id="default" title={props.label} checked />
                         {/* <input  type="radio" name="item" id="item1" title="Item 1" />
             <input  type="radio" name="item" id="item2" title="Item 2" />
                 <input  type="radio" name="item" id="item3" title="Item 3" />
@@ -83,7 +82,7 @@ export default function FormSelectCustom(props) {
 
                 <details className="custom-select">
                     <summary className="radios" id={props.summaryId}>
-                        <input type="radio" name={props.name} id="default" title={props.label} checked />
+                        <input type="radio" name={props.label} id="default" title={props.label} checked />
                         {/* <input  type="radio" name="item" id="item1" title="Item 1" />
                             <input  type="radio" name="item" id="item2" title="Item 2" />
                                 <input  type="radio" name="item" id="item3" title="Item 3" />

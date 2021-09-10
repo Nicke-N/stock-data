@@ -30,40 +30,42 @@ export default function Form() {
 
             const details = {
                 stockName: event.target[0].value,
-                industry: event.target[1].value,
+                industry: event.target.children[1].value,
                 dividend: event.target[2].value,
                 risk: event.target[3].value
             }
 
-            if (modalData === 'add-stock') {
-                addStock(details)
-                    .then(res => res.text())
-                    .then(data => {
-                        setModalData(null)
-                        if (data === 'Stock was added!') {
-                            setSuccess('success')
-                        } else {
-                            setSuccess('failure')
-                        }
-                    })
-            } else if (modalData === 'edit-stock') {
-                editStock(currentStock._id, details)
-                    .then(res => res.text())
-                    .then(data => {
-                        setModalData(null)
-                        if (data === 'Stock was updated!') {
-                            setSuccess('success')
-                        } else {
-                            setSuccess('failure')
-                        }
-                    })
-            }
-            setTimeout(() => {
-                getStocks()
-                    .then(res => res.json())
-                    .then(data => setStockList(data))
-                closeModal()
-            }, 3000);
+            console.log(event.target.children[1])
+
+            // if (modalData === 'add-stock') {
+            //     addStock(details)
+            //         .then(res => res.text())
+            //         .then(data => {
+            //             setModalData(null)
+            //             if (data === 'Stock was added!') {
+            //                 setSuccess('success')
+            //             } else {
+            //                 setSuccess('failure')
+            //             }
+            //         })
+            // } else if (modalData === 'edit-stock') {
+            //     editStock(currentStock._id, details)
+            //         .then(res => res.text())
+            //         .then(data => {
+            //             setModalData(null)
+            //             if (data === 'Stock was updated!') {
+            //                 setSuccess('success')
+            //             } else {
+            //                 setSuccess('failure')
+            //             }
+            //         })
+            // }
+            // setTimeout(() => {
+            //     getStocks()
+            //         .then(res => res.json())
+            //         .then(data => setStockList(data))
+            //     closeModal()
+            // }, 3000);
         } else if (modalData === 'add-report' || modalData === 'edit-report') {
 
             var details = {}
