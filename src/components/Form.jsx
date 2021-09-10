@@ -40,35 +40,36 @@ export default function Form() {
                 risk: risk
             }
             console.log(details)
-            // if (modalData === 'add-stock') {
-            //     addStock(details)
-            //         .then(res => res.text())
-            //         .then(data => {
-            //             setModalData(null)
-            //             if (data === 'Stock was added!') {
-            //                 setSuccess('success')
-            //             } else {
-            //                 setSuccess('failure')
-            //             }
-            //         })
-            // } else if (modalData === 'edit-stock') {
-            //     editStock(currentStock._id, details)
-            //         .then(res => res.text())
-            //         .then(data => {
-            //             setModalData(null)
-            //             if (data === 'Stock was updated!') {
-            //                 setSuccess('success')
-            //             } else {
-            //                 setSuccess('failure')
-            //             }
-            //         })
-            // }
-            // setTimeout(() => {
-            //     getStocks()
-            //         .then(res => res.json())
-            //         .then(data => setStockList(data))
-            //     closeModal()
-            // }, 3000);
+            if (modalData === 'add-stock') {
+                addStock(details)
+                    .then(res => res.text())
+                    .then(data => {
+                        setModalData(null)
+                        if (data === 'Stock was added!') {
+                            setSuccess('success')
+                        } else {
+                            setSuccess('failure')
+                        }
+                    })
+            } else if (modalData === 'edit-stock') {
+                editStock(currentStock._id, details)
+                    .then(res => res.text())
+                    .then(data => {
+                        setModalData(null)
+                        if (data === 'Stock was updated!') {
+                            setSuccess('success')
+                        } else {
+                            setSuccess('failure')
+                        }
+                        closeModal()
+                    })
+            }
+            setTimeout(() => {
+                getStocks()
+                    .then(res => res.json())
+                    .then(data => setStockList(data))
+                
+            }, 3000);
         } else if (modalData === 'add-report' || modalData === 'edit-report') {
 
             var details = {}

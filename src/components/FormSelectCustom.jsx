@@ -15,8 +15,6 @@ export default function FormSelectCustom(props) {
         const valueContainer = document.getElementById(newCheck)
         valueContainer.checked = true
         document.getElementById(props.detailId).removeAttribute('open')
-        // event.target.parentNode.style.display = 'none'
-
     }
 
     const populate = () => {
@@ -24,7 +22,6 @@ export default function FormSelectCustom(props) {
         const list = document.getElementById(props.listId)
 
         if (container && container.children.length === 1) {
-            // container.addEventListener('click', showList)
             props.options.map(element => {
                 const input = document.createElement('input')
                 input.setAttribute('type', 'radio')
@@ -38,7 +35,7 @@ export default function FormSelectCustom(props) {
                 listItem.className = `li ${element}`
                 listItem.textContent = element
                 listItem.addEventListener('click', click)
-                
+
                 list.appendChild(listItem)
             })
         }
@@ -49,9 +46,7 @@ export default function FormSelectCustom(props) {
     useEffect(() => {
         populate()
     }, [])
-
-
-
+    
     return (
         <div>
             {props.onChange ?
