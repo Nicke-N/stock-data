@@ -50,6 +50,7 @@ export default function Stock(props) {
 
                 <FormSelectCustom
                     label='Industry'
+                    detailId='undistry-detail'
                     summaryId='industries-summary'
                     listId='industries'
                     options={industries}
@@ -73,6 +74,7 @@ export default function Stock(props) {
 
                 <FormSelectCustom
                     summaryId='risks-summary'
+                    detailId='risks-detail'
                     listId='risks'
                     options={riskLevels}
                     label='Risk'
@@ -96,6 +98,7 @@ export default function Stock(props) {
 
                     <FormSelectCustom
                         label='Industry'
+                        detailId='industry-detail'
                         summaryId='industries-summary'
                         listId='industries'
                         options={industries}
@@ -119,6 +122,7 @@ export default function Stock(props) {
 
                     <FormSelectCustom
                         summaryId='risks-summary'
+                        detailId='risks-detail'
                         listId='risks'
                         options={riskLevels}
                         label='Risk'

@@ -13,8 +13,9 @@ export default function FormSelectCustom(props) {
     const click = (event) => {
         const newCheck = event.target.classList[1]
         const valueContainer = document.getElementById(newCheck)
-        
         valueContainer.checked = true
+        document.getElementById(props.detailId).removeAttribute('open')
+        // event.target.parentNode.style.display = 'none'
 
     }
 
@@ -23,6 +24,7 @@ export default function FormSelectCustom(props) {
         const list = document.getElementById(props.listId)
 
         if (container && container.children.length === 1) {
+            // container.addEventListener('click', showList)
             props.options.map(element => {
                 const input = document.createElement('input')
                 input.setAttribute('type', 'radio')
@@ -36,7 +38,7 @@ export default function FormSelectCustom(props) {
                 listItem.className = `li ${element}`
                 listItem.textContent = element
                 listItem.addEventListener('click', click)
-
+                
                 list.appendChild(listItem)
             })
         }
@@ -54,8 +56,8 @@ export default function FormSelectCustom(props) {
         <div>
             {props.onChange ?
 
-                <details className="custom-select">
-                    <summary className="radios" id={props.summaryId}>
+                <details className="custom-select" id={props.detailId}>
+                    <summary className="radios" id={props.summaryId} >
                         <input type="radio" name={props.label} id="default" title={props.label} checked />
 
                     </summary>
@@ -65,7 +67,7 @@ export default function FormSelectCustom(props) {
 
                 :
 
-                <details className="custom-select">
+                <details className="custom-select" id={props.detailId}>
                     <summary className="radios" id={props.summaryId}>
                         <input type="radio" name={props.label} id="default" title={props.label} checked />
                     </summary>

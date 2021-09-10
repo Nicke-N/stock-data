@@ -147,7 +147,6 @@ details[open] summary:after {
 	border-bottom: none;
 }
 
-/* FAKE SELECT */
 
 summary.radios {
 	counter-reset: radios;
