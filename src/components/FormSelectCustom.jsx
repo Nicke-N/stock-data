@@ -5,6 +5,7 @@ import './Form.css'
 export default function FormSelectCustom(props) {
 
     const {
+        type,
         setType
     } = useContext(DataContext)
 
@@ -15,19 +16,25 @@ export default function FormSelectCustom(props) {
         const valueContainer = document.getElementById(newCheck)
         valueContainer.checked = true
         document.getElementById(props.detailId).removeAttribute('open')
+        if (props.label === 'Type') setType(newCheck)
     }
 
     const populate = () => {
         const container = document.getElementById(props.summaryId)
         const list = document.getElementById(props.listId)
 
-        if (container && container.children.length === 1) {
+        if (container && container.children.length === 1 && props.options) {
             props.options.map(element => {
                 const input = document.createElement('input')
                 input.setAttribute('type', 'radio')
                 input.setAttribute('name', props.label)
                 input.setAttribute('title', element)
                 input.id = element
+
+                if (props.label === 'Type') {
+                    console.log()
+                    if (type === element) input.checked = true
+                }
 
                 container.appendChild(input)
 
@@ -38,40 +45,27 @@ export default function FormSelectCustom(props) {
 
                 list.appendChild(listItem)
             })
+
+            
+
         }
 
 
     }
 
-    useEffect(() => {
+    useEffect(() => {    
         populate()
-    }, [])
-    
+    }, [props.options])
+
     return (
         <div>
-            {props.onChange ?
-
-                <details className="custom-select" id={props.detailId}>
-                    <summary className="radios" id={props.summaryId} >
-                        <input type="radio" name={props.label} id="default" title={props.label} checked />
-
-                    </summary>
-                    <ul className="list" id={props.listId}>
-                    </ul>
-                </details>
-
-                :
-
-                <details className="custom-select" id={props.detailId}>
-                    <summary className="radios" id={props.summaryId}>
-                        <input type="radio" name={props.label} id="default" title={props.label} checked />
-                    </summary>
-                    <ul className="list" id={props.listId}>
-                    </ul>
-                </details>
-
-            }
-
+            <details className="custom-select" id={props.detailId}>
+                <summary className="radios" id={props.summaryId}>
+                    <input type="radio" name={props.label} id="default" title={props.label} defaultChecked />
+                </summary>
+                <ul className="list" id={props.listId}>
+                </ul>
+            </details>
         </div>
     )
 }

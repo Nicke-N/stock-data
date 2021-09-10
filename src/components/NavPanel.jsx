@@ -117,10 +117,10 @@ export default function NavPanel() {
                     </Link>
                 </li>
                 <li>
-                    <strong>Known probs when:</strong>
+                    <strong>Known issues:</strong>
                 </li>
                 <li>
-                    Changing annual to quarter on report, type doesnt change the first time.
+                    
                 </li>
             </ul>
            

@@ -50,7 +50,7 @@ export default function Stock(props) {
 
                 <FormSelectCustom
                     label='Industry'
-                    detailId='undistry-detail'
+                    detailId='industry-detail'
                     summaryId='industries-summary'
                     listId='industries'
                     options={industries}
