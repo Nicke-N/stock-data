@@ -5,7 +5,7 @@ import Stock from './Stock'
 import ContainerToArray from './ContainerToArray'
 import { addReport, editReport, getReports } from '../kit/api/Reports'
 import { addStock, editStock, getStocks } from '../kit/api/Stocks'
-import { closeModal, DOMvalue } from '../kit/Functions'
+import { closeModal, IDvalue, NAMEvalue } from '../kit/Functions'
 
 export default function Form() {
 
@@ -27,10 +27,10 @@ export default function Form() {
 
         if (modalData === 'add-stock' || modalData === 'edit-stock') {
 
-            const stockName = document.getElementById('stockName').value
-            const dividend = document.getElementById('dividend').value
-            const industry = document.querySelector(`input[name=Industry]:checked`).title
-            const risk = document.querySelector(`input[name=Risk]:checked`).title
+            const stockName = IDvalue('stockName')
+            const dividend = IDvalue('divdend')
+            const industry = NAMEvalue('Industry')
+            const risk = NAMEvalue('Risk')
             
             const details = {
                 stockName: stockName,
@@ -71,20 +71,20 @@ export default function Form() {
             }, 3000);
         } else if (modalData === 'add-report' || modalData === 'edit-report') {
 
-            const stockName = document.getElementById('stockName').value
-            const type = document.querySelector(`input[name=Type]:checked`).title
-            const period = type === 'Annual' ? document.querySelector(`input[name=Year]:checked`).title : `${document.querySelector(`input[name=Month]:checked`).title} ${document.querySelector(`input[name=Year]:checked`).title}` 
-            const revenue = document.getElementById('revenue').value
-            const costs = document.getElementById('costs').value
-            const result = DOMvalue('result')
-            const shortDebt = DOMvalue('shortTermDebt')
-            const longDebt = DOMvalue('longTermDebt')
-            const capital = DOMvalue('capital')
-            const capitalAdequacy = DOMvalue('capitalAdequacy')
-            const stockCount = DOMvalue('stockCount')
-            const inventory = DOMvalue('inventory')
-            const employees = DOMvalue('employees')
-            const property = DOMvalue('property')
+            const stockName = IDvalue('stockName')
+            const type = NAMEvalue('Type')
+            const period = type === 'Annual' ? NAMEvalue('Year') : `${NAMEvalue('Month')} ${NAMEvalue('Year')}` 
+            const revenue = IDvalue('revenue')
+            const costs = IDvalue('costs')
+            const result = IDvalue('result')
+            const shortDebt = IDvalue('shortTermDebt')
+            const longDebt = IDvalue('longTermDebt')
+            const capital = IDvalue('capital')
+            const capitalAdequacy = IDvalue('capitalAdequacy')
+            const stockCount = IDvalue('stockCount')
+            const inventory = IDvalue('inventory')
+            const employees = IDvalue('employees')
+            const property = IDvalue('property')
             
 
             const details = {
@@ -108,6 +108,7 @@ export default function Form() {
                 addReport(details)
                     .then(res => res.text())
                     .then(data => {
+                        setModalData(null)
                         if (data === 'Report was added!') {
                             setSuccess('success')
                         } else {
