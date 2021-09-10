@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { DataContext } from '../context/DataContext'
 import './Form.css'
 
@@ -15,36 +15,44 @@ export default function FormSelectCustom(props) {
     }
 
     const populate = () => {
-        const container = document.getElementById('radios')
-        const list = document.getElementById('list')
-        props.options.map(element => {
-            const input = document.createElement('input')
-            input.setAttribute('type', 'radio')
-            input.setAttribute('name', props.name)
-            input.setAttribute('title', element)
-            input.id = element
-
-            container.appendChild(input)
-
-            const listItem = document.createElement('li')
-            listItem.className = `li ${element}`
-            listItem.textContent = element
-            listItem.addEventListener('click', click)
-
-            list.appendChild(listItem)
-        })
+       const container = document.getElementById(props.summaryId)
+        const list = document.getElementById(props.listId)
+        console.log(props.summaryId)
+        console.log(container)
+        if (container && container.children.length === 1) {
+            props.options.map(element => {
+                const input = document.createElement('input')
+                input.setAttribute('type', 'radio')
+                input.setAttribute('name', props.name)
+                input.setAttribute('title', element)
+                input.id = element
+    
+                container.appendChild(input)
+    
+                const listItem = document.createElement('li')
+                listItem.className = `li ${element}`
+                listItem.textContent = element
+                listItem.addEventListener('click', click)
+    
+                list.appendChild(listItem)
+            })
+        }
+        
 
     }
 
     useEffect(() => {
-        if (document.getElementById('list').children.length === 0) populate()
+        populate()
     }, [])
+
+
+
     return (
         <div>
             {props.onChange ?
 
                 <details className="custom-select">
-                    <summary className="radios" id='radios'>
+                    <summary className="radios" id={props.summaryId}>
                         <input type="radio" name={props.name} id="default" title={props.label} checked />
                         {/* <input  type="radio" name="item" id="item1" title="Item 1" />
             <input  type="radio" name="item" id="item2" title="Item 2" />
@@ -52,7 +60,7 @@ export default function FormSelectCustom(props) {
                     <input  type="radio" name="item" id="item4" title="Item 4" />
                         <input  type="radio" name="item" id="item5" title="Item 5" /> */}
                     </summary>
-                    <ul className="list" id='list'>
+                    <ul className="list" id={props.listId}>
                         {/* <li className='li item1' for='item1' onClick={click}>
                                 Item 1
                             </li>
@@ -74,7 +82,7 @@ export default function FormSelectCustom(props) {
                 :
 
                 <details className="custom-select">
-                    <summary className="radios" id='radios'>
+                    <summary className="radios" id={props.summaryId}>
                         <input type="radio" name={props.name} id="default" title={props.label} checked />
                         {/* <input  type="radio" name="item" id="item1" title="Item 1" />
                             <input  type="radio" name="item" id="item2" title="Item 2" />
@@ -82,7 +90,7 @@ export default function FormSelectCustom(props) {
                                     <input  type="radio" name="item" id="item4" title="Item 4" />
                                         <input  type="radio" name="item" id="item5" title="Item 5" /> */}
                     </summary>
-                    <ul className="list" id='list'>
+                    <ul className="list" id={props.listId}>
                         {/* <li className='li item1' for='item1' onClick={click}>
                                                 Item 1
                                             </li>
