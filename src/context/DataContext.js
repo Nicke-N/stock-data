@@ -15,7 +15,6 @@ export const DataProvider = ({children}) => {
     const [ annualsCount, setAnnualsCount ] = useState(null)
 
     const [ searchTerm, setSearchTerm ] = useState('')
-   
     
     const [ overview, setOverview ] = useState(null)
 

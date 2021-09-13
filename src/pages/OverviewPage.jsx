@@ -112,7 +112,7 @@ export default function OverviewPage(props) {
                         X
                     </div>
                 </div>
-
+                
                 <List
                     wrapperClassName='list-wrapper' 
                     containerId='risks-container'
