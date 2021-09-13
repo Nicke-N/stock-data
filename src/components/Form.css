@@ -50,6 +50,7 @@ form input {
 
 .form-btn {
     margin-top: 0.5rem;
+	border-radius: 1rem;
 }
 
 #entry-container > li {
@@ -71,11 +72,12 @@ details[open] {
 }
 
 summary {
-	padding: 1rem;
+	padding: 0.5rem;
 	cursor: pointer;
 	border-radius: 1rem;
 	background-color: rgb(4, 230, 49, 0.9);
 	list-style: none;
+	text-align: center;
 }
 
 summary::-webkit-details-marker {
@@ -104,7 +106,8 @@ summary:after {
 	border-bottom-left-radius: 2px;
 	transform: rotate(45deg) translate(50%, 0%);
 	transform-origin: center center;
-	transition: transform ease-in-out 100ms
+	transition: transform ease-in-out 100ms;
+	
 }
 
 summary:focus {
@@ -125,9 +128,10 @@ details[open] summary:after {
 	padding: 1rem;
 	margin: 0;
 	box-sizing: border-box;
-	border-radius: 5px;
-	max-height: 200px;
+	border-radius: 1rem;
+	max-height: 13rem;
 	overflow-y: auto;
+
 }
 
 .li {

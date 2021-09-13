@@ -73,7 +73,7 @@ export default function Form() {
 
             const stockName = IDvalue('stockName')
             const type = NAMEvalue('Type')
-            const period = type === 'Annual' ? NAMEvalue('Year') : `${NAMEvalue('Month')} ${NAMEvalue('Year')}` 
+            const period = type === 'Annual' ? NAMEvalue('Year') : `${NAMEvalue('Period')} ${NAMEvalue('Year')}` 
             const revenue = IDvalue('revenue')
             const costs = IDvalue('costs')
             const result = IDvalue('result')
