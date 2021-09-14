@@ -9,7 +9,17 @@ import List from '../components/List'
 
 export default function OverviewPage(props) {
 
-    const { currentStock, setCurrentStock, setReportList, setModalData, quartersCount, setQuartersCount, annualsCount, setAnnualsCount } = useContext(DataContext)
+    const { 
+        currentStock, 
+        setCurrentStock, 
+        setReportList, 
+        setModalData, 
+        quartersCount, 
+        setQuartersCount, 
+        annualsCount, 
+        setAnnualsCount,
+        setSearchTerm
+    } = useContext(DataContext)
 
     const stockID = props.match.params.id ? props.match.params.id : currentStock._id
 
@@ -77,6 +87,7 @@ export default function OverviewPage(props) {
 
     useEffect(() => {
         if (currentStock) setReports(currentStock.stockName)
+        setSearchTerm('')
     }, [currentStock])
 
     return (

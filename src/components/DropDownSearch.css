@@ -17,6 +17,6 @@
 .dropdown-option:hover {
     color: blue;
 }
-input:focus ~ #options-container {
+input:focus ~ #options-container, #options-container:hover {
     display: flex;
 }
