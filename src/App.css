@@ -17,6 +17,9 @@ a:visited {
   color:green;
   
 }
+a:hover {
+  color: rgb(47, 92, 255);
+}
 ul {
   list-style: none;
 }
@@ -33,6 +36,9 @@ li + .nav-item {
 }
 .nav-item {
   color:green;
+}
+.nav-item:hover {
+  color: rgb(47, 92, 255);
 }
 textarea {
   resize: none;

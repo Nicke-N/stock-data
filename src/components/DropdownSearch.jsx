@@ -13,12 +13,6 @@ export default function DropdownSearch() {
         setSearchTerm([])
     }, [])
 
-    // if (stockList)
-    // setTimeout(() => {
-    //     stockList.map(element => searchTerm === (element.stockName).toLowerCase() ? history.push(`/overview/${element._id}`) : null)
-    // }, 1000);
-    
-
     if (stockList) {
         
         stockList.map(element => {
@@ -31,7 +25,6 @@ export default function DropdownSearch() {
             }
         })
     }
-
 
     if (list && stockList) {
         

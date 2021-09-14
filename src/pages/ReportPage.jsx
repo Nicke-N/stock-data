@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
 import { getReport } from '../kit/api/Reports'
 import { showModal } from '../kit/Functions'
+import './ReportPage.css'
 
 export default function ReportPage() {
     
@@ -23,11 +24,11 @@ export default function ReportPage() {
     return (
         <div id='report-list-page'>
             <div id='annuals-container'>
-                <h3>Annual reports</h3>
-                {reportList && reportList.length > 0 ? reportList.map(element =>( element.type.toLowerCase()) === 'annual' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>{element.period}</div> : null) : null}
+                <h2>Annual reports</h2>
+                {reportList && reportList.length > 0 ? reportList.map(element =>( element.type.toLowerCase()) === 'annual' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>Annual report {element.period}</div> : null) : null}
             </div>
             <div id='quarter-container'>
-                <h3>Quarter reports</h3>
+                <h2>Quarter reports</h2>
             {reportList && reportList.length > 0 ? reportList.map(element =>( element.type.toLowerCase()) === 'quarter' ? <div className='a-report' id={element._id} key={element._id} onClick={setReport}>{element.period}</div> : null) : null}
             </div>
         </div>

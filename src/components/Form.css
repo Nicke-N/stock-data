@@ -1,3 +1,7 @@
+form {
+	text-align: center;
+}
+
 .crud-container {
     display: flex;
     flex-direction: column;
@@ -49,8 +53,9 @@ form input {
 }
 
 .form-btn {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 	border-radius: 1rem;
+	cursor: pointer;
 }
 
 #entry-container > li {
@@ -98,11 +103,14 @@ details[open] summary:before {
 summary:after {
 	content: '';
 	display: inline-block;
-	float: right;
+	/* float: right; */
+	position: absolute;
+	right: 10px;
+	top: 25%;
 	width: .5rem;
 	height: .5rem;
-	border-bottom: 1px solid currentColor;
-	border-left: 1px solid currentColor;
+	border-bottom: 3px solid currentColor;
+	border-left: 3px solid currentColor;
 	border-bottom-left-radius: 2px;
 	transform: rotate(45deg) translate(50%, 0%);
 	transform-origin: center center;
