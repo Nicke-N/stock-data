@@ -28,7 +28,7 @@ export default function Form() {
         if (modalData === 'add-stock' || modalData === 'edit-stock') {
 
             const stockName = IDvalue('stockName')
-            const dividend = IDvalue('divdend')
+            const dividend = IDvalue('dividend')
             const industry = NAMEvalue('Industry')
             const risk = NAMEvalue('Risk')
             
@@ -60,9 +60,10 @@ export default function Form() {
                         } else {
                             setSuccess('failure')
                         }
-                        closeModal()
+                        
                     })
             }
+            closeModal()
             setTimeout(() => {
                 getStocks()
                     .then(res => res.json())
