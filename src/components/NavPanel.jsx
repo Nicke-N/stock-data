@@ -5,6 +5,7 @@ import { DataContext } from '../context/DataContext'
 import { getStocks } from '../kit/api/Stocks'
 import { getReports } from '../kit/api/Reports'
 import { back, showModal } from '../kit/Functions'
+import DropDownSearchCustom from './DropDownSearchCustom'
 
 export default function NavPanel() {
 
@@ -77,8 +78,9 @@ export default function NavPanel() {
     return (
         <div id='nav-container'>
             <ul id='nav-panel'>
-                <li className='nav-item'>
-                    <DropdownSearch />
+                <li>
+                    {/* <DropdownSearch /> */}
+                    <DropDownSearchCustom />
                 </li>
                 <li className='nav-item' id='add-stock'>
                    

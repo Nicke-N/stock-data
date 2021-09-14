@@ -1,0 +1,22 @@
+#search-container {
+    display: flex;
+    flex-direction: column;
+}
+#options-container {
+    display: none;
+    flex-direction: column;
+    max-height: 200px;
+    background-color: rgb(179, 173, 173, 0.3);
+    overflow-y: scroll;
+}
+.dropdown-option {
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+.dropdown-option:hover {
+    color: blue;
+}
+input:focus ~ #options-container {
+    display: flex;
+}
