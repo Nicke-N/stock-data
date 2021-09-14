@@ -7,7 +7,6 @@ export default function DropDownSearchCustom() {
 
     const { setSearchTerm, stockList, searchTerm, setCurrentStock } = useContext(DataContext)
     const history = useHistory()
-    const list = document.getElementById('options-container')
     const setValue = (e) => setSearchTerm(e.target.value.toLowerCase())
     const selectOption = (e) => setSearchTerm(e.target.textContent.toLowerCase())
 
@@ -28,25 +27,10 @@ export default function DropDownSearchCustom() {
         })
     }
 
-    // if (list && stockList) {
-
-    //     if (list.childNodes.length !== stockList.length) {
-    //         list.textContent = ''
-    //         stockList.map((element) => {
-
-    //             var option = document.createElement('div')
-    //             option.textContent = element.stockName
-    //             option.className = 'dropdown-option hidden'
-    //             option.addEventListener('click', selectOption)
-    //             list.appendChild(option)
-    //         })
-    //     }
-    // }
-
     return (
-        <div id='custom-dropdown-searchbar'>
+    
             <div id='search-container'>
-                <input type="text" maxLength='50' onChange={setValue} />
+                <input type="text" maxLength='50' id='options-filter' onChange={setValue} />
                 <div id='options-container'>
                     {stockList ? stockList.map((element, index) => {
                         if (searchTerm === '') {
@@ -67,7 +51,5 @@ export default function DropDownSearchCustom() {
 
                 </div>
             </div>
-
-        </div>
     )
 }

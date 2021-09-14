@@ -1,13 +1,24 @@
+
 #search-container {
     display: flex;
     flex-direction: column;
+    width: 85%;
+    box-shadow:10px 5px 5px rgb(5, 5, 70);
 }
 #options-container {
     display: none;
     flex-direction: column;
     max-height: 200px;
-    background-color: rgb(179, 173, 173, 0.3);
+    background-color: rgba(255, 255, 255, 0.5);
     overflow-y: scroll;
+    text-align: center;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+#options-container::-webkit-scrollbar {
+        display: none;
 }
 .dropdown-option {
     margin-top: 1rem;
@@ -19,4 +30,16 @@
 }
 input:focus ~ #options-container, #options-container:hover {
     display: flex;
+}
+#options-filter {
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#options-filter:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
