@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import FormBtn from './FormBtn'
 import FormInput from './FormInput'
-import FormSelect from './FormSelect'
+import FormSelectCustom from './FormSelectCustom'
 import { DataContext } from '../context/DataContext'
+import './Form.css'
 
 export default function Report(props) {
 
@@ -13,10 +14,10 @@ export default function Report(props) {
     const currDate = new Date(),
         year = currDate.getFullYear(),
         periods = [
-            'jan - mar',
-            'apr - jun',
-            'jul - sep',
-            'oct - dec'
+            'Jan-Mar',
+            'Apr-Jun',
+            'Jul-Sep',
+            'Oct-Dec'
         ],
         typeOptions = [
             'Annual',
@@ -41,9 +42,6 @@ export default function Report(props) {
 
     }, [])
 
-    useEffect(() => {}, [type])
-
-
     return (
         props.type === 'add' ?
             <>
@@ -57,35 +55,40 @@ export default function Report(props) {
                     readOnly
                 />
 
-                <FormSelect
-                    className='crud-pair report'
-                    id='type'
+                <FormSelectCustom
                     label='Type'
-                    onChange='type'
+                    detailId='type-detail'
+                    summaryId='type-summary'
+                    listId='type'
                     options={typeOptions}
                 />
 
                 {
                     type === 'Annual' ?
-                        <FormSelect
-                            className='crud-pair report'
-                            id='period'
-                            label='Period'
+                        <FormSelectCustom
+
+                            label='Year'
+                            detailId='year-detail'
+                            summaryId='year-summary'
+                            listId='year'
                             options={years}
                         />
                         :
                         <>
-                            <FormSelect
-                                className='crud-pair report'
-                                id='months'
+                            <FormSelectCustom
                                 label='Period'
+                                detailId='month-detail'
+                                summaryId='month-summary'
+                                listId='month'
                                 options={periods}
                             />
 
-                            <FormSelect
-                                className='crud-pair report'
-                                id='year'
+                            <FormSelectCustom
+
                                 label='Year'
+                                detailId='year-detail'
+                                summaryId='year-summary'
+                                listId='year'
                                 options={years}
                             />
                         </>
@@ -201,35 +204,40 @@ export default function Report(props) {
 
                     />
 
-                    <FormSelect
-                        className='crud-pair report'
-                        id='type'
+                    <FormSelectCustom
                         label='Type'
-                        onChange='type'
+                        detailId='type-detail'
+                        summaryId='type-summary'
+                        listId='type'
                         options={typeOptions}
                     />
 
                     {
                         type === 'Annual' ?
-                            <FormSelect
-                                className='crud-pair report'
-                                id='period'
-                                label='Period'
+                            <FormSelectCustom
+
+                                label='Year'
+                                detailId='year-detail'
+                                summaryId='year-summary'
+                                listId='year'
                                 options={years}
                             />
                             :
                             <>
-                                <FormSelect
-                                    className='crud-pair report'
-                                    id='months'
+                                <FormSelectCustom
                                     label='Period'
+                                    detailId='month-detail'
+                                    summaryId='month-summary'
+                                    listId='month'
                                     options={periods}
                                 />
 
-                                <FormSelect
-                                    className='crud-pair report'
-                                    id='year'
+                                <FormSelectCustom
+
                                     label='Year'
+                                    detailId='year-detail'
+                                    summaryId='year-summary'
+                                    listId='year'
                                     options={years}
                                 />
                             </>

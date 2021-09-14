@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FormBtn(props) {
     return (
-        <button id={props.id}> 
+        <button className={props.className}> 
             {props.text}
         </button>
     )

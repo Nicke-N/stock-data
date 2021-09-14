@@ -6,7 +6,8 @@ export default function ListItem(props) {
     return (
         <Link to={`/overview/${props.data._id}`}>
             <div className='list-item'>
-                {props.data.stockName}
+                <h3>{props.data.stockName}</h3>
+                <div>{props.data.industry}</div>
             </div>
         </Link>
         

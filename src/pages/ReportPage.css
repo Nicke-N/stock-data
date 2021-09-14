@@ -1,0 +1,9 @@
+#report-list-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#report-list-page > div {
+    text-align: center;
+    font-size: 1.5rem;
+}

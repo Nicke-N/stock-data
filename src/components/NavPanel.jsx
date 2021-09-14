@@ -117,9 +117,11 @@ export default function NavPanel() {
                     </Link>
                 </li>
                 <li>
-                    <strong>Known probs when:</strong>
+                    <strong>Known issues:</strong>
                 </li>
-                
+                <li>
+                    
+                </li>
             </ul>
            
             

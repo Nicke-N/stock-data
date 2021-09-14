@@ -5,7 +5,7 @@ import Stock from './Stock'
 import ContainerToArray from './ContainerToArray'
 import { addReport, editReport, getReports } from '../kit/api/Reports'
 import { addStock, editStock, getStocks } from '../kit/api/Stocks'
-import { closeModal } from '../kit/Functions'
+import { closeModal, IDvalue, NAMEvalue } from '../kit/Functions'
 
 export default function Form() {
 
@@ -15,11 +15,10 @@ export default function Form() {
         setModalData, 
         setStockList, 
         currentStock, 
-        type, 
         setReportList, 
         setAnnualsCount, 
         setQuartersCount, 
-        currentReport 
+        currentReport
     } = useContext(DataContext)
 
     const submitForm = async (event) => {
@@ -28,13 +27,18 @@ export default function Form() {
 
         if (modalData === 'add-stock' || modalData === 'edit-stock') {
 
+            const stockName = IDvalue('stockName')
+            const dividend = IDvalue('divdend')
+            const industry = NAMEvalue('Industry')
+            const risk = NAMEvalue('Risk')
+            
             const details = {
-                stockName: event.target[0].value,
-                industry: event.target[1].value,
-                dividend: event.target[2].value,
-                risk: event.target[3].value
+                stockName: stockName,
+                industry: industry,
+                dividend:dividend,
+                risk: risk
             }
-
+            console.log(details)
             if (modalData === 'add-stock') {
                 addStock(details)
                     .then(res => res.text())
@@ -56,26 +60,55 @@ export default function Form() {
                         } else {
                             setSuccess('failure')
                         }
+                        closeModal()
                     })
             }
             setTimeout(() => {
                 getStocks()
                     .then(res => res.json())
                     .then(data => setStockList(data))
-                closeModal()
+                
             }, 3000);
         } else if (modalData === 'add-report' || modalData === 'edit-report') {
 
-            var details = {}
-            const values = Array.from(event.target)
+            const stockName = IDvalue('stockName')
+            const type = NAMEvalue('Type')
+            const period = type === 'Annual' ? NAMEvalue('Year') : `${NAMEvalue('Period')} ${NAMEvalue('Year')}` 
+            const revenue = IDvalue('revenue')
+            const costs = IDvalue('costs')
+            const result = IDvalue('result')
+            const shortDebt = IDvalue('shortTermDebt')
+            const longDebt = IDvalue('longTermDebt')
+            const capital = IDvalue('capital')
+            const capitalAdequacy = IDvalue('capitalAdequacy')
+            const stockCount = IDvalue('stockCount')
+            const inventory = IDvalue('inventory')
+            const employees = IDvalue('employees')
+            const property = IDvalue('property')
+            
 
-            values.map((element, index) => type === 'Quarter' && element.name === 'year' ? details['period'] = `${values[index - 1].value} ${values[index].value}` : element.name !== 'months' && element.value !== '' ? details[element.name] = element.value : null)
-            details.type = type
+            const details = {
+                stockName: stockName,
+                type: type,
+                period: period,
+                revenue: revenue,
+                costs: costs,
+                result: result,
+                shortTermDebt: shortDebt,
+                longTermDebt: longDebt,
+                capital: capital,
+                capitalAdequacy: capitalAdequacy,
+                stockCount: stockCount,
+                inventory: inventory,
+                employees: employees,
+                property: property
+            }
 
             if (modalData === 'add-report') {
                 addReport(details)
                     .then(res => res.text())
                     .then(data => {
+                        setModalData(null)
                         if (data === 'Report was added!') {
                             setSuccess('success')
                         } else {

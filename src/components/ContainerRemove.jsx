@@ -6,6 +6,7 @@ import { DataContext } from '../context/DataContext'
 import { closeModal } from '../kit/Functions'
 import CheckMark from '../icons/checkmark.svg'
 import Remove from '../icons/remove.svg'
+import './Form.css'
 
 export default function ContainerRemove(props) {
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { editStock, getStock, getStocks } from '../kit/api/Stocks'
 import { closeModal } from '../kit/Functions'
-import './CrudStyle.css'
+import './Form.css'
 
 export default function ContainerToArray() {
 

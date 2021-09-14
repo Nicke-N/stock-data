@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ChartJs from 'chart.js/auto'
 import './Chart.css'
 
 export default function Chart(props) {
 
-    const [ chart, setChart ] = useState(null)
+   
     var ctx, canvas
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function Chart(props) {
                     data: data[key]
                 });
             });
-            console.log(ctx)
+         
             canvas = new ChartJs(ctx, {
                 type: 'line',
                 data: chartData,
