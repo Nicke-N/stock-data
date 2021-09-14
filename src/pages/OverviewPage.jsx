@@ -9,14 +9,14 @@ import List from '../components/List'
 
 export default function OverviewPage(props) {
 
-    const { 
-        currentStock, 
-        setCurrentStock, 
-        setReportList, 
-        setModalData, 
-        quartersCount, 
-        setQuartersCount, 
-        annualsCount, 
+    const {
+        currentStock,
+        setCurrentStock,
+        setReportList,
+        setModalData,
+        quartersCount,
+        setQuartersCount,
+        annualsCount,
         setAnnualsCount,
         setSearchTerm
     } = useContext(DataContext)
@@ -123,9 +123,9 @@ export default function OverviewPage(props) {
                         X
                     </div>
                 </div>
-                
+
                 <List
-                    wrapperClassName='list-wrapper' 
+                    wrapperClassName='list-wrapper'
                     containerId='risks-container'
                     containerClassName='small-container'
                     title='Risks'

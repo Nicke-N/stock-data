@@ -29,6 +29,7 @@ export default function FormSelectCustom(props) {
                 input.setAttribute('type', 'radio')
                 input.setAttribute('name', props.label)
                 input.setAttribute('title', element)
+                input.className = 'custom-radio'
                 input.id = element
 
                 if (props.label === 'Type') {
@@ -61,7 +62,7 @@ export default function FormSelectCustom(props) {
         <div>
             <details className="custom-select" id={props.detailId}>
                 <summary className="radios" id={props.summaryId}>
-                    <input type="radio" name={props.label} id="default" title={props.label} defaultChecked />
+                    <input type="radio" className='custom-radio' name={props.label} id="default" title={props.label} defaultChecked />
                 </summary>
                 <ul className="list" id={props.listId}>
                 </ul>

@@ -164,17 +164,17 @@ summary.radios {
 	counter-reset: radios;
 }
 
-input[type=radio] {
+.custom-radio {
 	counter-increment: radios;
 	appearance: none;
 	display: none;
 }
 
-input[type=radio]:checked {
+.custom-radio:checked {
 	display: inline;
 }
 
-input[type=radio]:after {
+.custom-radio:after {
 	content: attr(title);
 	display: inline;
 	font-size: 1rem;

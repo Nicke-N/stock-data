@@ -11,6 +11,7 @@ export default function Diagrams() {
         '_id',
         'stockName',
         'type',
+        'stockSpecificData'
     ]
     var annuals = {
         revenue: [],
@@ -20,7 +21,6 @@ export default function Diagrams() {
         shortTermDebt: [],
         longTermDebt: [],
         capital: [],
-        stockSpecificData: [],
         stockCount: [],
         capitalAdequacy: [],
         employees: [],
@@ -34,7 +34,6 @@ export default function Diagrams() {
         shortTermDebt: [],
         longTermDebt: [],
         capital: [],
-        stockSpecificData: [],
         stockCount: [],
         capitalAdequacy: [],
         employees: [],

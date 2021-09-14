@@ -1,31 +1,36 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import Diagrams from '../components/Diagrams'
 import { DataContext } from '../context/DataContext'
+import '../components/Diagrams.css'
 
 export default function DiagramsPage() {
 
-    const { diagramOption, setDiagramOption } = useContext(DataContext)
+    const { 
+        diagramOption, 
+        setDiagramOption
+    } = useContext(DataContext)
 
-    useEffect(() => {
-        addEventListener()
-    }, [])
-
-    useEffect(() => {console.log(diagramOption)}, [diagramOption])
-
-    const addEventListener = () => {
-        document.getElementById('report-type').removeEventListener('mouseleave', setOptionValue)
-        document.getElementById('report-type').addEventListener('mouseleave', setOptionValue)
-    }
-
-    const setOptionValue = () => setDiagramOption(document.getElementById('report-type').value)
+    const setOptionValue = (event) => setDiagramOption(event.target.value)
 
     return (
         <div>
             <div>
-                <select name="type" id="report-type" onChange={setOptionValue}>
+                {diagramOption === 'annual' ?
+                <>
+                    <input type="radio" name='diagram-type' value='annual' checked onClick={setOptionValue}/> Annuals
+                    <input type="radio" name='diagram-type' value='quarter' onClick={setOptionValue}/> Quarters
+                </>
+                :
+                <>
+                    <input type="radio" name='diagram-type' value='annual' onClick={setOptionValue}/> Annuals
+                    <input type="radio" name='diagram-type' value='quarter' checked onClick={setOptionValue}/> Quarters
+                </>
+                }
+                
+                {/* <select name="type" id="report-type" onChange={setOptionValue}>
                     <option value="annual">Annuals</option>
                     <option value="quarter">Quarters</option>
-                </select>
+                </select> */}
             </div>
             <div>
 
