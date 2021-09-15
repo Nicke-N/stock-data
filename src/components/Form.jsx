@@ -76,8 +76,8 @@ export default function Form() {
             const type = NAMEvalue('Type')
             const period = type === 'Annual' ? NAMEvalue('Year') : `${NAMEvalue('Period')} ${NAMEvalue('Year')}` 
             const revenue = IDvalue('revenue')
-            const costs = IDvalue('costs')
             const result = IDvalue('result')
+            const costs = revenue - result 
             const shortDebt = IDvalue('shortTermDebt')
             const longDebt = IDvalue('longTermDebt')
             const capital = IDvalue('capital')

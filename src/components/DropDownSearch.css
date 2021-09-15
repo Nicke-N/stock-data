@@ -12,8 +12,6 @@
     background-color: rgba(255, 255, 255, 0.5);
     overflow-y: scroll;
     text-align: center;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -35,11 +33,6 @@ input:focus ~ #options-container, #options-container:hover {
     text-align: center;
     outline: none;
     border: none;
-    border-radius: 0.5rem;
     font-size: 1.2rem;
     background-color: rgba(255, 255, 255, 0.5);
-}
-#options-filter:focus {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }

@@ -35,7 +35,7 @@ export default function Report(props) {
             success.style.display = 'none'
         }
 
-        for (let i = 2005; i <= year; i++) {
+        for (let i = year; i >= 2010; i--) {
             yearsArray.push(i)
         }
         setYears(yearsArray)
@@ -103,14 +103,7 @@ export default function Report(props) {
                     required
                 />
 
-                <FormInput
-                    className='crud-pair report'
-                    id='costs'
-                    label='Costs'
-                    maxLength='20'
-                    type='number'
-                    required
-                />
+                
 
                 <FormInput
                     className='crud-pair report'
@@ -253,15 +246,7 @@ export default function Report(props) {
                         required
                     />
 
-                    <FormInput
-                        className='crud-pair report'
-                        id='costs'
-                        label='Costs'
-                        maxLength='20'
-                        type='number'
-                        value={currentReport.costs}
-                        required
-                    />
+
 
                     <FormInput
                         className='crud-pair report'
