@@ -22,6 +22,11 @@ export default function OverviewPage(props) {
     } = useContext(DataContext)
 
     const stockID = props.match.params.id ? props.match.params.id : currentStock._id
+    const exceptions = [
+        'Brighter',
+        'MOWI',
+        'Bakkafrost'
+    ]
 
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
@@ -118,10 +123,13 @@ export default function OverviewPage(props) {
                     <div className='overview-description' id='risk-level'>
                         <div className={currentStock.risk} >Risk: {currentStock.risk} </div>
                     </div>
-
-                    <div id='remove-stock' onClick={removeStock}>
+                    {!exceptions.includes(currentStock.stockName) ?
+                        <div id='remove-stock' onClick={removeStock}>
                         X
                     </div>
+                    : null
+                    }
+                    
                 </div>
 
                 <List

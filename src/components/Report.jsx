@@ -117,7 +117,7 @@ export default function Report(props) {
                 <FormInput
                     className='crud-pair report'
                     id='shortTermDebt'
-                    label='ShortDebt'
+                    label='CurrentLiability'
                     maxLength='20'
                     type='number'
                 />
@@ -125,7 +125,7 @@ export default function Report(props) {
                 <FormInput
                     className='crud-pair report'
                     id='longTermDebt'
-                    label='LongDebt'
+                    label='Non-CurrentLiability'
                     maxLength='20'
                     type='number'
                 />
@@ -141,7 +141,7 @@ export default function Report(props) {
                 <FormInput
                     className='crud-pair report'
                     id='capitalAdequacy'
-                    label='CapitalAdequacy'
+                    label='EquityRatio'
                     maxLength='2'
                     type='number'
                 />
@@ -261,7 +261,7 @@ export default function Report(props) {
                     <FormInput
                         className='crud-pair report'
                         id='shortTermDebt'
-                        label='ShortDebt'
+                        label='CurrentLiability'
                         maxLength='20'
                         type='number'
                         value={currentReport.shortTermDebt}
@@ -270,7 +270,7 @@ export default function Report(props) {
                     <FormInput
                         className='crud-pair report'
                         id='longTermDebt'
-                        label='LongDebt'
+                        label='Non-CurrentLiability'
                         maxLength='20'
                         type='number'
                         value={currentReport.longTermDebt}
@@ -288,7 +288,7 @@ export default function Report(props) {
                     <FormInput
                         className='crud-pair report'
                         id='capitalAdequacy'
-                        label='CapitalAdequacy'
+                        label='EquityRatio'
                         maxLength='2'
                         type='number'
                         value={currentReport.capitalAdequacy}

@@ -122,7 +122,13 @@ export default function NavPanel() {
                     <strong>Known issues:</strong>
                 </li>
                 <li>
-                    
+                    None spotted yet.
+                </li>
+                <li>
+                    <strong>Visitors</strong>
+                </li>
+                <li>
+                    View charts through the Brighter stock, as most diagras added are there.
                 </li>
             </ul>
            

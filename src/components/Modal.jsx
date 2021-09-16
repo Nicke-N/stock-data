@@ -13,11 +13,14 @@ export default function Modal() {
 
         closeBtn = document.getElementsByClassName('closeBtn')[0]
 
-        if (closeBtn) closeBtn.addEventListener('click', () => { modal.style.display = 'none' })
+        if (closeBtn) closeBtn.addEventListener('click', () => {
+            closeModal()
+            setModalData(null)
+        })
 
         modal = document.getElementById('simpleModal')
 
-        if (modal) window.addEventListener('click', outsideClick)
+        // if (modal) window.addEventListener('click', outsideClick)
 
     }, [])
 
@@ -38,13 +41,13 @@ export default function Modal() {
         }
     }, [success])
 
-    const outsideClick = (e) => {
+    // const outsideClick = (e) => {
 
-        if (e.target === modal) {
-            setModalData(null)
-            closeModal()
-        }
-    }
+    //     if (e.target === modal) {
+    //         setModalData(null)
+    //         closeModal()
+    //     }
+    // }
 
     const drawSuccess = () => {
         var canvas = document.getElementById('canvas-success');
