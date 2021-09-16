@@ -1,7 +1,6 @@
 import React from 'react'
 import FormBtn from './FormBtn'
 import FormInput from './FormInput'
-import FormSelect from './FormSelect'
 import './Form.css'
 import FormSelectCustom from './FormSelectCustom'
 
