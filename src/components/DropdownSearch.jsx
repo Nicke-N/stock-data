@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './DropDownSearch.css'
 import { DataContext } from '../context/DataContext'
 export default function DropdownSearch() {
 
     const { setSearchTerm, stockList, searchTerm, setCurrentStock } = useContext(DataContext)
-    const history = useHistory()
+    const navigate = useNavigate()
     const setValue = (e) => setSearchTerm(e.target.value.toLowerCase())
     const list = document.getElementById('stock-list')
     
@@ -20,7 +20,7 @@ export default function DropdownSearch() {
             if ( searchTerm === (element.stockName).toLowerCase() ) {
                 setCurrentStock(element)
                 return setTimeout(() => {
-                    history.push(`/overview/${element._id}`)
+                    navigate(`/overview/${element._id}`)
                 }, 1500)
             }
         })
