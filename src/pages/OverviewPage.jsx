@@ -3,12 +3,13 @@ import { DataContext } from '../context/DataContext'
 import { getStock } from '../kit/api/Stocks'
 import { getReports } from '../kit/api/Reports'
 import { showModal } from '../kit/Functions'
+import { useParams } from 'react-router-dom'
 import Add from '../icons/plus.svg'
 import './Overview.css'
 import List from '../components/List'
 
 export default function OverviewPage(props) {
-
+    const { id } = useParams()
     const { 
         currentStock, 
         setCurrentStock, 
@@ -20,9 +21,8 @@ export default function OverviewPage(props) {
         setAnnualsCount,
         setSearchTerm
     } = useContext(DataContext)
-
-    const stockID = props.match.params.id ? props.match.params.id : currentStock._id
-
+    
+    const stockID = id
     const addNote = document.getElementById('add-note')
     const addRisk = document.getElementById('add-risk')
 
@@ -50,7 +50,7 @@ export default function OverviewPage(props) {
         await getStock(stockID)
             .then(res => res.json())
             .then(data => {
-
+                console.log(data)
                 setCurrentStock(data)
                 setReports(data.stockName)
                 localStorage.setItem('stockName', data.stockName)

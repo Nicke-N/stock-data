@@ -11,7 +11,6 @@ export default function ReportPage() {
     const setReport = (event) => {
         
         const id = event.target.id
-
         getReport(id)
         .then(res => res.json())
         .then(data => {
