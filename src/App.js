@@ -15,10 +15,10 @@ function App() {
     <div className="App">
       <NavPanel />
       <Routes>
-        <Route exact path='/' component={<ListPage />} />
-        <Route exact path='/overview/:id' component={<OverviewPage />} />
-        <Route exact path='/diagrams/:id' component={<DiagramsPage />} />
-        <Route exact path='/reports/:stockName' component={<ReportPage />} />
+        <Route exact path='/' element={<ListPage />} />
+        <Route exact path='/overview/:id' element={<OverviewPage />} />
+        <Route exact path='/diagrams/:id' element={<DiagramsPage />} />
+        <Route exact path='/reports/:stockName' element={<ReportPage />} />
       </Routes>
       <Modal />
     </div>

@@ -114,15 +114,15 @@ export default function NavPanel() {
                 : null
             }
                 <li className='nav-item'>
-                    <Link onClick={back}>
+                    <a href='#' onClick={back}>
                         Back
-                    </Link>
+                    </a>
                 </li>
                 <li>
                     <strong>Known issues:</strong>
                 </li>
                 <li>
-                    
+                    This project is on hold, until I've solved how to read custom fields from PDF files
                 </li>
             </ul>
            
